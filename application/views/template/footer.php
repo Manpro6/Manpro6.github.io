@@ -8,7 +8,7 @@
 		<p style="color:white;">Telp. 0274-563929, Fax. 0274-513235</p>
 		<p style="color:white;">Email : <a href="mailto:humas@staff.ukdw.ac.id" style="color:white;"><em>humas@staff.ukdw.ac.id</em></a></p>
 		<br><br><br>
-		<p style="color:white;">&copy; 2016 - PPLK</p>
+		<p style="color:white;">&copy; 2016 - PPLK Manpro Group 6</p>
 		<br>
 	</div><h5 style="color:white;float:right;margin-bottom:15px;margin-left:-160px;text-align:left;margin-right:200px;"><strong>Kritik dan Saran</strong></h5><br><br>
 	<?php echo form_open_multipart('welcome/krisan')?> 
