@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>PPLK</title>
   <link rel="shortcut icon" href="images/favicon.ico" />
+  <!-- Ikon UKDW -->
+  <link rel="icon" href="http://ukdw.ac.id/images/favicon.png" type="image/png">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.css')?>">
@@ -50,9 +50,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>
-            <li><a href="<?php echo base_url('kursus')?>">Kursus</a></li>    
-            <li><a href="<?php echo base_url('sertifikasi')?>">Sertifikasi</a></li>
-            <li><a href="<?php echo base_url('tentang')?>">Tentang</a></li>        
+            <li><a href="<?php echo base_url('index.php/kursus')?>">Kursus</a></li>    
+            <li><a href="<?php echo base_url('index.php/sertifikasi')?>">Sertifikasi</a></li>
+            <li><a href="<?php echo base_url('index.php/tentang')?>">Tentang</a></li>        
           </ul>
         </div>
       </nav>

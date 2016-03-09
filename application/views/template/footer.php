@@ -1,6 +1,6 @@
 	<footer class="navbar-wrapper2" style="background-color:#0066ff">
 		<div class="container">
-			<div class="col-md-8">	
+			<div class="col-md-6">	
 				<br>
 				<h4 style="color:white;">UNIVERSITAS KRISTEN DUTA WACANA</h4>
 				<br>
@@ -12,7 +12,7 @@
 				<p style="color:white;">&copy; 2016 - PPLK Manpro Group 6</p>
 				<br>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<br>
 				<h4 style="color:white;">KRITIK DAN SARAN</h4> 
 				<br>

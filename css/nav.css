@@ -28,7 +28,22 @@ li:hover {
 	width: 400px;
 }
 
+footer .col-md-6{
+	margin: auto;
+}
+
+
 /*Login*/
 .login_form {
 	margin-left: 50px;
+}
+
+/*Tentang*/
+.featurette-divider {
+	margin: 40px 0;
+}
+
+.lead {
+	font-size: 14px;
+	line-height: 1.5;
 }

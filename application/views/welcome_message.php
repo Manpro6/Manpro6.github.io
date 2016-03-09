@@ -1,25 +1,12 @@
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Selamat Datang di PPLK</title>
-	<style type="text/css">
-	body
-	{
-		/*background-color: #fff;*/
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
-	</style>
-</head>
 <body>
-	<div class="container">
+	<div class="container" style="margin-bottom: 20px;">
 		<br>
-		<img src="images/ukdw_logo.jpg" style="float:left; margin-right:10px;" height=75>
-		<p style="font-size:24px; margin-top:15px;">PUSAT PELATIHAN</p>
-		<p style="font-size:24px; margin-top:15px;">DAN LAYANAN KOMPUTER</p>
-		<br>
-		<div style="width:1px;height:500px; background-color:black;float:right;margin-right:300px;"></div>
-			<div id="myCarousel" class="carousel slide" style="margin-right:350px;">
+		<img src="images/ukdw_logo.jpg" height=75 style="float:left;">	
+		<p style="font-size:24px;">&nbsp; PUSAT PELATIHAN DAN LAYANAN KOMPUTER</p>
+		<p style="font-size:24px;">&nbsp; (PPLK)</p>
+		<hr>
+		<div class="col-md-8">
+			<div id="myCarousel" class="carousel slide">
 		      <ol class="carousel-indicators">
 		        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		        <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -53,8 +40,11 @@
 		        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		        <span class="sr-only">Next</span>
 		      </a>
+			</div>
 		</div>
-		<br>
+		<div class="col-md-4">
+			NANTI KALENDER DISINI
+		</div>
 	</div>
 </body>
 </html>
