@@ -1,0 +1,34 @@
+/*Header Nav*/
+.blue-background {
+	background-color: #0066ff;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+	font-size: 14px;
+}
+
+.navbar-default {
+	background-color: transparent;
+	border: none;
+	min-height: 50px;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+li:hover {
+	background-color: white;
+	color: black;
+}
+
+/*Footer*/
+.form-control {
+	width: 400px;
+}
+
+/*Login*/
+.login_form {
+	margin-left: 50px;
+}

@@ -1,8 +1,8 @@
-<style type="text/css">body{margin: 60px;}</style>
 <div class="container">
-	<div class="row">
-	<h2><strong>LOGIN</strong></h2><hr>
-	<?php echo form_open('login/cek') ?>    
+  <div class="login_form">
+    <br>
+  	<h2><strong>LOGIN</strong></h2><hr>
+  	<?php echo form_open('login/cek') ?>    
     <form style="width:60%;">
     	<div class="form-group">
         <label>Username</label>
@@ -15,5 +15,5 @@
       <button type="submit" class="btn btn-success">Login</button>
     </form>
     <br><br><br><br>
-</div>
+  </div>
 </div>
