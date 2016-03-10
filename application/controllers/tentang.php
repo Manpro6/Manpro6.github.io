@@ -9,3 +9,9 @@
 			$this->load->view('template/footer');
 		}
 	}
+<<<<<<< HEAD:application/controllers/tentang.php
+
+?>
+=======
+}
+>>>>>>> 5814da66e6fbbe3d002fd85746a61f1831940705:application/controllers/Tentang.php
