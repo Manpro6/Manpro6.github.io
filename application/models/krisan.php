@@ -1,6 +1,6 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class krisan extends CI_Model
+	class Krisan extends CI_Model
 	{
   		public function __construct()
   		{
