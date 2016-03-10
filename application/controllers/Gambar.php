@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class gambar extends CI_Controller
+class Gambar extends CI_Controller
 {
 	public function index()
 	{
