@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class login extends CI_Controller
+	class Login extends CI_Controller
 	{
 		public function index()
 		{
@@ -15,9 +15,9 @@
                     echo "<script>alert('Login Gagal');window.location.href='login';</script>";
                 }         
             }
-			$this->load->view('template/header');
+			// $this->load->view('template/header');
 			$this->load->view('login/index');
-			$this->load->view('template/footer');
+			// $this->load->view('template/footer');
 		}
 
 		public function cek()
@@ -26,6 +26,12 @@
 			$lihat = $this->login_model->search();
 			if($lihat == true)
 			{
+				$newdata = array(
+                   'username'  => 'admin',
+                   'logged_in' => TRUE
+               );
+
+				$this->session->set_userdata($newdata);
 				redirect('gambar');
 			}
 			else

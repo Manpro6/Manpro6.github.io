@@ -38,14 +38,19 @@
     <div class="container">
       <nav class="navbar navbar-default">
         <div class="navbar-header">
-          <a class="navbar-brand" href="<?php echo base_url('')?>" style="color:white; font-size:20pt; margin-left:3px;">PPLK</a>
+          <a class="navbar-brand" href="<?php echo base_url('')?>">PPLK</a>
         </div>
         <form class="navbar-form navbar-right">
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-              <div class="form-group">
-                <input type="text" name="cari" placeholder="cari" class="form-control">
-              </div>     
-              <a href="<?php echo site_url('login')?>" style="color:white; font-size:12pt; float:right; margin-left:15px; margin-top:8px;">LOGIN</a>
+            <div class="form-group">
+              <input type="text" name="cari" placeholder="cari" class="form-control">
+            </div>
+            <?php
+              $session_id = $this->session->userdata('logged_in');
+              if($session_id == TRUE) {
+           ?>
+            <span class="username"><a class="user">Logout</a></span>
+          <?php } ?>     
         </form>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">

@@ -1,6 +1,6 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class gambar_model extends CI_Model
+	class Gambar_model extends CI_Model
 	{
   	public function __construct()
   	{

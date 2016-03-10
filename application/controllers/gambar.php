@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class gambar extends CI_Controller
+class Gambar extends CI_Controller
 {
 	public function index()
 	{
@@ -19,23 +19,6 @@ class gambar extends CI_Controller
 		$this->load->view('admin/gambar/index', $data);
 		$this->load->view('template/footer');
 	}
-
-	/*public function tambah()
-	{
-		$this->load->view('template/header');
-		$this->load->model('gambar_model');
-		$data['gambar'] = $this->gambar_model->getGambar();
-		$this->load->view('admin/gambar/insert', $data);
-		$this->load->view('template/footer');
-	}
-
-	public function upload()
-	{
-        $url = $this->do_upload();
-        $this->load->model('gambar_model');
-        $this->gambar_model->insert($url);
-        redirect('gambar');
-    }*/
 
     private function do_upload()
     {

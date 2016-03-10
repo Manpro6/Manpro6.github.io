@@ -1,0 +1,31 @@
+body {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	margin-top: 150px;
+	background-image: url('../images/bg_login.jpg');
+	background-size: cover;
+}
+
+.container {
+	width: 500px;
+	padding-left: 75px;
+	padding-right: 75px;
+}
+
+input {
+	margin-bottom: 10px;
+}
+
+h2{
+	color: white;
+}
+
+.btn-primary {
+	background-color: #0066ff;
+}
+
+.btn-primary:hover {
+	background-color: #0099ff;
+	border-color: #0066ff;
+}

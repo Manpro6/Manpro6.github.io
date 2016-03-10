@@ -23,6 +23,35 @@ li:hover {
 	color: black;
 }
 
+.username {
+	color: white;
+	text-decoration: none;
+	padding-left: 10px;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+	font-weight: bold;
+	font-size: 20pt;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: white;
+}
+
 /*Footer*/
 .form-control {
 	width: 400px;

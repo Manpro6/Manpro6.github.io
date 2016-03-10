@@ -1,3 +1,4 @@
+<head><title>PPLK - Beranda</title></head>
 <body>
 	<div class="container" style="margin-bottom: 20px;">
 		<br>
