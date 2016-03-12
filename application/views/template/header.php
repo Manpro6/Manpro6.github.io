@@ -44,16 +44,30 @@
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             <div class="form-group">
               <input type="text" name="cari" placeholder="cari" class="form-control">
-            </div>  
-        </form>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>
-            <li><a href="<?php echo base_url('index.php/kursus')?>">Kursus</a></li>    
-            <li><a href="<?php echo base_url('index.php/sertifikasi')?>">Sertifikasi</a></li>
-            <li><a href="<?php echo base_url('index.php/tentang')?>">Tentang</a></li>        
-          </ul>
-        </div>
+            </div>
+            <?php
+              $session_id = $this->session->userdata('is_logged_in');
+              if($session_id == TRUE) {
+           ?>
+            <span class="username"><a class="user">Hai Admin |</a><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-fw fa-power-off"></i> Logout</a></span>
+             </form>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>        
+              </ul>
+            </div>
+          <?php } 
+          else {
+          ?>    
+          </form>        
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="<?php echo base_url('index.php/kursus')?>">Kursus</a></li>    
+              <li><a href="<?php echo base_url('index.php/sertifikasi')?>">Sertifikasi</a></li>
+              <li><a href="<?php echo base_url('index.php/tentang')?>">Tentang</a></li>        
+            </ul>
+          </div>
+          <?php } ?>
       </nav>
     </div>
   </div>
