@@ -1,6 +1,6 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class Login_model extends CI_Model
+	class login_model extends CI_Model
 	{
 
 		public function __construct()
@@ -12,13 +12,11 @@
   	{
       $username = $this->input->post('username');
       $password = $this->input->post('password');
-    	$query = $this->db->query("SELECT * FROM `admin` WHERE username='$username' AND password='$password'");
-    	$cek = $query->result_array();
-      if($cek == null)
-      {
-        return false;
-      }
-      else
+      $password2 = md5($password);
+    	$this->db->Where('username', $username);
+      $this->db->Where('password', md5($password));
+      $query = $this->db->get('admin');
+      if($query->num_rows == 1)
       {
         return true;
       }

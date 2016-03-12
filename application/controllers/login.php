@@ -1,43 +1,38 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class Login extends CI_Controller
+	class login extends CI_Controller
 	{
 		public function index()
 		{
-			if(isset($_GET['msg']))
-            {
-                if($_GET['msg'] == 1)
-                {
-                    echo "<script>alert('Login berhasil');window.location.href='login';</script>";
-                }
-                elseif($_GET['msg'] == 2)
-                {
-                    echo "<script>alert('Login Gagal');window.location.href='login';</script>";
-                }         
-            }
-			// $this->load->view('template/header');
 			$this->load->view('login/index');
-			// $this->load->view('template/footer');
 		}
 
 		public function cek()
 		{
 			$this->load->model('login_model');
-			$lihat = $this->login_model->search();
-			if($lihat == true)
+			$cek = $this->login_model->search();	
+			if($cek == true) //klo user tervalidasi
 			{
-				$newdata = array(
-                   'username'  => 'admin',
-                   'logged_in' => TRUE
-               );
+				$data = array (
+					'username' => $this->input->post('username'),
+					'is_logged_in' => true
+				);
 
-				$this->session->set_userdata($newdata);
+				$this->session->set_userdata($data);
 				redirect('gambar');
 			}
 			else
 			{
-				redirect('login?msg=2');
+				$data['error']='Username atau Password Anda Salah. ';
+				$this->load->view('login/index', $data);
 			}
+		}
+
+		public function logout()
+		{	
+			$this->session->sess_destroy();
+			$data['logout'] = 'Anda telah keluar dari sistem.';		
+			$this->load->view('login/index', $data);
 		}
 	}
 ?>

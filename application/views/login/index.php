@@ -42,12 +42,17 @@
       <form class="form-signin">
         <label for="inputEmail" class="sr-only">Username</label>
         <input name="username" type="text" class="form-control" placeholder="Username" required="" autofocus="">
+        <span class="glyphicon glyphicon-user form-control-feedback" style="color:#ff9900;"></span>
         <label for="inputPassword" class="sr-only">Password</label>
         <input name="password" type="password" class="form-control" placeholder="Password" required="">
+        <span class="glyphicon glyphicon-lock form-control-feedback" style="color:#ff9900;"></span>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
     </div> <!-- /container -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <br>
+    <?php if(isset($error)) echo "<b><span style='color:yellow;'>$error</span></b>";
+    if(isset($logout)) echo "<b><span style='color:#ffffcc;'>$logout</span></b>"; ?>
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 
