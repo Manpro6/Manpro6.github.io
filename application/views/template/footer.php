@@ -1,3 +1,9 @@
+	<?php
+      $session_id = $this->session->userdata('is_logged_in');
+      if($session_id == TRUE) {
+      }
+      else {
+   ?>
 	<footer class="navbar-wrapper2" style="background-color:#0066ff">
 		<div class="container">
 			<div class="col-md-6">	
@@ -34,4 +40,5 @@
 			</div>
 		</div>
 	</footer>
+	<?php } ?>
 </div>
