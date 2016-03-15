@@ -1,57 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  <title>Login Admin Panel</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="shortcut icon" href="images/favicon.ico" />
-  <!-- Ikon UKDW -->
-  <link rel="icon" href="http://ukdw.ac.id/images/favicon.png" type="image/png">
+<link href="<?php echo base_url('css/login.css');?>" rel="stylesheet" type="text/css" />
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.css')?>">
-  <link rel="stylesheet" href= <?php echo base_url('css/carol.css')?>>
-  <!-- CSS Tambahan -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/login_admin.css')?>">
+<link href="<?php echo base_url('css/bootstrap.min.css');?>" rel="stylesheet" type="text/css" />
 
+<link href="<?php echo base_url('font-awesome/css/font-awesome.min.css');?>" rel="stylesheet" type="text/css" />
 
-  <!-- Bootstrap Core JS -->
-  <script src="<?php echo base_url('js/jquery-2.1.3.min.js')?>"></script>
-  <script src="<?php echo base_url('js/bootstrap.min.js')?>"></script>
+<link href="<?php echo base_url('css/ionicons.min.css');?>" rel="stylesheet" type="text/css" />
 
-
-  <!-- Custom Fonts -->
-  <link href="<?php echo base_url('font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
-  <link href="<?php echo base_url('font-awesome/css/font-awesome.css')?>" rel="stylesheet" type="text/css">
-  <script src="<?php echo base_url('js/jquery-2.1.3.min.js')?>"></script>
-
-  <!-- Bootstrap Core JavaScript -->
-  <script src="<?php echo base_url('js/bootstrap.js')?>"></script>
-  <script src="<?php echo base_url('js/cbpAnimatedHeader.js')?>"></script>
-  <script src="<?php echo base_url('js/cbpAnimatedHeader.min.js')?>"></script>
-  <script src="<?php echo base_url('js/classie.js')?>"></script>
-  <script src="<?php echo base_url('js/jquery.js')?>"></script>
-  <script src="<?php echo base_url('js/jqBootstrapValidation.js')?>"></script>
-</head>
-<body>
-    <div class="container">
-      <?php echo form_open('login/cek') ?>
-      <form class="form-signin">
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input name="username" type="text" class="form-control" placeholder="Username" required="" autofocus="">
-        <span class="glyphicon glyphicon-user form-control-feedback" style="color:#ff9900;"></span>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="password" type="password" class="form-control" placeholder="Password" required="">
-        <span class="glyphicon glyphicon-lock form-control-feedback" style="color:#ff9900;"></span>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-    </div> <!-- /container -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<body style="background-color:#0066ff"> 
+<div id="gbr">
+  <img src="<?php echo base_url('images/ukdw_logo.png')?>" style="height:175px;"> 
+</div>
+<div id="login_form">
+  <div>
+    <h2 style="color:white;"><b>PPLK</b></h2>
+  </div>
     <br>
-    <?php if(isset($error)) echo "<b><span style='color:#ffffcc;'>$error</span></b>";
-    if(isset($logout)) echo "<b><span style='color:#ffffcc;'>$logout</span></b>"; ?>
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+      <?php echo form_open('login/cek') ?>
+      <form>
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Username" id="username" name="username" style="width:300px;">
+            <span class="glyphicon glyphicon-user form-control-feedback" style="color:#000066;"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" id="password" name="password" style="width:300px;">
+            <span class="glyphicon glyphicon-lock form-control-feedback" style="color:#000066;"></span>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <input type="submit" class="btn btn-block btn-flat" style="width:300px;" id="submit" name="submit" value="Sign In">
+            </div>
+          </div>
+     </form>
+     <br>
+      <?php if(isset($error)) echo "<b><span style='color:yellow;'>$error</span></b>";
+      if(isset($logout)) echo "<b><span style='color:yellow;'>$logout</span></b>"; ?>
+      <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </div> 
+</div>
 </body>

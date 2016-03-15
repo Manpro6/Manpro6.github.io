@@ -2,7 +2,7 @@
 <body>
 	<div class="container" style="margin-bottom: 20px;">
 		<br>
-		<img src="images/ukdw_logo.jpg" height=75 style="float:left;">	
+		<img src="<?php echo base_url('images/ukdw_logo.png')?>" height=75 style="float:left;">	
 		<p style="font-size:24px;">&nbsp; PUSAT PELATIHAN DAN LAYANAN KOMPUTER</p>
 		<p style="font-size:24px;">&nbsp; (PPLK)</p>
 		<hr>

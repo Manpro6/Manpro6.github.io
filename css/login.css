@@ -1,56 +1,46 @@
-body{
-    background:#ECF0F1;
-    font-family: sans-serif;
+body  {
+	background: #b6b6b6;
+	margin:0;
+	padding:0;
+	font-family: arial;
 }
-#kotak{
-    width: 520px;
-    height: 250px;
-    background: #fff;
-    margin: 150px auto 100px auto;
-    color:#2ECC71;
+
+#login_form {
+	width:380px;
+	background: #0066ff;
+	border:0px;
+	margin: 90px auto 0;
+	padding: 1cm;
+	-moz-border-radius: 3px;
+	-webkit-border-radius:3px;
 }
-#atas{
-    height: 35px;
-    width: 520px;
-    text-align: center;
-    font-size: 15pt;
-    padding-top:20px;
+
+#gbr {
+	height:85px;
+	text-align: center;
+	margin: 20px auto 0;
+	padding: 1cm;
+	-moz-border-radius: 3px;
+	-webkit-border-radius:3px;
 }
-#bawah{
-    height: 200px;
-    width: 520px;
-    
+
+h1,h2,h3,h4,h5 {
+	margin-top: 0;
+	font-family: arial;
+	text-align: center;
 }
-.masuk{
-    width: 400px;
-    height:40px;
-    margin-top:10px;
-    margin-left: 60px;
-    font-size: 12pt;
-    border: 1px solid #2ECC71;
-    padding-left:10px;
-    color:#2ECC71;
+
+input[type=submit] {
+	background-color:#000066;
+	color:white;
 }
-.masuk:focus{
-    width: 400px;
-    height:40px;
-    margin-top:10px;
-    margin-left: 60px;
-    font-size: 12pt;
-    padding-left:10px;
-    color:#1ABC9C;
-    outline: none;
-    box-shadow: 0 0 5px #2ECC71;
+
+input[type=submit]:hover {
+	background-color:#000033;
+	color:white;
+	cursor: pointer;
 }
- 
-#tombol{
-    width: 400px;
-    height:40px;
-    margin-top:10px;
-    margin-left: 60px;
-    background: #2ECC71;
-    border:none;
-    color:#fff;
-    font-size: 14pt;
-    outline:none;
+
+h2 {
+	text-shadow: 0 1px 0 black;
 }
