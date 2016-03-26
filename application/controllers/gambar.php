@@ -4,20 +4,28 @@ class Gambar extends CI_Controller
 {
 	public function index()
 	{
-        if(isset($_GET['msg']))
+        $session_id = $this->session->userdata('is_logged_in');
+        if($session_id == TRUE)
         {
-            if(($_GET['msg']) == 1)
+            if(isset($_GET['msg']))
             {
-                echo "<div class='alert alert-success alert-dismissible' role='alert'>
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                <strong>Sukses!</strong> Gambar Berhasil Diubah.</div>";
-            }
-		}
-        $this->load->view('template/header');
-		$this->load->model('gambar_model');
-		$data['gambar'] = $this->gambar_model->getGambar();
-		$this->load->view('admin/gambar/index', $data);
-		$this->load->view('template/footer');
+                if(($_GET['msg']) == 1)
+                {
+                    echo "<div class='alert alert-success alert-dismissible' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                    <strong>Sukses!</strong> Gambar Berhasil Diubah.</div>";
+                }
+    		}
+            $this->load->view('template/header');
+    		$this->load->model('gambar_model');
+    		$data['gambar'] = $this->gambar_model->getGambar();
+    		$this->load->view('admin/gambar/index', $data);
+    		$this->load->view('template/footer');
+        }
+        else
+        {
+            echo "<script>alert('Anda harus melakukan login');window.location.href='login';</script>";
+        }
 	}
 
     private function do_upload()

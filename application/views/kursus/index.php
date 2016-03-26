@@ -58,5 +58,5 @@
 	</ol>	
 	<br><br><br><br><br><br><br><br>
 	<b>*minimal peserta 5 orang</b>
-	<br><br>
+	<br><br><br>
 </div>

@@ -53,7 +53,8 @@
              </form>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>        
+                <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>       
+                <li><a href="<?php echo base_url('index.php/event')?>">Penjadwalan</a></li>  
               </ul>
             </div>
           <?php } 
