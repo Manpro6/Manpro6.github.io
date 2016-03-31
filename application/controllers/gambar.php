@@ -11,9 +11,7 @@ class Gambar extends CI_Controller
             {
                 if(($_GET['msg']) == 1)
                 {
-                    echo "<div class='alert alert-success alert-dismissible' role='alert'>
-                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                    <strong>Sukses!</strong> Gambar Berhasil Diubah.</div>";
+                    echo "<script>alert('Gambar berhasil diubah');window.location.href='gambar';</script>";
                 }
     		}
             $this->load->view('template/header');
@@ -48,6 +46,10 @@ class Gambar extends CI_Controller
             {
                 echo "<script>alert('Pilih Gambar Perubahannya');window.location.href='".$id_gambar."';</script>";
             }
+            elseif(($_GET['msg']) == 2)
+            {
+                echo "<script>alert('Tidak menerima format file selain .jpg, .jpeg, .gif dan .png');window.location.href='".$id_gambar."';</script>";
+            }
         }
         $this->load->view('template/header');
 		$this->load->model('gambar_model');
@@ -62,13 +64,20 @@ class Gambar extends CI_Controller
         $path = $this->input->post('path');
         if(isset($_FILES['pic']['name']) && !empty($_FILES['pic']['name']))
         {
-            if(unlink($path))
+            $url = $this->do_upload();
+            if($url == null)
             {
-                $url = $this->do_upload();
-                $this->load->model('gambar_model');
-                $this->gambar_model->update($url);
-                redirect('gambar?msg=1');
-            }   
+                redirect('gambar/ubah/'.$id.'?msg=2'); 
+            }
+            else
+            {
+                if(unlink($path))
+                {    
+                    $this->load->model('gambar_model');
+                    $this->gambar_model->update($id, $url);
+                    redirect('gambar?msg=1');
+                } 
+            }          
         }
         else
         {

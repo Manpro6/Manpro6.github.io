@@ -5,58 +5,47 @@
   		<h2 class="featurette-heading">Kursus PPLK</h2>
   		<hr>
   		Melalui <em>DWCU Training and Testing Competence Centre</em>, PPLK UKDW menyediakan berbagai macam kursus yang dapat diikuti, antara lain : 
-  	</p>
+  	</p>	
+  	<img class="featurette-image img-responsive center-block" style="width:600px; height:330px;float:right;margin-left:-70px;" src="<?php echo base_url('images/training.jpg')?>">
   	<ol>  	
-	  	<div style="width:37%;float:left;">
-	  		<b><li style="height:0.6cm">Special Class*</li></b>
-	  		<div style="margin-left:30px;">
-	  			<b style="float:left;width:10px;margin-left:-15px;">&#187;</b>
-	  			<b>PHP</b>
-	  			<p style="height:0.3cm">Terdiri atas 10x pertemuan (2 jam/pertemuan)</p> 
-	  			<p style="height:0.3cm">1 minggu terdiri atas 2x pertemuan</p>
-	  			<p>Harga kursus <b>Rp 455,000</b> (Rp 450,000 + Rp 5,000)</p>
-	  			<b style="float:left;width:10px;margin-left:-15px;">&#187;</b>
-	  			<b>VB</b>
-	  			<p style="height:0.3cm">Terdiri atas 10x pertemuan (2 jam/pertemuan)</p> 
-	  			<p style="height:0.3cm">1 minggu terdiri atas 2x pertemuan</p>
-	  			<p>Harga kursus <b>Rp 455,000</b> (Rp 450,000 + Rp 5,000)</p>
-	  			<b style="float:left;width:10px;margin-left:-15px;">&#187;</b>
-	  			<b>JAVA</b>
-	  			<p style="height:0.3cm">Terdiri atas 10x pertemuan (2 jam/pertemuan)</p> 
-	  			<p style="height:0.3cm">1 minggu terdiri atas 2x pertemuan</p>
-	  			<p>Harga kursus <b>Rp 455,000</b> (Rp 450,000 + Rp 5,000)</p>
-	  			<b style="float:left;width:10px;margin-left:-15px;">&#187;</b>
-	  			<b>AutoCAD</b>
-	  			<p style="height:0.3cm">Terdiri atas 10x pertemuan (2 jam/pertemuan)</p> 
-	  			<p style="height:0.3cm">1 minggu terdiri atas 2x pertemuan</p>
-	  			<p>Harga kursus <b>Rp 450,000</b></p>
-	  			<b style="float:left;width:10px;margin-left:-15px;">&#187;</b>
-	  			<b>3D Max</b>
-	  			<p style="height:0.3cm">Terdiri atas 10x pertemuan (2 jam/pertemuan)</p> 
-	  			<p style="height:0.3cm">1 minggu terdiri atas 2x pertemuan</p>
-	  			<p>Harga kursus <b>Rp 450,000</b></p>
+	  	<div style="width:45%;float:left;">
+	  		<b><li style="margin-top:20px;">Special Class*</li></b>
+	  		<div style="margin-left:15px;">
+	  			<p class="lead"><b style="margin-left:-10px;">&#187; PHP</b><br>
+	  			Terdiri atas 10x pertemuan (2 jam/pertemuan)<br> 
+	  			1 minggu terdiri atas 2x pertemuan<br>
+	  			Harga kursus <b>Rp 455,000</b> (Rp 450,000 + Rp 5,000)</p>
+	  			<p class="lead"><b style="margin-left:-10px;">&#187; VB</b><br>
+	  			Terdiri atas 10x pertemuan (2 jam/pertemuan)<br> 
+	  			1 minggu terdiri atas 2x pertemuan<br>
+	  			Harga kursus <b>Rp 455,000</b> (Rp 450,000 + Rp 5,000)</p>
+	  			<p class="lead"><b style="margin-left:-10px;">&#187; JAVA</b><br>
+	  			Terdiri atas 10x pertemuan (2 jam/pertemuan)<br> 
+	  			1 minggu terdiri atas 2x pertemuan</br>
+	  			Harga kursus 3b>Rp 455,000</b> (Rp 450,000 + Rp 5,000)</p>
+	  			<p class="lead"><b style="margin-left:-10px;">&#187; AutoCAD</b><br>
+	  			Terdiri atas 10x pertemuan (2 jam/pertemuan)</br> 
+	  			1 minggu terdiri atas 2x pertemuan</br>
+	  			Harga kursus <b>Rp 450,000</b></p>
+	  			<p class="lead"><b style="margin-left:-10px;">&#187; 3D Max</b><br>
+	  			Terdiri atas 10x pertemuan (2 jam/pertemuan)</br> 
+	  			1 minggu terdiri atas 2x pertemuan</br>
+	  			Harga kursus <b>Rp 450,000</b></p>
 	  		</div>
 	  	</div>	  	 	
-  	<img style="width:650px; height:300px; margin-left:30px;" src="<?php echo base_url('images/training.jpg')?>">
-<!--   	<div style="width:1px;height:200px; background-color:black;float:left;"></div> -->
-	<br><br>
-  		<div style="float:left;width:31%;margin-left:35px;">
-	  		<b><li style="height:0.6cm">Cisco Networking Acedemy (CCNA)*</li></b>
-	  		<p style="height:0.3cm">Terdiri atas 2 paket level, yaitu :</p>
-	  		<ul style="height:1.2cm">
+  		<div style="width:45%;float:left;margin-left:30px;">
+	  		<b><p class="lead"><li>Cisco Networking Acedemy (CCNA)*</li></b>
+	  		Terdiri atas 2 paket level, yaitu :<br>
+	  		<ul>
   				<li>Level 1 dan 2</li>
   				<li>Level 3 dan 4</li>
-  			</ul>	  		
-	  		<p>Harga kursus per paket <b>Rp 1,600,000</b></p>
-	  		<br><br>
+  			</ul> 		
+	  		Harga kursus per paket <b>Rp 1,600,000</b></p>
+	  		<b><li>Mikrotik*</li></b>
+	  		<p class="lead">Terdiri atas 10x pertemuan (2 jam/pertemuan)</br>  		
+	  		Harga kursus <b>Rp 850,000</b></p><br>
 	  	</div>
-	  	<div style="float:left;width:28%;">
-	  		<b><li style="height:0.6cm">Mikrotik*</li></b>
-	  		<p style="height:0.3cm">Terdiri atas 10x pertemuan (2 jam/pertemuan)</p>  		
-	  		<p>Harga kursus <b>Rp 850,000</b></p>
-	  	</div>
-	</ol>	
-	<br><br><br><br><br><br><br><br>
-	<b>*minimal peserta 5 orang</b>
-	<br><br><br>
+	</ol>			
+	<p class="lead" style="width:45%;float:left;"><b>*minimal peserta 5 orang</b></p>
+	<br>
 </div>

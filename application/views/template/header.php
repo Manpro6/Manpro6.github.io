@@ -32,6 +32,13 @@
   <script src="<?php echo base_url('js/classie.js')?>"></script>
   <script src="<?php echo base_url('js/jquery.js')?>"></script>
   <script src="<?php echo base_url('js/jqBootstrapValidation.js')?>"></script>
+  <style>
+    hover {
+    background-color:#ff6600;
+    color:black;
+    cursor: pointer;
+  }
+  </style>
 </head>
 <body>
   <div class="container-fluid blue-background">
@@ -40,21 +47,18 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="<?php echo base_url('')?>">PPLK</a>
         </div>
-        <form class="navbar-form navbar-right">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-            <div class="form-group">
-              <input type="text" name="cari" placeholder="cari" class="form-control">
-            </div>
             <?php
               $session_id = $this->session->userdata('is_logged_in');
               if($session_id == TRUE) {
            ?>
-            <span class="username"><a class="user">Hai Admin |</a><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-fw fa-power-off"></i> Logout</a></span>
-             </form>
+            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>       
-                <li><a href="<?php echo base_url('index.php/event')?>">Penjadwalan</a></li>  
+                <li><a href="<?php echo base_url('index.php/event')?>">Penjadwalan</a></li> 
+              </ul>
+              <ul style="float:right;" class="nav navbar-nav">
+                <li><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-user"></i> Hi <?php print_r($this->session->userdata['username']); ?> | <i class="fa fa-fw fa-power-off"></i> Logout</a></li>
               </ul>
             </div>
           <?php } 

@@ -27,14 +27,14 @@
     //   $this->db->insert('gambar', $insert_gambar);
     // }
 
-    public function update($url)
+    public function update($id, $url)
     {
       $update_gambar = array(
-        'id_gambar' =>$this->input->post('id_gambar'),
-        'nama_gambar' =>$url);
+      'id_gambar' => $id,
+      'nama_gambar' => $url);
 
-        $this->db->where('id_gambar', $this->input->post('id_gambar'));
-        $this->db->update('gambar', $update_gambar);
+      $this->db->where('id_gambar', $id);
+      $this->db->update('gambar', $update_gambar);
     }
   }
 ?>
