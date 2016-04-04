@@ -6,6 +6,7 @@
   		{
     		$this->load->database();
   		}
+  		
   		public function input()
 	  	{
 	      	$nama = $this->input->post('nama');

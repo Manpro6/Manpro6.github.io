@@ -560,6 +560,7 @@ a.fc-more:hover {
 
 .fc-toolbar .fc-center {
 	display: inline-block;
+	margin-top: 10px;
 }
 
 /* the things within each left/right/center section */

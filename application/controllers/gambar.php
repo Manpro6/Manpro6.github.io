@@ -17,7 +17,7 @@ class Gambar extends CI_Controller
             $this->load->view('template/header');
     		$this->load->model('gambar_model');
     		$data['gambar'] = $this->gambar_model->getGambar();
-    		$this->load->view('admin/gambar/index', $data);
+    		$this->load->view('gambar/index', $data);
     		$this->load->view('template/footer');
         }
         else
@@ -54,7 +54,7 @@ class Gambar extends CI_Controller
         $this->load->view('template/header');
 		$this->load->model('gambar_model');
 		$data['gambar'] = $this->gambar_model->getById($id_gambar);
-		$this->load->view('admin/gambar/edit', $data);
+		$this->load->view('gambar/edit', $data);
 		$this->load->view('template/footer');  
     }
 

@@ -1,6 +1,6 @@
 <head><title>Admin Panel - Edit Gambar</title></head>
 <div class="container">
-  <h3><strong>DAFTAR GAMBAR</strong></h3><hr>       
+  <h2>Daftar Gambar Carousel</h2><hr>       
     <table class="table table-striped" style="margin: auto; width:70%; overflow:auto; text-align:center;">
       <thead style="background:#CCC;"><tr>
         <th style="text-align:center;font-size:12pt;">Id Gambar</th>

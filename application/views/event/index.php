@@ -1,13 +1,9 @@
 <?php
 require_once('bdd.php');
-
 $sql = "SELECT * FROM events ";
-
 $req = $bdd->prepare($sql);
 $req->execute();
-
 $events = $req->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +29,11 @@ $events = $req->fetchAll();
 </head>
 <body>
     <div class="container">
-      <br><br>
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;">Tambah Jadwal</button>
+      <h2>Penjadwalan Kursus & Sertifikasi PPLK</h2>
+      <hr>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;" id="add">Tambah Jadwal</button>
       <div id="calendar" class="col-centered">
+      <p class="lead" style="color:red;"><em><b>*Untuk mengubah/menghapus/melihat data, double klik pada data di kalender</b></em></p>
       <br>
        
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -44,7 +42,7 @@ $events = $req->fetchAll();
       <?php echo form_open('event/insert') ?>  
       <form>   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Tambah Jadwal</b></h4>
         </div>
         <div class="modal-body">   
@@ -83,8 +81,8 @@ $events = $req->fetchAll();
           </div>      
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
       </form>
       </div>
@@ -92,9 +90,39 @@ $events = $req->fetchAll();
     </div>
 
     <div style="display:none;">
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalEdit' id='edit'>Ubah Jadwal</button>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalShow' style="float:right;" id="show">Detail Informasi</button>
     </div>
-    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="ModalShow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick=location.reload()>&times;</span></button>
+            <h2 class="modal-title" id="title" style="font-size:18pt;font-weight:bold;"></h2>         
+        </div>
+        <div class="modal-body">
+            <p style="width:100px;float:left;">Pelaksanaan </p>
+            <p style="width:8px;float:left;">:</p>
+            <p id="start" style="width:120px;float:left;font-weight:bold;"></p>
+            <p style="width:55px;float:left;">sampai</p>
+            <p id="end" style="width:255px;float:left;font-weight:bold;"></p><br>
+            <p style="width:100px;float:left;">Pengajar</p>
+            <p style="width:8px;float:left;">:</p>
+            <p id="pengajar"></p>
+            <p style="width:100px;float:left;">Deskripsi</p>
+            <p style="width:8px;float:left;">:</p>
+            <br><br>
+            <p id="deskripsi"></p>
+            <br><br>
+        </div>
+        <div class="modal-footer">
+          <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalEdit' id='edit'>Ubah/Hapus Jadwal</button>
+          <button type="button" class="btn btn-default" onclick=location.reload()>Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
       <?php echo form_open('event/update') ?> 
@@ -143,19 +171,21 @@ $events = $req->fetchAll();
           </div>
       </div>    
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
       </form>
       </div>
     </div>
+  </div>
+</div>
 
   <script src="<?php echo base_url('js/moment.min.js')?>"></script>
   <script src="<?php echo base_url('js/bootstrap.min.js')?>"></script>
   <script src="<?php echo base_url('js/jquery.js')?>"></script>
   <script src="<?php echo base_url('js/fullcalendar.min.js')?>"></script> 
   <script>
-  $(document).ready(function() {    
+  $(document).ready(function() {   
     $('#calendar').fullCalendar({
       header: {
         left: 'prev,next today',
@@ -168,6 +198,13 @@ $events = $req->fetchAll();
       selectHelper: true,
       eventRender: function(event, element) {
         element.bind('dblclick', function() {
+          $('#ModalShow #id').html(event.id);
+          $('#ModalShow #title').html(event.title);
+          $('#ModalShow #pengajar').html(event.pengajar);
+          $('#ModalShow #deskripsi').html(event.deskripsi);
+          $('#ModalShow #start').html(event.start.format('DD/MM/YYYY HH:mm'));
+          $('#ModalShow #end').html(event.end.format('DD/MM/YYYY HH:mm'));
+          $('#ModalShow #color').html(event.color);
           $('#ModalEdit #idE').val(event.id);
           $('#ModalEdit #titleE').val(event.title);
           $('#ModalEdit #pengajarE').val(event.pengajar);
@@ -175,9 +212,9 @@ $events = $req->fetchAll();
           $('#ModalEdit #startE').val(event.start.format('DD/MM/YYYY HH:mm'));
           $('#ModalEdit #endE').val(event.end.format('DD/MM/YYYY HH:mm'));
           $('#ModalEdit #colorE').val(event.color);
-          $('#edit').click();
-        });
-      },
+          $('#show').click();
+       });
+      },    
       events: [
       <?php foreach($events as $event):      
         $start = explode(" ", $event['start']);

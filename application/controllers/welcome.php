@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
+class welcome extends CI_Controller
 {
 	public function index()
 	{
@@ -15,7 +15,7 @@ class Welcome extends CI_Controller
 		$this->load->model('gambar_model');
 		$data['gambar'] = $this->gambar_model->getGambar();
 		$this->load->view('welcome_message', $data);
-		$this->load->view('template/footer');
+		$this->load->view('template/footer-index');
 	}
 
 	public function krisan()
