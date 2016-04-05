@@ -4,24 +4,18 @@ class lab extends CI_Controller
 {
 	public function index()
 	{
-		$session_id = $this->session->userdata('is_logged_in');
-        if($session_id == TRUE)
-        {
-			$this->load->view('template/header');
-			$this->load->view('lab/index');
-			$this->load->view('template/footer');
-		}
-		else
-        {
-            echo "<script>alert('Anda harus melakukan login');window.location.href='login';</script>";
-        }
+		$this->load->model('jadwal_lab_model');
+		$data = $this->jadwal_lab_model->getAllJadwalLab();
+		$this->load->view('template/header');
+		$this->load->view('lab/index', array('data' => $data));
+		$this->load->view('template/footer');
 	}
 
-	public function insert()
+	public function update()
 	{
-		$this->load->model('event_model');
-		$data = $this->event_model->insertEvent();
-		redirect('event');
+		$this->load->model('jadwal_lab_model');
+		$data = $this->jadwal_lab_model->updateJadwal();
+		redirect('lab');
 	}
 }
 ?>

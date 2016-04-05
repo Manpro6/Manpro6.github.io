@@ -1,9 +1,9 @@
 <?php
-require_once('bdd.php');
-$sql = "SELECT * FROM events ";
-$req = $bdd->prepare($sql);
-$req->execute();
-$events = $req->fetchAll();
+  require_once('bdd.php');
+  $sql = "SELECT * FROM events ";
+  $req = $bdd->prepare($sql);
+  $req->execute();
+  $events = $req->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">

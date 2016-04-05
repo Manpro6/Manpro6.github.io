@@ -20,7 +20,7 @@
               <?php endforeach; ?>
             <?php else: ?>
                 <tr><td colspan="7" class='text-center'>
-                <em>tidak ada data Gambar untuk ditampilkan</em></td>
+                <em>Tidak ada gambar untuk ditampilkan</em></td>
                 </tr>
             <?php endif ?>
       </tbody>

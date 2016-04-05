@@ -70,6 +70,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url('index.php/kursus')?>">Kursus</a></li>    
             <li><a href="<?php echo base_url('index.php/sertifikasi')?>">Sertifikasi</a></li>
+            <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li> 
             <li><a href="<?php echo base_url('index.php/tentang')?>">Tentang</a></li>        
           </ul>
         </div>

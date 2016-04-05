@@ -21,32 +21,116 @@
     }
 
     thead th {
-      background-color: black;
+      background-color: grey;
       color: white;
     }
 
     .black {
-      color: black;
+      color: grey;
     }
+
     </style>
 </head>
 <body>
   <div class="container">
-    <h2>Jadwal Pemakaian Lab PPLK</h2>
+    <h2>Jadwal Pemakaian Lab PPLK 
+      <?php  
+        if(isset($_GET['berdasarkan'])){
+          echo " - ".$_GET['berdasarkan'];
+        } 
+      ?> </h2>
     <hr>
+    <?php
+      $session_id = $this->session->userdata('is_logged_in');
+      if($session_id == TRUE) {
+        if($this->session->flashdata('sukses') == 1){
+    ?>
+    <div class="alert alert-success">
+      <strong>Sukses!</strong> Update jadwal lab berhasil.
+    </div>
+    <?php } else if($this->session->flashdata('sukses') == 2  ) { ?>
+
+    <div class="alert alert-danger">
+      <strong>Gagal!</strong> Update jadwal lab tidak berhasil.
+    </div>
+    <?php } ?>
+    <h2>Ubah Jadwal</h2>
+    <?php echo form_open('lab/update') ?>  
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="exampleInputName2">Ruang Lab</label>
+        <select class="form-control form-control-a" name="lab">
+          <option>Lab A</option>
+          <option>Lab B</option>
+          <option>Lab C</option>
+          <option>Lab D</option>
+          <option>Lab E</option>
+          <option>Lab F</option>
+          <option>Lab G</option>
+          <option>Lab H</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName2">Hari</label>
+        <select class="form-control form-control-a" name="hari">
+          <option>Senin</option>
+          <option>Selasa</option>
+          <option>Rabu</option>
+          <option>Kamis</option>
+          <option>Jumat</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName2">Sesi</label>
+        <select class="form-control form-control-a" name="sesi">
+          <option>I</option>
+          <option>II</option>
+          <option>III</option>
+          <option>IV</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName2">Program Studi</label>
+        <select class="form-control form-control-a" name="prodi">
+          <option>Teknik Informatika</option>
+          <option>Sistem Informasi</option>
+          <option>Management</option>
+          <option>Akuntansi</option>
+          <option>Arsitektur</option>
+          <option>Desain Produk</option>
+          <option>-</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="jadwal" class="form-control form-panjang" name="matkul" placeholder="Jadwal Baru">
+      </div> 
+      <button type="submit" class="btn btn-primary">Perbaharui Data</button> 
+    </form>
+    <?php } else { ?>
+
     <p>Tampilkan berdasarkan jadwal program studi : </p>
     <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Semua Program Studi
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">     
+      <?php  
+        if(isset($_GET['berdasarkan'])){
+          echo $_GET['berdasarkan'];
+        } else {
+          echo "Semua Program Studi";
+        }
+      ?>
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a href="#">Teknik Informatika</a></li>
-        <li><a href="#">Sistem Informasi</a></li>
-        <li><a href="#">Management</a></li>
-        <li><a href="#">Akuntansi</a></li>
-        <li><a href="#">Arsitektur</a></li>
-        <li><a href="#">Desain Produk</a></li>
+        <li><a href="?berdasarkan=Semua Program Studi">Semua Program Studi</a></li>
+        <li><a href="?berdasarkan=Teknik Informatika">Teknik Informatika</a></li>
+        <li><a href="?berdasarkan=Sistem Informasi">Sistem Informasi</a></li>
+        <li><a href="?berdasarkan=Management">Management</a></li>
+        <li><a href="?berdasarkan=Akuntansi">Akuntansi</a></li>
+        <li><a href="?berdasarkan=Arsitektur">Arsitektur</a></li>
+        <li><a href="?berdasarkan=Desain Produk">Desain Produk</a></li>
       </ul>
     </div>
+
+    <?php } ?>
     <br>
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -72,35 +156,31 @@
             16 unit Core2Duo<br>
             RAM 3GB</td>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab A")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab A")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab A")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab A")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 2 -->
@@ -117,35 +197,31 @@
             KAPASITAS: 30
             </strong>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab B")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab B")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab B")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab B")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 3 -->
@@ -163,35 +239,31 @@
             Intel i5<br>
             Ram 8GB
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab C")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab C")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab C")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab C")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 4 -->
@@ -208,35 +280,31 @@
             KAPASITAS: 30
             </strong>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab D")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab D")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab D")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab D")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 5 -->
@@ -252,35 +320,31 @@
             KAPASITAS: 30
             </strong>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab E")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab E")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab E")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab E")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 6 -->
@@ -296,35 +360,31 @@
             KAPASITAS: 30
             </strong>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab F")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab F")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab F")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab F")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 7 -->
@@ -341,35 +401,31 @@
             KAPASITAS: 30
             </strong>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab G")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab G")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab G")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab G")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
         <!-- baris 8 -->
@@ -385,35 +441,31 @@
             KAPASITAS: 30
             </strong>
             <th>I</th>
-            <td>Pr. SAP (B) - Mahas</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "I" && $d['lab'] == "Lab H")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>II</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "II" && $d['lab'] == "Lab H")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>III</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "III" && $d['lab'] == "Lab H")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
           <tr>
             <th>IV</th>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
+            <?php foreach ($data as $d):
+              if ($d['sesi'] == "IV" && $d['lab'] == "Lab H")
+                echo "<td>".$d['nama_matkul']."</td>";
+            endforeach ?>
           </tr>
         </tbody>
       </table>
