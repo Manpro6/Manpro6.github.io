@@ -57,6 +57,7 @@
                 <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>       
                 <li><a href="<?php echo base_url('index.php/event')?>">Penjadwalan</a></li> 
                 <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li> 
+                <li><a href="<?php echo base_url('index.php/krisan')?>">Krisan</a></li> 
               </ul>
               <ul style="float:right;" class="nav navbar-nav">
                 <li><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-user"></i> Hi <?php print_r($this->session->userdata['username']); ?> | <i class="fa fa-fw fa-power-off"></i> Logout</a></li>
