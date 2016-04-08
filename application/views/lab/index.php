@@ -1,3 +1,6 @@
+<?php 
+  global $i;
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,38 +10,55 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Admin Panel - Jadwal Lab</title>
-    <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('css/fullcalendar.css')?>" rel='stylesheet' />
-    <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+     
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" /><script type="text/javascript">
+    $(function() {
+      $('input[name="daterange"]').daterangepicker(
+      {
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          startDate: <?php echo date("Y-m-d") ?>,
+          endDate: <?php echo date("Y-m-d") ?>
+      }, 
+      function(start, end, label) {
+          alert("Periode Jadwal terpilih: " + start.format('YYYY-MM-DD') + ' hingga ' + end.format('YYYY-MM-DD'));
+      });
+    });
+    </script>
     <style>
+    #add {
+      margin-bottom: 20px;
+    }
+
     th, tr{
       text-align: center;
     }
 
-    .ruang {
-      text-align: left;
-    }
-
-    thead th {
-      background-color: grey;
+    .black {
       color: white;
     }
 
-    .black {
-      color: grey;
+    .nama_lab {
+      font-weight: bolder;
+      font-size: 26px;
     }
 
+    .center {
+      text-align: center;
+    }
     </style>
 </head>
 <body>
   <div class="container">
-    <h2>Jadwal Pemakaian Lab PPLK 
-      <?php  
-        if(isset($_GET['berdasarkan'])){
-          echo " - ".$_GET['berdasarkan'];
-        } 
-      ?> </h2>
+    <h2>Jadwal Lab PPLK</h2>
     <hr>
     <?php
       $session_id = $this->session->userdata('is_logged_in');
@@ -46,68 +66,115 @@
         if($this->session->flashdata('sukses') == 1){
     ?>
     <div class="alert alert-success">
-      <strong>Sukses!</strong> Update jadwal lab berhasil.
+      <strong>Sukses!</strong> Jadwal lab berhasil dirubah.
     </div>
     <?php } else if($this->session->flashdata('sukses') == 2  ) { ?>
 
     <div class="alert alert-danger">
-      <strong>Gagal!</strong> Update jadwal lab tidak berhasil.
+      <strong>Gagal!</strong> Jadwal lab tidak berhasil dirubah.
     </div>
     <?php } ?>
-    <h2>Ubah Jadwal</h2>
-    <?php echo form_open('lab/update') ?>  
-    <form class="form-inline">
-      <div class="form-group">
-        <label for="exampleInputName2">Ruang Lab</label>
-        <select class="form-control form-control-a" name="lab">
-          <option>Lab A</option>
-          <option>Lab B</option>
-          <option>Lab C</option>
-          <option>Lab D</option>
-          <option>Lab E</option>
-          <option>Lab F</option>
-          <option>Lab G</option>
-          <option>Lab H</option>
-        </select>
+    <!-- Trigger the modal with a button -->
+    <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add">Tambah Jadwal</button>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <?php echo form_open('lab/insert') ?>  
+        <form class="form-inline">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><b>Tambah Jadwal Lab</b></h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleInputName2">Periode Aktif</label>
+              <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" class="form-control form-panjang">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Ruang Lab</label>
+              <select class="form-control form-control-a" name="lab">
+                <option>Lab A</option>
+                <option>Lab B</option>
+                <option>Lab C</option>
+                <option>Lab D</option>
+                <option>Lab E</option>
+                <option>Lab F</option>
+                <option>Lab G</option>
+                <option>Lab H</option>
+                <option>Lab I</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Hari</label>
+              <select class="form-control form-control-a" name="hari">
+                <option>Senin</option>
+                <option>Selasa</option>
+                <option>Rabu</option>
+                <option>Kamis</option>
+                <option>Jumat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Sesi</label>
+              <select class="form-control form-control-a" name="sesi">
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Program Studi</label>
+              <select class="form-control form-control-a">
+                <optgroup label="Fakultas Teknologi Informasi">
+                  <option>Sistem Informasi</option>
+                  <option>Teknik Informatika</option>
+                </optgroup>
+                <optgroup label="Fakultas Bisnis">
+                  <option>Manajemen</option>
+                  <option>Akuntansi</option>
+                  <option>Magister Manajemen</option>
+                </optgroup>
+                <optgroup label="Pendidikan Bahasa Inggris">
+                  <option>Bahasa Inggris</option>
+                </optgroup>
+                <optgroup label="Fakultas Bioteknologi">
+                  <option>Bioteknologi</option>
+                </optgroup>
+                <optgroup label="Fakultas Arsitektur dan Desain">
+                  <option>Arsitektur</option>
+                  <option>Desain produk</option>
+                  <option>Magister Arsitektur</option>
+                </optgroup>
+                <optgroup label="Fakultas Kedokteran">
+                  <option>Kedokteran</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Mata Kuliah</label>
+              <input type="jadwal" class="form-control form-panjang" name="matkul" placeholder="Jadwal Baru" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputName2">Status Mata Kuliah</label>
+              <select class="form-control form-control-a" name="status">
+                <option>Reguler</option>
+                <option>Pengganti</option>
+              </select>
+            </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
+            <button type="submit" class="btn btn-primary">Tambah Jadwal</button>
+          </div>
+        </form>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputName2">Hari</label>
-        <select class="form-control form-control-a" name="hari">
-          <option>Senin</option>
-          <option>Selasa</option>
-          <option>Rabu</option>
-          <option>Kamis</option>
-          <option>Jumat</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputName2">Sesi</label>
-        <select class="form-control form-control-a" name="sesi">
-          <option>I</option>
-          <option>II</option>
-          <option>III</option>
-          <option>IV</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputName2">Program Studi</label>
-        <select class="form-control form-control-a" name="prodi">
-          <option>Teknik Informatika</option>
-          <option>Sistem Informasi</option>
-          <option>Management</option>
-          <option>Akuntansi</option>
-          <option>Arsitektur</option>
-          <option>Desain Produk</option>
-          <option>-</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input type="jadwal" class="form-control form-panjang" name="matkul" placeholder="Jadwal Baru">
-      </div> 
-      <button type="submit" class="btn btn-primary">Perbaharui Data</button> 
-    </form>
+    </div>
+    
+    
     <?php } else { ?>
-
     <p>Tampilkan berdasarkan jadwal program studi : </p>
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">     
@@ -148,39 +215,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB A<br>
+            <span class="nama_lab">LAB A</span><br>
             KAPASITAS: 60
-            </strong><br>
-            44 unit intel i3<br>
-            RAM 6GB,<br>
-            16 unit Core2Duo<br>
-            RAM 3GB</td>
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab A")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 1; $i <6 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab']  == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else if(count($arr_baru) == 0){
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab A")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+             <?php
+              for ($i = 6; $i <11 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab A")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 11; $i <16 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab A")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 16; $i <21 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 2 -->
@@ -192,36 +302,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB B<br>
-            (Jaringan)<br>
-            KAPASITAS: 30
-            </strong>
+            <span class="nama_lab">LAB B</span><br>
+            KAPASITAS: 48
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab B")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 21; $i <26 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab B")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 26; $i <31 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab B")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 31; $i <36 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab B")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 36; $i <41 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 3 -->
@@ -233,37 +389,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB C<br>
-            KAPASITAS: 48
-            </strong><br>
-            Intel i5<br>
-            Ram 8GB
+            <span class="nama_lab">LAB C</span><br>
+            KAPASITAS: 32
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab C")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 41; $i <46 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab C")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 46; $i <51 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab C")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 51; $i <56 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab C")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 56; $i <61 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 4 -->
@@ -275,36 +476,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB D<br>
-            (Jaringan)<br>
-            KAPASITAS: 30
-            </strong>
+            <span class="nama_lab">LAB D</span><br>
+            KAPASITAS: 32
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab D")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 61; $i <66 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab D")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 66; $i <71 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab D")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 71; $i <76 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab D")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 76; $i <81 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 5 -->
@@ -316,35 +563,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB E<br>
-            KAPASITAS: 30
-            </strong>
+            <span class="nama_lab">LAB E</span><br>
+            KAPASITAS: 40
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab E")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 81; $i <86 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab E")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 86; $i <91 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab E")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 91; $i <96 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab E")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 96; $i <101 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 6 -->
@@ -356,35 +650,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB F<br>
-            KAPASITAS: 30
-            </strong>
+            <span class="nama_lab">LAB F</span><br>
+            KAPASITAS: 40
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab F")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 101; $i <106 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab F")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 106; $i <111 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab F")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 111; $i <116 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab F")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 116; $i <121 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 7 -->
@@ -396,36 +737,82 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB G<br>
-            (Jaringan)<br>
-            KAPASITAS: 30
-            </strong>
+            <span class="nama_lab">LAB G</span><br>
+            KAPASITAS: 32
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab G")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 121; $i <126 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab G")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 126; $i <131 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab G")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 131; $i <136 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab G")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 136; $i <141 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
         <!-- baris 8 -->
@@ -437,38 +824,178 @@
         <tbody>
           <tr>
             <td rowspan="4" class="ruang"> 
-            <strong>LAB H<br>
-            KAPASITAS: 30
-            </strong>
+            <span class="nama_lab">LAB H</span><br>
+            KAPASITAS: 48
             <th>I</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "I" && $d['lab'] == "Lab H")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 141; $i <146 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>II</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "II" && $d['lab'] == "Lab H")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 146; $i <151 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>III</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "III" && $d['lab'] == "Lab H")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 151; $i <156 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
           <tr>
             <th>IV</th>
-            <?php foreach ($data as $d):
-              if ($d['sesi'] == "IV" && $d['lab'] == "Lab H")
-                echo "<td>".$d['nama_matkul']."</td>";
-            endforeach ?>
+            <?php
+              for ($i = 156; $i <161 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
           </tr>
         </tbody>
-      </table>
+        <!-- baris 9 -->
+        <thead class="thead-inverse">
+          <tr>
+            <th colspan="7" class="black"># </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4" class="ruang"> 
+            <span class="nama_lab">LAB I</span><br>
+            KAPASITAS: 40 <br>
+            <strong>(Lab Bebas)</strong>
+            <th>I</th>
+            <?php
+              for ($i = 161; $i <166 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
+          </tr>
+          <tr>
+            <th>II</th>
+            <?php
+              for ($i = 166; $i <171 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
+          </tr>
+          <tr>
+            <th>III</th>
+            <?php
+              for ($i = 171; $i <176 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
+          </tr>
+          <tr>
+            <th>IV</th>
+            <?php
+              for ($i = 176; $i <181 ; $i++) {
+                $arr_baru = array_filter($data, function($ar) {
+                  global $i;
+                  return ($ar['id_lab'] == $i);
+                });
+
+                if(count($arr_baru) > 0){
+                  foreach ($arr_baru as $row){
+                    echo "<td>".$row["nama_matkul"]."</td>";   
+                  }
+                } else {
+                  echo "<td></td>";
+                }
+              }
+            ?>
+          </tr>
+        </tbody>
+        </table>
+        <div class="center">
+          <h4>Note: Senin | Sesi I: 08.30, Sesi II: 11.30, Sesi III: 14.30, Sesi IV: 17.30</h3>
+          <h4>      Selasa-Jumat | Sesi I: 07.30, Sesi II: 10.30, Sesi III: 13.30, Sesi IV: 16.30</h3>  
+          <br>
+        </div>
     </div>
   </div>
 </body>

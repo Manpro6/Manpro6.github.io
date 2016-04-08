@@ -11,10 +11,10 @@ class lab extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
-	public function update()
+	public function insert()
 	{
 		$this->load->model('jadwal_lab_model');
-		$data = $this->jadwal_lab_model->updateJadwal();
+		$data = $this->jadwal_lab_model->insertJadwal();
 		redirect('lab');
 	}
 }
