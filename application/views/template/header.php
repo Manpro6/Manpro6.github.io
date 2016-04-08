@@ -57,7 +57,8 @@
                 <li><a href="<?php echo base_url('index.php/gambar')?>">Gambar</a></li>       
                 <li><a href="<?php echo base_url('index.php/event')?>">Penjadwalan</a></li> 
                 <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li> 
-                <li><a href="<?php echo base_url('index.php/krisan')?>">Krisan</a></li> 
+                <li><a href="<?php echo base_url('index.php/krisan')?>">Krisan</a></li>
+                <li><a href="<?php echo base_url('index.php/berita')?>">Berita</a></li>  
               </ul>
               <ul style="float:right;" class="nav navbar-nav">
                 <li><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-user"></i> Hi <?php print_r($this->session->userdata['username']); ?> | <i class="fa fa-fw fa-power-off"></i> Logout</a></li>
@@ -65,13 +66,14 @@
             </div>
           <?php }
         else {
-        ?>    
+        ?>      
         </form>        
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url('index.php/kursus')?>">Kursus</a></li>    
             <li><a href="<?php echo base_url('index.php/sertifikasi')?>">Sertifikasi</a></li>
-            <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li> 
+            <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li>
+            <li><a href="<?php echo base_url('index.php/berita')?>">Berita</a></li>   
             <li><a href="<?php echo base_url('index.php/tentang')?>">Tentang</a></li>        
           </ul>
         </div>
