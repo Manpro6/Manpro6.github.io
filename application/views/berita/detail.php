@@ -19,18 +19,14 @@
             </tr>
 
             <tr>
-            <><?php echo base_url($mydata['tanggal']) ?></th>
-       
-            <th><?php echo $sinopsis ?></th>
+            <td><?php echo base_url($mydata['tanggal']) ?></td>
+       <td></td>
+       <td></td>
+            <td><?php echo  base_url($mydata['isi']) ?>
             </td>
            
             </tr>
-              <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td colspan="7" class='text-center'>
-                <em>Tidak ada berita untuk ditampilkan</em></td>
-                </tr>
-            <?php endif ?>
+             
       </tbody>
     </table>
   </div>
