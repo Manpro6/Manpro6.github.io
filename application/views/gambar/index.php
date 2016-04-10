@@ -1,7 +1,13 @@
 <head><title>Admin Panel - Edit Gambar</title></head>
+<style>
+  thead th {
+    background-color: grey;
+    color: white;
+  }
+</style>
 <div class="container">
   <h2>Daftar Gambar Carousel</h2><hr>       
-    <table class="table table-striped" style="margin: auto; width:70%; overflow:auto; text-align:center;">
+    <table class="table" style="margin: auto; width:70%; overflow:auto; text-align:center;">
       <thead style="background:#CCC;"><tr>
         <th style="text-align:center;font-size:12pt;">Id Gambar</th>
         <th style="text-align:center;font-size:12pt;">Gambar<th>

@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <title>Admin Panel - Penjadwalan</title>
     <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('css/fullcalendar.css')?>" rel='stylesheet' />
+    <link href="<?php echo base_url('css/fullcalendar2.css')?>" rel='stylesheet' />
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
     <style>
     #calendar {
@@ -33,7 +33,7 @@
       <hr>
       <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;" id="add">Tambah Jadwal</button>
       <div id="calendar" class="col-centered">
-      <p class="lead" style="color:red;"><em><b>*Untuk mengubah/menghapus/melihat data, double klik pada data di kalender</b></em></p>
+      <p class="lead" style="color:red;"><em><b>*Untuk mengubah/menghapus/melihat data, klik pada data di kalender</b></em></p>
       <br>
        
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -107,11 +107,11 @@
             <p id="end" style="width:255px;float:left;font-weight:bold;"></p><br>
             <p style="width:100px;float:left;">Pengajar</p>
             <p style="width:8px;float:left;">:</p>
-            <p id="pengajar"></p>
+            <p id="pengajar" style="float:left;width:400px;"></p>
             <p style="width:100px;float:left;">Deskripsi</p>
             <p style="width:8px;float:left;">:</p>
             <br><br>
-            <p id="deskripsi"></p>
+            <p id="deskripsi" style="float:left;width:600px;margin-left:50px;"></p>
             <br><br>
         </div>
         <div class="modal-footer">
@@ -183,10 +183,14 @@
   <script src="<?php echo base_url('js/moment.min.js')?>"></script>
   <script src="<?php echo base_url('js/bootstrap.min.js')?>"></script>
   <script src="<?php echo base_url('js/jquery.js')?>"></script>
+  <script src="<?php echo base_url('js/id.js')?>"></script>
   <script src="<?php echo base_url('js/fullcalendar.min.js')?>"></script> 
   <script>
   $(document).ready(function() {   
     $('#calendar').fullCalendar({
+      lang: 'id',
+      buttonText: {today: 'Hari Ini', month: 'Bulanan', week: 'Mingguan', day: 'harian'},
+      contentHeight: 'auto',
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -197,7 +201,8 @@
       selectable: true,
       selectHelper: true,
       eventRender: function(event, element) {
-        element.bind('dblclick', function() {
+        element.attr('title', event.title);
+        element.bind('click', function() {
           $('#ModalShow #id').html(event.id);
           $('#ModalShow #title').html(event.title);
           $('#ModalShow #pengajar').html(event.pengajar);

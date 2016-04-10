@@ -19,7 +19,7 @@ $events = $req->fetchAll();
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
     <style>
     #calendar {
-      width: 360px;
+      width:300px;
     }
     .col-centered{
       float: none;
@@ -73,30 +73,34 @@ $events = $req->fetchAll();
 		</div>
 		<div class="col-md-4">
 			<div id="calendar" class="col-centered">
-      <p class="lead" style="color:red;"><em><b>*Untuk melihat detail informasi, double klik pada data di kalender</b></em></p>
+      <p class="lead" style="color:red;"><em><b>*Untuk melihat detail informasi, klik pada data di kalender</b></em></p>
       <h4><b>Detail Event</b></h4>
-      <hr><br>
-      <p id="judul" style="width:100px;float:left;"></p>
-      <p id="titik" style="width:8px;float:left;"></p>
-      <p id="title" style="font-weight:bold;"></p>
-      <p id="ajar" style="width:100px;float:left;"></p>
+      <hr>
+      <p id="judul" style="width:60px;float:left;margin-top:8px;"></p>
+      <p id="titik" style="width:8px;float:left;margin-top:8px;"></p>
+      <p id="title" style="font-weight:bold;margin-top:8px;"></p>
+      <p id="ajar" style="width:60px;float:left;"></p>
       <p id="titik1" style="width:8px;float:left;"></p>
       <p id="pengajar"></p>
-      <p id="pelaksanaan" style="width:100px;float:left;"></p>
-      <p id="titik2" style="width:8px;float:left;"></p>
-      <p id="start" style="width:120px;float:left;"></p>
+      <p id="krg1" style="width:5px;float:left;"></p>
+      <p id="start" style="width:115px;float:left;"></p>
       <p id="sampai" style="width:8px;float:left;"></p>
-      <p id="end"></p>
+      <p id="end" style="width:113px;float:left;"></p>
+      <p id="krg2" style="width:5px;float:left;"></p>
 		</div>		
 	</div>
 </body>
   <script src="<?php echo base_url('js/moment.min.js')?>"></script>
   <script src="<?php echo base_url('js/bootstrap.min.js')?>"></script>
   <script src="<?php echo base_url('js/jquery.js')?>"></script>
+  <script src="<?php echo base_url('js/id.js')?>"></script>
   <script src="<?php echo base_url('js/fullcalendar.min.js')?>"></script> 
   <script>
   $(document).ready(function() {    
     $('#calendar').fullCalendar({
+      lang: 'id',
+      buttonText: {today: 'Hari Ini'},
+      contentHeight: 250,
       header: {
         left: 'prev,next',
         center: 'title',
@@ -107,21 +111,23 @@ $events = $req->fetchAll();
       selectable: true,
       selectHelper: true,
       eventRender: function(event, element) {
-        element.bind('dblclick', function() {
+        element.attr('title', event.title);
+        element.bind('click', function() {
           $('#id').html(event.id);
           $('#judul').html("Kegiatan");
           $('#title').html(event.title);
           $('#titik').html(":");
           $('#ajar').html("Pengajar");
+          $('#krg1').html("(");
+          $('#krg2').html(")");
           $('#pengajar').html(event.pengajar);
           $('#titik1').html(":");
-          $('#pelaksanaan').html("Pelaksanaan");
           $('#titik2').html(":");
           $('#start').html(event.start.format('DD/MM/YYYY HH:mm'));
           $('#sampai').html("-");
           $('#end').html(event.end.format('DD/MM/YYYY HH:mm'));
        });
-      },   
+      },  
       events: [
       <?php foreach($events as $event):      
         $start = explode(" ", $event['start']);
