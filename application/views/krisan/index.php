@@ -37,86 +37,81 @@
 </head>
 <body>
   <div class="container tabel_krisan">
-  <h2>Kritik dan Saran</h2>
-  <hr> 
-  <div class="table-responsive">          
-  <table class="table">
-    <thead class="table_head">
-      <tr>
-        <th  id="th-no" class="th-result text-center">no</th>
-        <th id="th-krisan" class="th-result text-center">Kritik & Saran</th>
-        <th id="th-tanggal" class="th-result text-center">Tanggal</th>
-        <th id="th-nama" class="th-result text-center">Nama</th>
-        <th id="th-email" class="th-result text-center">Email</th>
-        <th class="button-action">Action</th>
-      </tr>
-    </thead>
-    <tbody id ="tbody-table-krisan" class="">
-      <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-       <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-       <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-       <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-       <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-       <tr>
-        <td>1</td>
-        <td>aaaaa</td>
-        <td>11-05-2016</td>
-        <td>cyka blyat</td>
-        <td>xxxx@xxx.com</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
-
-    </tbody>
-  </table>
+    <h2>Kritik dan Saran</h2>
+    <hr> 
+    <div class="table-responsive">          
+      <table class="table">
+        <thead class="table_head">
+          <tr>
+            <th  id="th-no" class="th-result text-center">no</th>
+            <th id="th-krisan" class="th-result text-center">Kritik & Saran</th>
+            <th id="th-tanggal" class="th-result text-center">Tanggal</th>
+            <th id="th-nama" class="th-result text-center">Nama</th>
+            <th id="th-email" class="th-result text-center">Email</th>
+            <th class="button-action">Action</th>
+          </tr>
+        </thead>
+        <tbody id ="tbody-table-krisan" class="">
+          <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+           <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+           <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+           <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+           <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+           <tr>
+            <td>1</td>
+            <td>aaaaa</td>
+            <td>11-05-2016</td>
+            <td>cyka blyat</td>
+            <td>xxxx@xxx.com</td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-
-
-
-  
 </body>
 </html>
 

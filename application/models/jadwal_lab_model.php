@@ -14,6 +14,19 @@ class jadwal_lab_model extends CI_Model
       return $data->result_array();
     }
 
+    public function getAllLab($lab)
+    {
+      if ( isset( $_GET['lab'] ) && !empty( $_GET['lab'] ) ){
+        $lab = $this->input->get('lab');
+      }
+      else {
+        $lab = "Lab A";  
+      }
+      $query = "SELECT id_jadwal_lab, lab, hari, sesi, nama_matkul, prodi, status, tanggal_mulai, tanggal_selesai FROM lab, jadwal_lab WHERE lab.id_lab = jadwal_lab.id_lab AND lab = '".$lab."'";
+      $data = $this->db->query($query);
+      return $data->result_array();
+    }
+
     public function updateJadwal()
     {
       $update_jadwal_lab = array(
@@ -48,26 +61,32 @@ class jadwal_lab_model extends CI_Model
         $id_lab = $row['id_lab'];
       }
 
+      $tanggal = $this->input->post('daterange');
+
       $insert_jadwal_lab = array(
       'id_lab' => $id_lab,   
       'nama_matkul' => $this->input->post('matkul'),
       'prodi' => $this->input->post('prodi'),
       'status' => $this->input->post('status'),
-      'tanggal_mulai' => $this->input->post('daterangepicker_start'),
-      'tanggal_selesai' => $this->input->post('daterangepicker_end'));
-      $tanggal = $this->input->post('daterangepicker_start');
-      if(isset($tanggal)){
-        $this->session->set_flashdata('sukses', $tanggal);
-      } else {
-        $this->session->set_flashdata('sukses', "Tidak ketemu");
-      }
+      'tanggal_mulai' => substr($tanggal, 0, 10),
+      'tanggal_selesai' => substr($tanggal, 13  ));
 
-      // $result = $this->db->insert('jadwal_lab', $insert_jadwal_lab);
-      // if($result == 1) {
-      //   $this->session->set_flashdata('sukses', 1);
-      // } else {
-      //   $this->session->set_flashdata('sukses', 2);
-      // }
+      $result = $this->db->insert('jadwal_lab', $insert_jadwal_lab);
+      if($result == 1) {
+        $this->session->set_flashdata('sukses', 1);
+      } else {
+        $this->session->set_flashdata('sukses', 2);
+      }
+    }
+
+    public function deleteJadwal($where)
+    {
+      $result = $this->db->delete('jadwal_lab', $where);
+      if($result == 1) {
+        $this->session->set_flashdata('hapus', 1);
+      } else {
+        $this->session->set_flashdata('hapus', 2);
+      }
     }
   }
 ?>
