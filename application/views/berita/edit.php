@@ -6,8 +6,8 @@
   <div class="panel-body">   
     <form action="<?= site_url('gambar/update') ?>" method="post" enctype="multipart/form-data">
       <div class="form-group">
-        <input type="hidden" name="id_gambar" value="<?php echo $gambar['id_gambar'] ?>">
-        <input type="hidden" name="path" value="<?php echo $gambar['nama_gambar'] ?>">
+        <input type="hidden" name="id_berita" value="<?php echo $berita['id_berita'] ?>">
+        <input type="hidden" name="path" value="<?php echo $berita['gambar'] ?>">
         <table class="table table-striped">
         <tr>
               <td style="width:15%;"><label for="judul">Judul</label></td>
@@ -32,7 +32,7 @@
          </tr>
          <tr>
             <td></td>
-            <td><div class="col-sm-6"><img style="width:300px; height:150px;" src="<?php echo base_url($gambar['nama_gambar'])?>"></div></td>
+            <td><div class="col-sm-6"><img style="width:300px; height:150px;" src="<?php echo base_url($berita['gambar'])?>"></div></td>
          </tr>
           <tr>
 
@@ -45,7 +45,7 @@
          <tr>
           <td></td>
           <td colspan="3" align="center"><div class="col-sm-6">
-            <button type="submit" class="btn btn-success">Save</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="submit" class="btn btn-success">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?php echo site_url('berita') ?>" class="btn btn-danger">Batal</a>
           </div>
           </td>
