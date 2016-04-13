@@ -51,7 +51,6 @@
      <br>
       </p><?php if(isset($error)) echo "<b><span style='color:yellow;'>$error</span></b>";
       if(isset($logout)) echo "<b><span style='color:yellow;'>$logout</span></b>"; ?>
-      <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     </div> 
 </div>
 </body>

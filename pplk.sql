@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2016 at 04:33 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Apr 14, 2016 at 12:37 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,7 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -45,14 +46,15 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `pengajar` varchar(40) NOT NULL,
   `deskripsi` text NOT NULL,
   `color` varchar(7) DEFAULT NULL,
   `start` datetime NOT NULL,
-  `end` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+  `end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `events`
@@ -68,7 +70,8 @@ INSERT INTO `events` (`id`, `title`, `pengajar`, `deskripsi`, `color`, `start`, 
 (20, 'paskah1', 'Erick Kurniawan', 'pelatihan untuk PT. SETIA BUDI UTAMA Jakarta', '#0071c5', '2016-03-26 09:00:00', '2016-03-26 14:00:00'),
 (21, 'paskah3', '', 'lalala', '#008000', '2016-03-26 03:00:00', '2016-03-26 05:00:00'),
 (23, 'asd', 'asda', 'asdasd', '#FF8C00', '2016-05-31 11:11:00', '2016-03-24 01:11:00'),
-(24, 'dsa', 'dsa', 'dsa', '#FF8C00', '2016-03-31 01:01:00', '2016-03-01 03:33:00');
+(24, 'dsa', 'dsa', 'dsa', '#FF8C00', '2016-03-31 01:01:00', '2016-03-01 03:33:00'),
+(25, 'kursus ASP.NET MVC 5', 'Erick Kurniawan', 'Kursus ASP.NET MVC 5 mulai dari bootstrap, dsb.', '#000', '2016-04-14 10:00:00', '2016-04-18 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -77,19 +80,20 @@ INSERT INTO `events` (`id`, `title`, `pengajar`, `deskripsi`, `color`, `start`, 
 --
 
 CREATE TABLE IF NOT EXISTS `gambar` (
-`id_gambar` int(11) NOT NULL,
-  `nama_gambar` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `id_gambar` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_gambar` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_gambar`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `gambar`
 --
 
 INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
-(1, './images/1823256c5b68827c3c.jpg'),
+(1, './images/15332570a274b6649e.jpg'),
 (2, './images/2328356b76d8cc41d7.jpg'),
 (3, './images/119356b76e3f1b0d0.jpg'),
-(4, './images/1827856b7f90cd8431.jpg'),
+(4, './images/263405709bf1976038.jpeg'),
 (5, './images/417956b76d3618530.jpg');
 
 -- --------------------------------------------------------
@@ -99,14 +103,15 @@ INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `jadwal_lab` (
-`id_jadwal_lab` int(11) NOT NULL,
+  `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,
   `id_lab` int(11) NOT NULL,
   `nama_matkul` varchar(100) NOT NULL,
   `prodi` varchar(50) NOT NULL,
   `status` varchar(100) NOT NULL,
   `tanggal_mulai` date NOT NULL,
-  `tanggal_selesai` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `tanggal_selesai` date NOT NULL,
+  PRIMARY KEY (`id_jadwal_lab`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `jadwal_lab`
@@ -115,10 +120,6 @@ CREATE TABLE IF NOT EXISTS `jadwal_lab` (
 INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `status`, `tanggal_mulai`, `tanggal_selesai`) VALUES
 (1, 1, 'Algoritma dan Pemrograman', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
 (3, 5, 'Desain Game', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
-(4, 9, 'Praktikum SAP (A)', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
-(5, 13, 'Struktur Data', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
-(6, 17, 'Bridging dan Switching (D)', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
-(7, 21, 'Pemrograman Web (C)', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
 (9, 29, 'Ervan Ganteng', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09');
 
 -- --------------------------------------------------------
@@ -128,20 +129,33 @@ INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `st
 --
 
 CREATE TABLE IF NOT EXISTS `kritik` (
-`id_kritik` int(11) NOT NULL,
+  `id_kritik` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(30) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `pesan` text NOT NULL,
-  `tanggal` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `tanggal` datetime NOT NULL,
+  PRIMARY KEY (`id_kritik`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `kritik`
 --
 
-INSERT INTO `kritik` (`id_kritik`, `nama`, `pesan`, `tanggal`) VALUES
-(1, 'asd', 'dsa', '0000-00-00'),
-(2, '12132131', '123', '2016-02-17'),
-(3, 'SSSA', 'ASFASDA', '2016-02-17');
+INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
+(33, 'monxanbel@gmail.com', 'monxanbel', 'uji coba', '2016-04-11 23:27:28'),
+(34, 'monxanbel@gmail.com', 'monxanbel', 'lala', '2016-04-12 23:25:57'),
+(35, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-12 23:36:15'),
+(36, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-12 23:39:08'),
+(37, 'monxanbel@gmail.com', 'monxanbel', 'aaaa', '2016-04-12 23:39:31'),
+(38, 'monxanbel@gmail.com', 'monxanbel', 'oaoaoaoa', '2016-04-12 23:45:49'),
+(39, 'monxanbel@gmail.com', 'monxanbel', 'LALALA', '2016-04-12 23:50:41'),
+(40, 'monxanbel@gmail.com', 'monxanbel', 'aodasaa', '2016-04-12 23:53:18'),
+(41, 'monxanbel@gmail.com', 'monxanbel', 'asadasa', '2016-04-12 23:54:44'),
+(42, 'monxanbel@gmail.com', 'monxanbel', 'adas', '2016-04-12 23:58:40'),
+(43, 'monxanbel@gmail.com', 'monxanbel', 'sadasda', '2016-04-13 00:03:58'),
+(44, 'monxanbel@gmail.com', 'monxanbel', 'lala', '2016-04-13 23:25:32'),
+(45, 'Monxanbel@gmail.com', 'maria', 'lala', '2016-04-13 23:26:52'),
+(46, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-13 23:32:47');
 
 -- --------------------------------------------------------
 
@@ -150,11 +164,12 @@ INSERT INTO `kritik` (`id_kritik`, `nama`, `pesan`, `tanggal`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `lab` (
-`id_lab` int(11) NOT NULL,
+  `id_lab` int(11) NOT NULL AUTO_INCREMENT,
   `lab` varchar(11) NOT NULL,
   `hari` varchar(10) NOT NULL,
-  `sesi` varchar(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=latin1;
+  `sesi` varchar(11) NOT NULL,
+  PRIMARY KEY (`id_lab`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=253 ;
 
 --
 -- Dumping data for table `lab`
@@ -414,75 +429,6 @@ INSERT INTO `lab` (`id_lab`, `lab`, `hari`, `sesi`) VALUES
 (251, 'Lab I', 'Minggu', 'III'),
 (252, 'Lab I', 'Minggu', 'IV');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
- ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `events`
---
-ALTER TABLE `events`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gambar`
---
-ALTER TABLE `gambar`
- ADD PRIMARY KEY (`id_gambar`);
-
---
--- Indexes for table `jadwal_lab`
---
-ALTER TABLE `jadwal_lab`
- ADD PRIMARY KEY (`id_jadwal_lab`);
-
---
--- Indexes for table `kritik`
---
-ALTER TABLE `kritik`
- ADD PRIMARY KEY (`id_kritik`);
-
---
--- Indexes for table `lab`
---
-ALTER TABLE `lab`
- ADD PRIMARY KEY (`id_lab`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
---
--- AUTO_INCREMENT for table `gambar`
---
-ALTER TABLE `gambar`
-MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `jadwal_lab`
---
-ALTER TABLE `jadwal_lab`
-MODIFY `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `kritik`
---
-ALTER TABLE `kritik`
-MODIFY `id_kritik` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `lab`
---
-ALTER TABLE `lab`
-MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=253;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

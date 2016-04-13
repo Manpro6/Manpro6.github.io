@@ -6,7 +6,15 @@
   }
 </style>
 <div class="container">
-  <h2>Daftar Gambar Carousel</h2><hr>       
+  <h2>Daftar Gambar Carousel</h2><hr>    
+  <?php
+    if($sesi == 1)
+    {
+      echo "<div class='alert alert-success alert-dismissible' role='alert'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+            <strong>Sukses!</strong> Gambar Berhasil Diubah.</div>";
+    } 
+  ?>
     <table class="table" style="margin: auto; width:70%; overflow:auto; text-align:center;">
       <thead style="background:#CCC;"><tr>
         <th style="text-align:center;font-size:12pt;">Id Gambar</th>

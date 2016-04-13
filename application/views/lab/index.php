@@ -163,7 +163,7 @@
                   <td>".$jadwal_lab['tanggal_selesai']."</td>
                   <td>
                     <button type='button' class='btn btn-info' data-toggle='modal' data-target='#editModal'>Ubah</button>
-                    <button type='button' class='btn btn-danger'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
+                    <a type='button' class='btn btn-danger' onclick=\"return confirm('Anda yakin ingin menghapus data ini?')\" href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
                   </td>
                 </tr>
                 </tbody>";

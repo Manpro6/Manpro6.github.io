@@ -5,16 +5,17 @@ class Gambar extends CI_Controller
 	public function index()
 	{
         $session_id = $this->session->userdata('is_logged_in');
+        $data['sesi'] = 0;
         if($session_id == TRUE)
         {
+            $this->load->view('template/header');
             if(isset($_GET['msg']))
             {
                 if(($_GET['msg']) == 1)
                 {
-                    echo "<script>alert('Gambar berhasil diubah');window.location.href='gambar';</script>";
+                    $data['sesi'] = 1;
                 }
-    		}
-            $this->load->view('template/header');
+    		}           
     		$this->load->model('gambar_model');
     		$data['gambar'] = $this->gambar_model->getGambar();
     		$this->load->view('gambar/index', $data);
@@ -22,7 +23,7 @@ class Gambar extends CI_Controller
         }
         else
         {
-            echo "<script>alert('Anda harus melakukan login');window.location.href='login';</script>";
+            redirect('login');
         }
 	}
 
@@ -40,15 +41,16 @@ class Gambar extends CI_Controller
 
     public function ubah($id_gambar)
 	{
+        $data['sesi'] = 0;
         if(isset($_GET['msg']))
         {
             if(($_GET['msg']) == 1)
             {
-                echo "<script>alert('Pilih Gambar Perubahannya');window.location.href='".$id_gambar."';</script>";
+                $data['sesi'] = 1;
             }
             elseif(($_GET['msg']) == 2)
             {
-                echo "<script>alert('Tidak menerima format file selain .jpg, .jpeg, .gif dan .png');window.location.href='".$id_gambar."';</script>";
+                $data['sesi'] = 2;
             }
         }
         $this->load->view('template/header');

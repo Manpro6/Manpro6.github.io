@@ -21,7 +21,7 @@ class berita extends CI_Controller
         }
         else
         {
-            echo "<script>alert('Anda harus melakukan login');window.location.href='login';</script>";
+            redirect('login');
         }
 	}
 
@@ -76,8 +76,8 @@ class berita extends CI_Controller
                     $this->gambar_model->update($id, $url);
                     redirect('berita?msg=1');
                     $this->load->model('berita_model');
-        $data = $this->event_model->updateEvent();
-        redirect('berita');
+                    $data = $this->event_model->updateEvent();
+                    redirect('berita');
                 } 
             }          
         }
@@ -86,12 +86,13 @@ class berita extends CI_Controller
              redirect('berita/ubah/'.$id.'?msg=1');       
         }
     }
-        public function insert()
+
+    public function insert()
     {
         $this->load->model('berita_model');
         $data = $this->event_model->insertBerita();
         redirect('berita');
     }
 
-    }
-
+}
+?>

@@ -41,7 +41,7 @@
   </style>
 </head>
 <body>
- <div class="container-fluid blue-background">
+ <div class="container-fluid blue-background" style="margin-top:0px;">
     <div class="container">
       <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -78,8 +78,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url('index.php/kursus')?>">Kursus</a></li>    
             <li><a href="<?php echo base_url('index.php/sertifikasi')?>">Sertifikasi</a></li>
-            <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li>
-            <li><a href="<?php echo base_url('index.php/berita')?>">Berita</a></li>   
+            <li><a href="<?php echo base_url('index.php/lab')?>">Jadwal Lab</a></li>  
             <li><a href="<?php echo base_url('index.php/tentang')?>">Tentang</a></li>        
           </ul>
         </div>
