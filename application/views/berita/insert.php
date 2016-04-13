@@ -3,7 +3,7 @@
 <div class="panel panel-default">
   <div class="panel-heading"><b>Form Upload Image</b></div>
   <div class="panel-body">
-    <?php echo form_open_multipart('gambar/upload') ?>
+    <?php echo form_open_multipart('berita/insert') ?>
        <table class="table table-striped">
              <tr>
               <td style="width:15%;"><label for="judul">Judul</label></td>

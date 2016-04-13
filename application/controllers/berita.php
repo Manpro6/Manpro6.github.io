@@ -16,6 +16,7 @@ class berita extends CI_Controller
     		}
             $this->load->view('template/header');
     		$this->load->model('berita_model');
+            $data['berita'] = $this->berita_model->getBerita();
     		$this->load->view('berita/index', $data);
     		$this->load->view('template/footer');
         }
@@ -86,11 +87,34 @@ class berita extends CI_Controller
              redirect('berita/ubah/'.$id.'?msg=1');       
         }
     }
+<<<<<<< HEAD
 
     public function insert()
+=======
+      public function Add()
     {
+        if(isset($_GET['msg']))
+        {
+            if(($_GET['msg']) == 1)
+            {
+                echo "<script>alert('Pilih Gambar Perubahannya');window.location.href='".$id_gambar."';</script>";
+            }
+            elseif(($_GET['msg']) == 2)
+            {
+                echo "<script>alert('Tidak menerima format file selain .jpg, .jpeg, .gif dan .png');window.location.href='".$id_gambar."';</script>";
+            }
+        }
+        $this->load->view('template/header');
         $this->load->model('berita_model');
-        $data = $this->event_model->insertBerita();
+        $this->load->view('berita/insert');
+        $this->load->view('template/footer');  
+    }
+        public function insert()
+>>>>>>> f1bd436da923be44aa30ed7363eebb1903edf8a8
+    {
+        $url = $this->do_upload();
+        $this->load->model('berita_model');
+        $data = $this->berita_model->insertBerita($url);
         redirect('berita');
     }
 

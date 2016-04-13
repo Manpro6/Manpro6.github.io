@@ -21,14 +21,14 @@
     }
     public function insertBerita($url)
     {
-    $date = date('m/d/Y h:i:s', time());
+    $date = date('Y-m-d h:i:s');
 
         $insert_berita = array(
         'judul' => $this->input->post('judul'),
-        'tanggal' => $this->input->$date,
+        'tanggal' => $date,
         'penulis' => $this->input->post('penulis'),
         'isi' => $this->input->post('isi'),
-        'nama_gambar' => $url);
+        'gambar' => $url);
          $this->db->insert('berita', $insert_berita);
         redirect('berita?msg=2');
       }
@@ -39,7 +39,7 @@
       'tanggal' => $this->input->$date,
       'penulis' => $this->input->post('penulis'),
       'isi' => $this->input->post('isi'),
-      'nama_gambar' => $url);
+      'gambar' => $url);
 
       $this->db->where('id_berita', $id);
       $this->db->update('berita', $update_berita);
