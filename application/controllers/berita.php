@@ -104,17 +104,6 @@ class berita extends CI_Controller
         redirect('berita');
     }
 
-   public function teaser( $input, $length = 200)
-    {
-    if( strlen($input) <= $length )
-    return $input;
-
-    $parts = explode(" ", $input);
-
-     while( strlen( implode(" ", $parts) ) > $length )
-    array_pop($parts);
-
-     return implode(" ", $parts);
-    }
+   
  }
 ?>
