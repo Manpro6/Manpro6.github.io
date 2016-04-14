@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2016 at 12:37 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Apr 14, 2016 at 12:02 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`username`)
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -42,19 +41,41 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `berita`
+--
+
+CREATE TABLE IF NOT EXISTS `berita` (
+`id_berita` int(11) NOT NULL,
+  `judul` varchar(50) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `penulis` varchar(40) NOT NULL,
+  `isi` text NOT NULL,
+  `gambar` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id_berita`, `judul`, `tanggal`, `penulis`, `isi`, `gambar`) VALUES
+(1, 'aaaaaaaaaaaaa', '2016-04-14 11:48:57', 'aaaaaaaaa', 'abwdadadsdswdwa', './images/4374570f6a8d48b92.jpg'),
+(2, '2 pelawak mencoba bermain musik', '2016-04-14 12:00:25', 'Subagyo', 'Setiap orang mempunyai kondisi tubuh yang berbeda-beda, ada yang bergadang tiap hari, akan tetapi tidak mempengaruhi kesehatannya, akan tetapi ada yang bergadang hanya 1 hari langsung mengalami demam atau meriang. Hal ini disebabkan daya tahan seseorang yang berbeda-beda.\r\n	Hidup sehat didasari oleh 3 hal utama yaitu:\r\n1.	Berolahraga\r\nOlahraga merupakan kegiatan yang mudah untuk dilakukan, tetapi juga ada banyak orang yang sering mengabaikannya. Padahal olahraga merupakan kegiatan yang bisa menyehatkan tubuh kita. Apabila kita berolahraga secara teratur, maka banyak sekali manfaat untuk kesehatan tubuh kita seperti daya tahan tubuh meningkat, bisa menguatkan tulang-tulang, menurunkan lemak pada tubuh, mengurangi stress, menambah kebugaran tubuh dam masih banyak lagi.\r\n2.	Menjaga pola makan\r\nGayarti(2011) mengatakan kekurangan salah satu unsur zat gizi akan menyebabkan tubuh kita mengalami gangguan atau menderita penyakit. Begitu pun sebaliknya, kelebihan gizi akan menyebabkan gangguan kesehatan. Itu sebabnya kita perlu menerapkan pola makan seimbang dengan jumlah yang sesuai dengan kebutuhan. Makanan dengan gizi seimbang dalam pola makan sehat adalah makanan yang mengandung:\r\n', './images/6488570f6a3992bb6.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `events`
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `pengajar` varchar(40) NOT NULL,
   `deskripsi` text NOT NULL,
   `color` varchar(7) DEFAULT NULL,
   `start` datetime NOT NULL,
-  `end` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+  `end` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
@@ -80,10 +101,9 @@ INSERT INTO `events` (`id`, `title`, `pengajar`, `deskripsi`, `color`, `start`, 
 --
 
 CREATE TABLE IF NOT EXISTS `gambar` (
-  `id_gambar` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_gambar` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_gambar`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+`id_gambar` int(11) NOT NULL,
+  `nama_gambar` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gambar`
@@ -103,15 +123,14 @@ INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `jadwal_lab` (
-  `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,
+`id_jadwal_lab` int(11) NOT NULL,
   `id_lab` int(11) NOT NULL,
   `nama_matkul` varchar(100) NOT NULL,
   `prodi` varchar(50) NOT NULL,
   `status` varchar(100) NOT NULL,
   `tanggal_mulai` date NOT NULL,
-  `tanggal_selesai` date NOT NULL,
-  PRIMARY KEY (`id_jadwal_lab`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `tanggal_selesai` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jadwal_lab`
@@ -129,13 +148,12 @@ INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `st
 --
 
 CREATE TABLE IF NOT EXISTS `kritik` (
-  `id_kritik` int(11) NOT NULL AUTO_INCREMENT,
+`id_kritik` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `pesan` text NOT NULL,
-  `tanggal` datetime NOT NULL,
-  PRIMARY KEY (`id_kritik`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+  `tanggal` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kritik`
@@ -164,12 +182,11 @@ INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `lab` (
-  `id_lab` int(11) NOT NULL AUTO_INCREMENT,
+`id_lab` int(11) NOT NULL,
   `lab` varchar(11) NOT NULL,
   `hari` varchar(10) NOT NULL,
-  `sesi` varchar(11) NOT NULL,
-  PRIMARY KEY (`id_lab`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=253 ;
+  `sesi` varchar(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lab`
@@ -429,6 +446,86 @@ INSERT INTO `lab` (`id_lab`, `lab`, `hari`, `sesi`) VALUES
 (251, 'Lab I', 'Minggu', 'III'),
 (252, 'Lab I', 'Minggu', 'IV');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+ ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+ ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gambar`
+--
+ALTER TABLE `gambar`
+ ADD PRIMARY KEY (`id_gambar`);
+
+--
+-- Indexes for table `jadwal_lab`
+--
+ALTER TABLE `jadwal_lab`
+ ADD PRIMARY KEY (`id_jadwal_lab`);
+
+--
+-- Indexes for table `kritik`
+--
+ALTER TABLE `kritik`
+ ADD PRIMARY KEY (`id_kritik`);
+
+--
+-- Indexes for table `lab`
+--
+ALTER TABLE `lab`
+ ADD PRIMARY KEY (`id_lab`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `gambar`
+--
+ALTER TABLE `gambar`
+MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `jadwal_lab`
+--
+ALTER TABLE `jadwal_lab`
+MODIFY `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `kritik`
+--
+ALTER TABLE `kritik`
+MODIFY `id_kritik` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+--
+-- AUTO_INCREMENT for table `lab`
+--
+ALTER TABLE `lab`
+MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=253;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
