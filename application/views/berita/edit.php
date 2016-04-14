@@ -4,7 +4,7 @@
 <div class="panel panel-default">
   <div class="panel-heading"><b>Edit Berita<b></div>
   <div class="panel-body">   
-    <form action="<?= site_url('gambar/update') ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= site_url('berita/update') ?>" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <input type="hidden" name="id_berita" value="<?php echo $berita['id_berita'] ?>">
         <input type="hidden" name="path" value="<?php echo $berita['gambar'] ?>">
@@ -12,14 +12,14 @@
         <tr>
               <td style="width:15%;"><label for="judul">Judul</label></td>
               <td>
-          <div class="col-sm-6"><input type="text" name="title" class="form-control" id="judul" placeholder="Judul" required>
+          <div class="col-sm-6"><input type="text" name="judul" class="form-control" id="judul" placeholder="Judul" required value="<?php echo $berita['judul'] ?>">
           </div></td>
           </tr>
 
           <tr>
               <td style="width:15%;"><label for="penulis">Penulis</label></td>
               <td>
-          <div class="col-sm-6"><input type="text" name="penulis" class="form-control" id="penulis" placeholder="Nama Penulis" required>
+          <div class="col-sm-6"><input type="text" name="penulis" class="form-control" id="penulis" placeholder="Nama Penulis" required value="<?php echo $berita['penulis'] ?>">
           </div></td>
          </tr>
          <tr>
@@ -38,7 +38,7 @@
 
               <td style="width:10%;"><label for="isi">Isi Berita</label></td>
               <td colspan="2">
-          <div class="col-sm-6"> <textarea rows="30" cols="15" name="isi" class="form-control" placeholder="Isi Berita" id="isi" value="" required></textarea>  
+          <div class="col-sm-6"> <textarea rows="30" cols="15" name="isi" class="form-control" placeholder="Isi Berita" id="isi" required><?php echo $berita['isi'] ?></textarea>  
           </div></td>
   <td></td>
          </tr>

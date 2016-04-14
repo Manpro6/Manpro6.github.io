@@ -38,13 +38,13 @@ class berita extends CI_Controller
     	return "";
     }
 
-    public function ubah($id_gambar)
+    public function ubah($id_berita)
 	{
         if(isset($_GET['msg']))
         {
             if(($_GET['msg']) == 1)
             {
-                echo "<script>alert('Pilih Gambar Perubahannya');window.location.href='".$id_gambar."';</script>";
+                echo "<script>alert('Pilih Gambar Perubahannya');window.location.href='".$id_berita."';</script>";
             }
             elseif(($_GET['msg']) == 2)
             {
@@ -53,7 +53,7 @@ class berita extends CI_Controller
         }
         $this->load->view('template/header');
 		$this->load->model('berita_model');
-		$data['berita'] = $this->berita_model->getById($id_gambar);
+		$data['berita'] = $this->berita_model->getById($id_berita);
 		$this->load->view('berita/edit', $data);
 		$this->load->view('template/footer');  
     }
@@ -65,32 +65,19 @@ class berita extends CI_Controller
         if(isset($_FILES['pic']['name']) && !empty($_FILES['pic']['name']))
         {
             $url = $this->do_upload();
-            if($url == null)
-            {
-                redirect('berita/ubah/'.$id.'?msg=2'); 
-            }
-            else
-            {
-                if(unlink($path))
-                {    
+   
                     $this->load->model('berita_model');
-                    $this->gambar_model->update($id, $url);
+                    $this->berita_model->update($id, $url);
+                    $this->load->model('berita_model');
+                    $data = $this->berita_model->update();
                     redirect('berita?msg=1');
-                    $this->load->model('berita_model');
-                    $data = $this->event_model->updateEvent();
-                    redirect('berita');
-                } 
-            }          
         }
         else
         {
              redirect('berita/ubah/'.$id.'?msg=1');       
         }
     }
-<<<<<<< HEAD
 
-    public function insert()
-=======
       public function Add()
     {
         if(isset($_GET['msg']))
@@ -110,7 +97,6 @@ class berita extends CI_Controller
         $this->load->view('template/footer');  
     }
         public function insert()
->>>>>>> f1bd436da923be44aa30ed7363eebb1903edf8a8
     {
         $url = $this->do_upload();
         $this->load->model('berita_model');
@@ -118,5 +104,17 @@ class berita extends CI_Controller
         redirect('berita');
     }
 
-}
+   public function teaser( $input, $length = 200)
+    {
+    if( strlen($input) <= $length )
+    return $input;
+
+    $parts = explode(" ", $input);
+
+     while( strlen( implode(" ", $parts) ) > $length )
+    array_pop($parts);
+
+     return implode(" ", $parts);
+    }
+ }
 ?>
