@@ -25,13 +25,13 @@
           <tr>
          
          
-              <td style="width:100%;" colspan="2" align="justify"><?php echo $berita['isi'] ?></td>
+              <td style="width:100%;" colspan="2" align="justify"><?php echo nl2br($berita['isi']) ?></td>
               <td colspan="6">
           <td></td>
          </tr>
          <tr>
           <td></td>
-          <td colspan="3" align="justify"><div class="col-sm-6">
+          <td colspan="3"><div class="col-sm-6">
             <a href="<?php echo site_url('welcome') ?>" class="btn btn-danger">Kembali</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            
           </div>

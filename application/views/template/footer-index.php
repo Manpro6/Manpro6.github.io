@@ -5,6 +5,7 @@
       else {
    ?>
 	<footer class="navbar-wrapper2" style="background-color:#0066ff;margin-top:600px;">
+	<br>
 		<div class="container">
 			<div class="col-md-7">	
 				<br>

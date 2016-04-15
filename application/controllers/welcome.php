@@ -44,7 +44,7 @@ class welcome extends CI_Controller
 		$this->load->model('gambar_model');
 		$this->load->model('berita_model');
 		$data['gambar'] = $this->gambar_model->getGambar();
-		$data['berita'] = $this->berita_model->getBerita();
+		$data['berita'] = $this->berita_model->getTerbaru();
 		$this->load->view('welcome_message', $data);
 		$this->load->view('template/footer-index', $data);
 	}

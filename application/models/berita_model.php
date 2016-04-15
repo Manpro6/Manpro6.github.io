@@ -24,6 +24,12 @@
       $hasil = $query->row_array();
       return $hasil;
     }
+     public function getTerbaru()
+    {
+      $query = $this->db->query("SELECT * FROM `berita` where id_berita >=0 order by id_berita DESC LIMIT 0,5");
+      return $query->result_array();
+    }
+
     public function insertBerita($url)
     {
     $date = date('Y-m-d h:i:s');

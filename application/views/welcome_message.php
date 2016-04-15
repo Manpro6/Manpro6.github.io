@@ -63,11 +63,13 @@ $events = $req->fetchAll();
 
 
 <table >
-    
-      <tbody>
+ <tr><td>&nbsp;</td></tr>
+   <tr><td><strong><font style="font-size:24px;">Berita PPLK</font></strong></td></tr>
+   <tr><td><div style="width:300px; height:3px; background-color: #0000FD;"></div></td></tr>
         <?php if($berita) : ?>
-              <?php foreach ($berita as $mydata):?>
-                <?php $isi = $mydata['isi']?>
+              <?php foreach ($berita as $aaa):?>
+                <?php $isi = $aaa['isi']?>
+                   
                 <?php 
                 $length = 200;
                 $input = substr($isi, 0,200);
@@ -86,21 +88,23 @@ $events = $req->fetchAll();
            $input=implode(" ", $parts);
           }
           ?>
-          <tr><td>&nbsp;</td></tr><tr><td>&nbsp; </td></tr><tr><td></td></tr>
+         
            
+            <tr>
+          <td ><img style="width:300px; height:150px;" src="<?php echo base_url($aaa['gambar'])?>"></td><td></td>
+          <td style="text-align:justify;"><strong><?php echo $aaa['judul'] ?></strong>
+          <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
+          </tr>
             
-          <td><img style="width:300px; height:150px;" src="<?php echo base_url($mydata['gambar'])?>"></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td colspan="4" style="text-align:justify;"><strong><?php echo $mydata['judul'] ?></strong><br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$mydata['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a><br><br></td>
-            </td>
-            </tr>
               <?php endforeach; ?>
             <?php else: ?>
-                <tr><td colspan="2" class='text-center'>
+                <tr><td class='text-center'>
                 <em>Tidak ada berita untuk ditampilkan</em></td>
                 </tr>
             <?php endif ?>
       </tbody>
     </table>
+
 
 
 			<?php endif ?> 
