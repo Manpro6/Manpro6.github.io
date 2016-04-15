@@ -57,15 +57,13 @@ $events = $req->fetchAll();
 					    	echo "<div class='item'><img class='fourth-slide' src='$mydata[nama_gambar]'></div>";
 					    elseif($mydata['id_gambar'] == 5)
 					    	echo "<div class='item'><img class='fifth-slide' src='$mydata[nama_gambar]'></div>";
-					?>  
- 
+					?>   
 				<?php endforeach; ?>
-
-
-<table >
- <tr><td>&nbsp;</td></tr>
-   <tr><td><strong><font style="font-size:24px;">Berita PPLK</font></strong></td></tr>
-   <tr><td><div style="width:300px; height:3px; background-color: #0000FD;"></div></td></tr>
+   <br><br>
+   <strong><font style="font-size:24px;">Berita PPLK</font></strong>
+   <div style="height:3px; background-color: #0000FD;"></div>
+   <br>
+   <table >
         <?php if($berita) : ?>
               <?php foreach ($berita as $aaa):?>
                 <?php $isi = $aaa['isi']?>
@@ -88,21 +86,17 @@ $events = $req->fetchAll();
            $input=implode(" ", $parts);
           }
           ?>
-         
-           
-            <tr>
-          <td ><img style="width:300px; height:150px;" src="<?php echo base_url($aaa['gambar'])?>"></td><td></td>
-          <td style="text-align:justify;"><strong><?php echo $aaa['judul'] ?></strong>
-          <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
+      <tr>
+        <td><img style="width:300px; height:150px;margin:10px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
+        <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo $aaa['judul'] ?></strong>
+        <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
+      </tr>
+      <?php endforeach; ?>
+      <?php else: ?>
+          <tr><td class='text-center'>
+          <em>Tidak ada berita untuk ditampilkan</em></td>
           </tr>
-            
-              <?php endforeach; ?>
-            <?php else: ?>
-                <tr><td class='text-center'>
-                <em>Tidak ada berita untuk ditampilkan</em></td>
-                </tr>
-            <?php endif ?>
-      </tbody>
+      <?php endif ?>
     </table>
 
 
