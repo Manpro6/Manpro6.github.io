@@ -16,10 +16,17 @@
     <!-- Include Required Prerequisites -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-     
+    <script src="<?php echo base_url('js/v_lab.js')?>"></script>     
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" /><script type="text/javascript">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <!-- Edit Form Modal -->
+    <script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
+
+
+    <script type="text/javascript">
+
+
     $(function() {
       $('input[name="daterange"]').daterangepicker(
       {
@@ -32,6 +39,61 @@
       function(start, end, label) {
           alert("Periode Jadwal terpilih: " + start.format('YYYY-MM-DD') + ' hingga ' + end.format('YYYY-MM-DD'));
       });
+    });
+
+    $(function() {
+      $('input[name="daterange_edit"]').daterangepicker(
+      {
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          startDate: <?php echo date("Y-m-d") ?>,
+          endDate: <?php echo date("Y-m-d") ?>
+      }, 
+      function(start, end, label) {
+          alert("Periode Jadwal terpilih: " + start.format('YYYY-MM-DD') + ' hingga ' + end.format('YYYY-MM-DD'));
+      });
+    });
+
+    $(document).ready(function() {
+      $('.alert').delay(5000).fadeOut();
+      $('.close').click(function(){
+         $(this).parent().fadeOut( "slow", function() {
+            // Animation complete.
+          });
+      });
+      $('.editButton').on('click', function() {
+        var id = $(this).attr('data-id');
+        var matkul = $(this).closest('tr').children('td.matkul').text();
+        var hari = $(this).closest('tr').children('td.hari').text();
+        var sesi = $(this).closest('tr').children('td.sesi').text();
+        var prodi = $(this).closest('tr').children('td.prodi').text();
+        var status = $(this).closest('tr').children('td.status').text();
+        var tanggal_mulai = $(this).closest('tr').children('td.tanggal_mulai').text();
+        var tanggal_selesai = $(this).closest('tr').children('td.tanggal_selesai').text();
+
+        //assign to ID
+        $('#id_edit').attr("value", id);
+        //hari
+        $( "select[name='hari_edit']").val(hari);
+        //sesi
+        $( "select[name='sesi_edit']").val(sesi);
+        //prodi
+        $( "select[name='prodi_edit']").val(prodi);
+        //status
+        $( "select[name='status_edit']").val(status);
+        //matkul
+        $( "input[name='matkul_edit']").val(matkul);
+
+        $( "input[name='daterange_edit']").daterangepicker(
+        {
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          startDate: tanggal_mulai,
+          endDate: tanggal_selesai
+        });  
+       });
     });
     </script>
     <style>
@@ -78,6 +140,29 @@
     .ruang {
       vertical-align: middle;
     }
+
+    .close {
+      float: right;
+      color: black;
+      font-size: 14px;
+    }
+
+    #pagination , #pagination a{
+      text-decoration: none; 
+      color: red;
+      font-weight: bolder;
+    }
+
+    .berdasarkan {
+      margin-right: 20px;
+      margin-top: 5px;
+      vertical-align: middle;
+      float: left;
+    }
+
+    .optiongroup {
+      float: left;
+    }
     </style>
 </head>
 <body>
@@ -91,26 +176,45 @@
     ?>
     <div class="alert alert-success">
       <strong>Sukses!</strong> Entri jadwal baru berhasil.
+      <a class="close" href="#">Tutup (X)</a>
     </div>
     <?php } else if($this->session->flashdata('sukses') == 2  ) { ?>
 
     <div class="alert alert-danger">
       <strong>Gagal!</strong> Entri jadwal baru tidak berhasil.
+      <a class="close" href="#">Tutup (X)</a>
     </div>
     <?php } if($this->session->flashdata('hapus') == 1){
     ?>
     <div class="alert alert-success">
       <strong>Sukses!</strong> Jadwal lab berhasil dihapus.
+      <a class="close" href="#">Tutup (X)</a>
     </div>
     <?php } else if($this->session->flashdata('hapus') == 2  ) { ?>
 
     <div class="alert alert-danger">
       <strong>Gagal!</strong> Jadwal lab tidak berhasil dihapus.
+      <a class="close" href="#">Tutup (X)</a>s
     </div>
      ?>
 
-    <?php }
+    <?php } if($this->session->flashdata('edit') == 1){
     ?>
+    <div class="alert alert-success">
+      <strong>Sukses!</strong> Jadwal lab berhasil diedit.
+      <a class="close" href="#">Tutup (X)</a>
+    </div>
+    <?php } else if($this->session->flashdata('edit') == 2  ) { ?>
+
+    <div class="alert alert-danger">
+      <strong>Gagal!</strong> Jadwal lab tidak berhasil diedit.
+      <a class="close" href="#">Tutup (X)</a>s
+    </div>
+     ?>
+
+    <?php } 
+    ?>
+
 
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">     
@@ -135,7 +239,7 @@
       </ul>
     </div>
     <br>
-    <div class="table-responsive">          
+    <div class="table-responsive text-center">          
       <table class="table">
         <thead class="table_head">
           <tr>
@@ -150,34 +254,34 @@
             <th class="button-action">Action</th>
           </tr>
         </thead>
-        <?php foreach ($lab as $jadwal_lab) {
-          echo "<tbody id ='tbody-table-krisan'>
-                <tr>
-                  <td>".$jadwal_lab['id_jadwal_lab']."</td>
-                  <td>".$jadwal_lab['nama_matkul']."</td>
-                  <td>".$jadwal_lab['hari']."</td>
-                  <td>".$jadwal_lab['sesi']."</td>
-                  <td>".$jadwal_lab['prodi']."</td>
-                  <td>".$jadwal_lab['status']."</td>
-                  <td>".$jadwal_lab['tanggal_mulai']."</td>
-                  <td>".$jadwal_lab['tanggal_selesai']."</td>
-                  <td>
-                    <button type='button' class='btn btn-info' data-toggle='modal' data-target='#editModal'>Ubah</button>
-                    <a type='button' class='btn btn-danger' onclick=\"return confirm('Anda yakin ingin menghapus data ini?')\" href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
-                  </td>
-                </tr>
-                </tbody>";
+        <?php 
+          $urutan = 1;
+          foreach ($lab as $jadwal_lab) {
+            echo "<tbody id ='tbody-table-krisan'>
+                  <tr>
+                    <td>".$urutan."</td>
+                    <td class='matkul'>".$jadwal_lab['nama_matkul']."</td>
+                    <td class='hari'>".$jadwal_lab['hari']."</td>
+                    <td class='sesi'>".$jadwal_lab['sesi']."</td>
+                    <td class='prodi'>".$jadwal_lab['prodi']."</td>
+                    <td class='status'>".$jadwal_lab['status']."</td>
+                    <td class='tanggal_mulai'>".$jadwal_lab['tanggal_mulai']."</td>
+                    <td class='tanggal_selesai'>".$jadwal_lab['tanggal_selesai']."</td>
+                    <td>
+                      <button type='button' class='btn btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."'>Ubah</button>
+                      <button type='button' class='btn btn-danger'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
+                    </td>
+                  </tr>
+                  </tbody>";
+            $urutan++;
         } ?>
-        
       </table>
       <ul class="pagination">
-        <li><a href="#">1</a></li>
-        <li class="active"><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
+        <?php echo $pagination; ?> 
       </ul>
     </div>
+    
+    
 
     <!-- Trigger the modal with a button -->
     <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add">Tambah Jadwal</button>
@@ -291,13 +395,14 @@
             <h4 class="modal-title" id="myModalLabel"><b>Edit Jadwal Lab</b></h4>
           </div>
           <div class="modal-body">
+            <input type="hidden" name="id_edit" class="form-control" id="id_edit">
             <div class="form-group">
               <label for="exampleInputName2">Periode Aktif</label>
-              <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" class="form-control form-panjang">
+              <input type="text" name="daterange_edit" value="01/01/2015 - 01/31/2015" class="form-control form-panjang">
             </div>
             <div class="form-group">
               <label for="exampleInputName2">Ruang Lab</label>
-              <select class="form-control form-control-a" name="lab">
+              <select class="form-control form-control-a" name="lab_edit">
                 <option>Lab A</option>
                 <option>Lab B</option>
                 <option>Lab C</option>
@@ -311,7 +416,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputName2">Hari</label>
-              <select class="form-control form-control-a" name="hari">
+              <select class="form-control form-control-a" name="hari_edit">
                 <option>Senin</option>
                 <option>Selasa</option>
                 <option>Rabu</option>
@@ -323,7 +428,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputName2">Sesi</label>
-              <select class="form-control form-control-a" name="sesi">
+              <select class="form-control form-control-a" name="sesi_edit">
                 <option>I</option>
                 <option>II</option>
                 <option>III</option>
@@ -332,7 +437,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputName2">Program Studi</label>
-              <select class="form-control form-control-a" name="prodi">
+              <select class="form-control form-control-a" name="prodi_edit">
                 <optgroup label="Fakultas Teknologi Informasi">
                   <option>Sistem Informasi</option>
                   <option>Teknik Informatika</option>
@@ -360,17 +465,18 @@
             </div>
             <div class="form-group">
               <label for="exampleInputName2">Mata Kuliah</label>
-              <input type="jadwal" class="form-control form-panjang" name="matkul" placeholder="Jadwal Baru" required>
+              <input type="jadwal" class="form-control form-panjang" name="matkul_edit" placeholder="Jadwal Baru" required>
             </div>
             <div class="form-group">
               <label for="exampleInputName2">Status Mata Kuliah</label>
-              <select class="form-control form-control-a" name="status">
+              <select class="form-control form-control-a" name="status_edit">
                 <option>Reguler</option>
                 <option>Pengganti</option>
               </select>
             </div> 
           </div>
           <div class="modal-footer">
+            <button id="tes"></button>
             <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
           </div>
@@ -381,28 +487,36 @@
 
 
     <?php } else { ?>
-    <p>Tampilkan berdasarkan jadwal program studi : </p>
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">     
-      <?php  
-        if(isset($_GET['berdasarkan'])){
-          echo $_GET['berdasarkan'];
-        } else {
-          echo "Semua Program Studi";
-        }
-      ?>
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="?berdasarkan=Semua Program Studi">Semua Program Studi</a></li>
-        <li><a href="?berdasarkan=Teknik Informatika">Teknik Informatika</a></li>
-        <li><a href="?berdasarkan=Sistem Informasi">Sistem Informasi</a></li>
-        <li><a href="?berdasarkan=Management">Management</a></li>
-        <li><a href="?berdasarkan=Akuntansi">Akuntansi</a></li>
-        <li><a href="?berdasarkan=Arsitektur">Arsitektur</a></li>
-        <li><a href="?berdasarkan=Desain Produk">Desain Produk</a></li>
-      </ul>
+    <p class="berdasarkan">Tampilkan berdasarkan jadwal program studi : </p>
+    <div class="dropdown optiongroup">
+      <select class="form-control form-control-a " id="pilihProdi">
+        <option>Semua Program Studi</option>
+        <optgroup label="Fakultas Teknologi Informasi">
+          <option>Sistem Informasi</option>
+          <option>Teknik Informatika</option>
+        </optgroup>
+        <optgroup label="Fakultas Bisnis">
+          <option>Manajemen</option>
+          <option>Akuntansi</option>
+          <option>Magister Manajemen</option>
+        </optgroup>
+        <optgroup label="Pendidikan Bahasa Inggris">
+          <option>Bahasa Inggris</option>
+        </optgroup>
+        <optgroup label="Fakultas Bioteknologi">
+          <option>Bioteknologi</option>
+        </optgroup>
+        <optgroup label="Fakultas Arsitektur dan Desain">
+          <option>Arsitektur</option>
+          <option>Desain produk</option>
+          <option>Magister Arsitektur</option>
+        </optgroup>
+        <optgroup label="Fakultas Kedokteran">
+          <option>Kedokteran</option>
+        </optgroup>
+      </select>
     </div>
-
+    <div style="clear: both;"></div>
     <?php } ?>
     <br>
     <div class="table-responsive">
