@@ -1,7 +1,7 @@
 <head><title>Admin Panel - Edit Berita</title></head>
 <div class="container">
   <h2>Daftar berita</h2><hr>
-  <a type="button" href="<?php echo site_url('berita/ubah').'/'.$mydata['id_berita'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-edit"></span>&nbsp; Tambah Berita</a><br><br>       
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  type="button" href="<?php echo site_url('berita/add')?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-edit"></span><strong>Tambah Berita</strong></a><br><br>       
     <table class="table table-striped" style="margin: auto; width:70%; overflow:auto; text-align:center;">
     
       <tbody>

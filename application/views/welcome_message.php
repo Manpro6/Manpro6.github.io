@@ -58,7 +58,7 @@ $events = $req->fetchAll();
 					    elseif($mydata['id_gambar'] == 5)
 					    	echo "<div class='item'><img class='fifth-slide' src='$mydata[nama_gambar]'></div>";
 					?>  
-          <br>
+ 
 				<?php endforeach; ?>
 
 
@@ -85,7 +85,8 @@ $events = $req->fetchAll();
 
            $input=implode(" ", $parts);
           }
-          ?><tr></tr>
+          ?>
+          <tr><td>&nbsp;</td></tr><tr><td>&nbsp; </td></tr><tr><td></td></tr>
            
             
           <td><img style="width:300px; height:150px;" src="<?php echo base_url($mydata['gambar'])?>"></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

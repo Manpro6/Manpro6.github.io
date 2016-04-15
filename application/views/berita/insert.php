@@ -1,7 +1,7 @@
 <br><br><br>
 <div class="container">
 <div class="panel panel-default">
-  <div class="panel-heading"><b>Form Upload Image</b></div>
+  <div class="panel-heading"><b>Form Tambah berita</b></div>
   <div class="panel-body">
     <?php echo form_open_multipart('berita/insert') ?>
        <table class="table table-striped">
