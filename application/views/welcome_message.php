@@ -27,7 +27,7 @@ $events = $req->fetchAll();
     }
     </style>
 </head>
-<body>
+<body link="blue">
 	<div class="container">
 		<br>
 		<img src="<?php echo base_url('images/ukdw_logo.png')?>" height=75 style="float:left;">	
@@ -58,7 +58,50 @@ $events = $req->fetchAll();
 					    elseif($mydata['id_gambar'] == 5)
 					    	echo "<div class='item'><img class='fifth-slide' src='$mydata[nama_gambar]'></div>";
 					?>  
+          <br>
 				<?php endforeach; ?>
+
+
+<table >
+    
+      <tbody>
+        <?php if($berita) : ?>
+              <?php foreach ($berita as $mydata):?>
+                <?php $isi = $mydata['isi']?>
+                <?php 
+                $length = 200;
+                $input = substr($isi, 0,200);
+    
+
+          if( strlen($input) <= $length )
+          { $input=$input;}
+         
+          else
+          {
+          $parts = explode(" ", $input);
+
+           while( strlen( implode(" ", $parts) ) > $length )
+          array_pop($parts);
+
+           $input=implode(" ", $parts);
+          }
+          ?><tr></tr>
+           
+            
+          <td><img style="width:300px; height:150px;" src="<?php echo base_url($mydata['gambar'])?>"></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td colspan="4" style="text-align:justify;"><strong><?php echo $mydata['judul'] ?></strong><br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$mydata['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a><br><br></td>
+            </td>
+            </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
+                <tr><td colspan="2" class='text-center'>
+                <em>Tidak ada berita untuk ditampilkan</em></td>
+                </tr>
+            <?php endif ?>
+      </tbody>
+    </table>
+
+
 			<?php endif ?> 
 		      </div>
 		      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

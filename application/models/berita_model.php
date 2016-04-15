@@ -12,6 +12,11 @@
       $query = $this->db->get('berita');
       return $query->result_array();
     }
+     public function delete($id)
+    {
+      $this->db->where('id_berita', $id);
+      $this->db->delete('berita');
+    }
 
     public function getById($id_berita)
     {

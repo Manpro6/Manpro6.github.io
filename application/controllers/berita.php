@@ -96,7 +96,14 @@ class berita extends CI_Controller
         $this->load->view('berita/insert');
         $this->load->view('template/footer');  
     }
-        public function insert()
+        public function delete($id)
+    {
+       
+        $this->load->model('berita_model');
+        $data = $this->berita_model->delete($id);
+        redirect('berita');
+    }
+     public function insert()
     {
         $url = $this->do_upload();
         $this->load->model('berita_model');
@@ -104,6 +111,15 @@ class berita extends CI_Controller
         redirect('berita');
     }
 
-   
+  public function lihat($id)
+    {
+       
+            $this->load->view('template/header');
+            $this->load->model('berita_model');
+            $data['berita'] = $this->berita_model->getById($id);
+            $this->load->view('berita/detail', $data);
+            $this->load->view('template/footer');
+    
+    }
  }
 ?>

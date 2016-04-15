@@ -1,6 +1,7 @@
 <head><title>Admin Panel - Edit Berita</title></head>
 <div class="container">
-  <h2>Daftar berita</h2><hr>       
+  <h2>Daftar berita</h2><hr>
+  <a type="button" href="<?php echo site_url('berita/ubah').'/'.$mydata['id_berita'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-edit"></span>&nbsp; Tambah Berita</a><br><br>       
     <table class="table table-striped" style="margin: auto; width:70%; overflow:auto; text-align:center;">
     
       <tbody>
@@ -33,6 +34,7 @@
             </td>
             <th style="text-align:justify;"><br><br><br>
              <a type="button" href="<?php echo site_url('berita/ubah').'/'.$mydata['id_berita'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-edit"></span>&nbsp; Ubah</a><br><br>
+             <a type="button" href="<?php echo site_url('berita/delete').'/'.$mydata['id_berita'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-delete"></span>&nbsp; Delete</a><br><br>
             </th>
             </tr>
               <?php endforeach; ?>
