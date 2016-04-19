@@ -5,10 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="shortcut icon" href="images/favicon.ico" />
+  <meta name="author" content="">   
   <!-- Ikon UKDW -->
-  <link rel="icon" href="http://ukdw.ac.id/images/favicon.png" type="image/png">
+  <link rel="icon" href="<?php echo base_url('images/favicon.png')?>" type="image/png">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.css')?>">

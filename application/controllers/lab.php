@@ -4,16 +4,18 @@ class lab extends CI_Controller
 {
 	public function index($offset = 0){
 		$this->load->model('jadwal_lab_model');
-//        load library pagination
+		//load library pagination
         $this->load->library('pagination');
-        
-//        configurasi pagination
+
+        if (count($_GET) > 0) $config['suffix'] = '?' . http_build_query($_GET, '', "&");
+
+		//configurasi pagination
         $config['base_url'] = base_url().'/lab/index/';
+        $config['first_url'] = $config['base_url'].'?'.http_build_query($_GET);
         $config['total_rows'] = $this->jadwal_lab_model->total_record();
         $config['per_page'] = 5;
-        $config['uri_segment'] = 3;
         $config['num_links'] = 10;
-        $config['reuse_query_string'] = TRUE;
+        $config['enable_query_strings'] = TRUE;
         $config['cur_tag_open'] = "<li class='active'><a href='#'>";
         $config['cur_tag_close'] = "</a></li>";
         $config['num_tag_open'] = "<li>";
@@ -24,17 +26,21 @@ class lab extends CI_Controller
 		$config['prev_tag_close'] = "</li>";
         $this->pagination->initialize($config); 
         
-//        menentukan offset record dari uri segment
+		//menentukan offset record dari uri segment
         $offset = ($this->uri->segment(3) != '' ? $this->uri->segment(3): 0);
-        // $start = $this->uri->segment(2,0);
-//        ubah data menjadi tampilan per limit
+		//ubah data menjadi tampilan per limit
         $rows = $this->jadwal_lab_model->user_limit($config['per_page'], $offset);
-
+		
+		
         $data = $this->jadwal_lab_model->getAllJadwalLab();
-
-//		echo 'ini adalah controller user';	
+	
 		$this->load->view('template/header');
-		$this->load->view('lab/index', array('data' => $data, 'lab' => $rows, 'pagination' => $this->pagination->create_links()));
+		$this->load->view('lab/index', array(
+			'data' => $data, 
+			'lab' => $rows, 
+			'pagination' => $this->pagination->create_links(), 
+			'count' => $this->jadwal_lab_model->total_record()
+			));
 		$this->load->view('template/footer');
 	}
 
