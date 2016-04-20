@@ -33,20 +33,7 @@ class jadwal_lab_model extends CI_Model
       else {
         $where = ""; 
       }
-      $query = "SELECT jadwal_lab.id_lab AS id_lab, nama_matkul, prodi, hari, sesi, lab FROM lab, jadwal_lab WHERE ('". $tanggal ."' BETWEEN jadwal_lab.tanggal_mulai AND jadwal_lab.tanggal_selesai) AND lab.id_lab = jadwal_lab.id_lab ". $where;
-      $data = $this->db->query($query);
-      return $data->result_array();
-    }
-
-    public function getAllLab($lab)
-    {
-      if ( isset( $_GET['lab'] ) && !empty( $_GET['lab'] ) ){
-        $lab = $this->input->get('lab');
-      }
-      else {
-        $lab = "Lab A";  
-      }
-      $query = "SELECT id_jadwal_lab, lab, hari, sesi, nama_matkul, prodi, status, tanggal_mulai, tanggal_selesai FROM lab, jadwal_lab WHERE lab.id_lab = jadwal_lab.id_lab AND lab = '".$lab."'";
+      $query = "SELECT jadwal_lab.id_lab AS id_lab, nama_matkul, prodi, hari, sesi, lab FROM lab, jadwal_lab WHERE ('". $tanggal ."' BETWEEN jadwal_lab.tanggal_mulai AND jadwal_lab.tanggal_selesai) AND lab.id_lab = jadwal_lab.id_lab ". $where; 
       $data = $this->db->query($query);
       return $data->result_array();
     }
@@ -66,28 +53,72 @@ class jadwal_lab_model extends CI_Model
 
       $tanggal = $this->input->post('daterange_edit');
 
-      $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."')";
 
-      $cek = $this->db->query($cekDatabase);
-      if ($cek->num_rows() > 0) {
-        $this->session->set_flashdata('edit', 3);
-      }
-      else {
-        $update_jadwal_lab = array(
+      //QUERY UPDATE
+      $update_jadwal_lab = array(
         'id_lab' => $id_lab,   
         'nama_matkul' => $this->input->post('matkul_edit'),
         'prodi' => $this->input->post('prodi_edit'),
         'status' => $this->input->post('status_edit'),
         'tanggal_mulai' => substr($tanggal, 0, 10),
-        'tanggal_selesai' => substr($tanggal, 13));
-        
-        $this->db->where('id_jadwal_lab', $this->input->post('id_edit')); 
-        $result = $this->db->update('jadwal_lab', $update_jadwal_lab);
-        if($result == 1) {
-          $this->session->set_flashdata('edit', 1);
-        } else {
-          $this->session->set_flashdata('edit', 2);
+        'tanggal_selesai' => substr($tanggal, 13)
+      );
+
+      // $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND '". substr($tanggal, 0, 10). "' <> tanggal_mulai AND '". substr($tanggal, 13) ."' <> tanggal_selesai AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."' )";
+      
+      $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_jadwal_lab = '" . $this->input->post('id_edit') . "'";
+
+      $cek = $this->db->query($cekDatabase);
+      foreach($cek->result_array() as $res){
+        if ($res['id_lab'] == $id_lab) {
+          //apabila ID LAB nya sama (Tidak berubah hari, sesi, lab)
+          //cek tanggalnya saja
+          // $this->session->set_flashdata('out', substr($tanggal, 0, 10) . " and " . $res['tanggal_mulai'] . " <br> " . substr($tanggal, 13) . " AND " . $res['tanggal_selesai']);
+          if((substr($tanggal, 0, 10) == $res['tanggal_mulai']) && (substr($tanggal, 13) == $res['tanggal_selesai'])){
+            $this->db->where('id_jadwal_lab', $this->input->post('id_edit')); 
+            $result = $this->db->update('jadwal_lab', $update_jadwal_lab);
+            if($result == 1) {
+              $this->session->set_flashdata('edit', 1);
+            }
+            else {
+              $this->session->set_flashdata('edit', 2);
+            }
+          }
+          else {
+            $cekDatabase2 = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND '". substr($tanggal, 0, 10). "' <> tanggal_mulai AND '". substr($tanggal, 13) ."' <> tanggal_selesai AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."' )";
+            $cek2 = $this->db->query($cekDatabase2);
+            if ($cek2->num_rows() > 0) {
+              $this->session->set_flashdata('edit', 3);
+            }
+            else {
+              $this->db->where('id_jadwal_lab', $this->input->post('id_edit')); 
+              $result = $this->db->update('jadwal_lab', $update_jadwal_lab);
+              if($result == 1) {
+                $this->session->set_flashdata('edit', 1);
+              }
+              else {
+                $this->session->set_flashdata('edit', 2);
+              }
+            }
+          }
         }
+        else {
+          $cekDatabase2 = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND '". substr($tanggal, 0, 10). "' <> tanggal_mulai AND '". substr($tanggal, 13) ."' <> tanggal_selesai AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."' AND id_jadwal_lab <> '". $this->input->post('id_edit')."')";
+          $cek2 = $this->db->query($cekDatabase2);
+          if ($cek2->num_rows() > 0) {
+            $this->session->set_flashdata('edit', 3);
+          }
+          else {
+            $this->db->where('id_jadwal_lab', $this->input->post('id_edit')); 
+            $result = $this->db->update('jadwal_lab', $update_jadwal_lab);
+            if($result == 1) {
+              $this->session->set_flashdata('edit', 1);
+            }
+            else {
+              $this->session->set_flashdata('edit', 2);
+            }
+          }
+        }   
       }
     }
 
@@ -106,8 +137,7 @@ class jadwal_lab_model extends CI_Model
 
       $tanggal = $this->input->post('daterange');
 
-      $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."')";
-
+      $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."' OR tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."')";
       $cek = $this->db->query($cekDatabase);
       if ($cek->num_rows() > 0) {
         $this->session->set_flashdata('sukses', 3);

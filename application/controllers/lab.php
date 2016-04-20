@@ -14,11 +14,11 @@ class lab extends CI_Controller
 		//load library pagination
         $this->load->library('pagination');
 
-        if (count($_GET) > 0) $config['suffix'] = '?' . http_build_query($_GET, '', "&");
+        if (count($_GET) > 0) $config['suffix'] = '1' . http_build_query($_GET, '', "&");
 
 		//configurasi pagination
         $config['base_url'] = base_url().'/lab/index/';
-        $config['first_url'] = $config['base_url'].'?'.http_build_query($_GET);
+        $config['first_url'] = $config['base_url'].'1'.http_build_query($_GET);
         $config['total_rows'] = $this->jadwal_lab_model->total_record();
         $config['per_page'] = 5;
         $config['num_links'] = 10;
@@ -42,32 +42,6 @@ class lab extends CI_Controller
         $data = $this->jadwal_lab_model->getAllJadwalLab();
 	
 		$this->load->view('template/header');
-<<<<<<< HEAD
-		$this->load->view('lab/index', array('data' => $data, 'lab' => $rows, 'pagination' => $this->pagination->create_links()));
-				$path = './images/captcha/';
-		if (!file_exists($path) )
-		{
-			$create = mkdir($path, 0777);
-			if (!$create)
-			return;
-		}
-		$word = array_merge(range('0', '9'), range('A', 'Z'));
-		$acak = shuffle($word);
-		$str  = substr(implode($word), 0, 5);
-		$data_ses = array('captcha_str' => $str);
-		$this->session->set_userdata($data_ses);
-		$vals = array(
-		    'word'	=> $str, 
-		    'img_path'	=> $path, 
-		    'img_url'	=> base_url().'images/captcha/',
-		    'img_width'	=> '150',
-		    'img_height' => 40, 
-		    'expiration' => 7200 
-		);
-		$cap = create_captcha($vals);
-		$data['captcha_image'] = $cap['image'];
-		$this->load->view('template/footer', $data);
-=======
 		$this->load->view('lab/index', array(
 			'data' => $data, 
 			'lab' => $rows, 
@@ -75,7 +49,6 @@ class lab extends CI_Controller
 			'count' => $this->jadwal_lab_model->total_record()
 			));
 		$this->load->view('template/footer');
->>>>>>> 0feadfcfc9cd3bab77394c2b66f846389e1250f7
 	}
 
 	public function insert()
