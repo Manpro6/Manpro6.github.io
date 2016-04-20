@@ -2,8 +2,15 @@
 
 class Gambar extends CI_Controller
 {
-	public function index()
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('pagination');
+    }
+
+	public function index($page = 0)
 	{
+        $this->load->model('gambar_model');
         $session_id = $this->session->userdata('is_logged_in');
         $data['sesi'] = 0;
         if($session_id == TRUE)
@@ -15,9 +22,47 @@ class Gambar extends CI_Controller
                 {
                     $data['sesi'] = 1;
                 }
+                elseif(($_GET['msg']) == 2)
+                {
+                    $data['sesi'] = 2;
+                }
+                elseif(($_GET['msg']) == 3)
+                {
+                    $data['sesi'] = 3;
+                }
+                elseif(($_GET['msg']) == 4)
+                {
+                    $data['sesi'] = 4;
+                }
     		}           
-    		$this->load->model('gambar_model');
-    		$data['gambar'] = $this->gambar_model->getGambar();
+            $config['base_url'] = base_url().'gambar/index';
+            $config['total_rows'] = $this->gambar_model->count();
+            $config['per_page'] = "3";
+            $config['uri_segment'] = 3;
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_link'] = false;
+            $config['last_link'] = false;
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo';
+            $config['prev_tag_open'] = '<li class="prev">';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config); 
+            $data['page'] = $page;
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['gambar'] = $this->gambar_model->user_limit($config['per_page'], $data['page']);
+            $data['pagination'] = $this->pagination->create_links();
     		$this->load->view('gambar/index', $data);
     		$this->load->view('template/footer');
         }
@@ -39,25 +84,19 @@ class Gambar extends CI_Controller
     	return "";
     }
 
-    public function ubah($id_gambar)
-	{
-        $data['sesi'] = 0;
-        if(isset($_GET['msg']))
+    public function insert()
+    {
+        $url = $this->do_upload();
+        if($url == null)
         {
-            if(($_GET['msg']) == 1)
-            {
-                $data['sesi'] = 1;
-            }
-            elseif(($_GET['msg']) == 2)
-            {
-                $data['sesi'] = 2;
-            }
+            redirect('gambar?msg=3'); 
         }
-        $this->load->view('template/header');
-		$this->load->model('gambar_model');
-		$data['gambar'] = $this->gambar_model->getById($id_gambar);
-		$this->load->view('gambar/edit', $data);
-		$this->load->view('template/footer');  
+        else
+        {
+            $this->load->model('gambar_model');
+            $this->gambar_model->insert($url);
+            redirect('gambar?msg=2');
+        }
     }
 
     public function update()
@@ -69,7 +108,7 @@ class Gambar extends CI_Controller
             $url = $this->do_upload();
             if($url == null)
             {
-                redirect('gambar/ubah/'.$id.'?msg=2'); 
+                redirect('gambar?msg=3'); 
             }
             else
             {
@@ -81,9 +120,24 @@ class Gambar extends CI_Controller
                 } 
             }          
         }
-        else
+    }
+
+    public function delete($id_gambar)
+    {
+        $this->load->model('gambar_model');
+        $getPath = $this->gambar_model->getById($id_gambar);
+        if(unlink($getPath['nama_gambar']))
         {
-             redirect('gambar/ubah/'.$id.'?msg=1');       
+            $this->gambar_model->delete($id_gambar);
         }
+        redirect('gambar?msg=4');
+    }
+
+    public function showGambar($id_gambar)
+    {
+        $this->load->model('gambar_model');
+        $data['gambar'] = $this->gambar_model->getById($id_gambar);
+        $this->load->view('gambar/tampilGambar', $data);
     }
 }
+?>

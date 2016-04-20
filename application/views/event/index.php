@@ -45,7 +45,7 @@
                 <strong>Sukses!</strong> Jadwal berhasil ditambahkan.</div>";
         } 
       ?>
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;" id="add">Tambah Jadwal</button>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;" id="add"><span class="glyphicon glyphicon-plus"></span> Tambah Jadwal</button>
       <div id="calendar" class="col-centered">
       <p class="lead" style="color:red;"><em><b>*Untuk mengubah/menghapus/melihat data, klik pada data di kalender</b></em></p>
       <br>

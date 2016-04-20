@@ -55,7 +55,7 @@ class berita extends CI_Controller
             }
             elseif(($_GET['msg']) == 2)
             {
-                echo "<script>alert('Tidak menerima format file selain .jpg, .jpeg, .gif dan .png');window.location.href='".$id_gambar."';</script>";
+                echo "<script>alert('Tidak menerima format file selain .jpg, .jpeg, .gif dan .png');window.location.href='".$id_berita."';</script>";
             }
         }
         $this->load->view('template/header');

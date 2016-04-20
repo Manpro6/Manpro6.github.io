@@ -37,26 +37,23 @@ $events = $req->fetchAll();
 		<div class="col-md-8">
 			<div id="myCarousel" class="carousel slide">
 		      <ol class="carousel-indicators">
-		        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		        <li data-target="#myCarousel" data-slide-to="1"></li>
-		        <li data-target="#myCarousel" data-slide-to="2"></li>
-		        <li data-target="#myCarousel" data-slide-to="3"></li>
-		        <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <?php for ($i=1; $i < $count; $i++) { 
+              echo "<li data-target='#myCarousel' data-slide-to='$i'></li>";
+            } ?>
 		      </ol>
 		     <div class="carousel-inner" role="listbox">
 		    <?php if($gambar) : ?>
 				<?php foreach ($gambar as $mydata):?>
 		        	<?php
-					    if($mydata['id_gambar'] == 1)
-					    	echo "<div class='item active'><img class='first-slide' src='$mydata[nama_gambar]'></div>";
-					    elseif($mydata['id_gambar'] == 2)
-					    	echo "<div class='item'><img class='second-slide' src='$mydata[nama_gambar]'></div>";
-					    elseif($mydata['id_gambar'] == 3)
-					    	echo "<div class='item'><img class='third-slide' src='$mydata[nama_gambar]'></div>";
-					    elseif($mydata['id_gambar'] == 4)
-					    	echo "<div class='item'><img class='fourth-slide' src='$mydata[nama_gambar]'></div>";
-					    elseif($mydata['id_gambar'] == 5)
-					    	echo "<div class='item'><img class='fifth-slide' src='$mydata[nama_gambar]'></div>";
+                if($mydata['id_gambar'] == 1)
+                {
+                  echo "<div class='item active'><img class='first-slide' src='$mydata[nama_gambar]'></div>";
+                }
+                else
+                {
+                  echo "<div class='item'><img src='$mydata[nama_gambar]'></div>";
+                }		    
 					?>   
 				<?php endforeach; ?>
    <br><br>
@@ -88,7 +85,7 @@ $events = $req->fetchAll();
           ?>
       <tr>
         <td><img style="width:300px; height:150px;margin:10px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
-        <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo $aaa['judul'] ?></strong>
+        <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo strtoupper($aaa['judul']) ?></strong>
         <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
       </tr>
       <?php endforeach; ?>

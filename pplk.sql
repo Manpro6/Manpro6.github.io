@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2016 at 12:02 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Apr 18, 2016 at 07:31 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,7 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -45,13 +46,14 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `berita` (
-`id_berita` int(11) NOT NULL,
+  `id_berita` int(11) NOT NULL AUTO_INCREMENT,
   `judul` varchar(50) NOT NULL,
   `tanggal` datetime NOT NULL,
   `penulis` varchar(40) NOT NULL,
   `isi` text NOT NULL,
-  `gambar` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `gambar` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_berita`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `berita`
@@ -59,7 +61,8 @@ CREATE TABLE IF NOT EXISTS `berita` (
 
 INSERT INTO `berita` (`id_berita`, `judul`, `tanggal`, `penulis`, `isi`, `gambar`) VALUES
 (1, 'aaaaaaaaaaaaa', '2016-04-14 11:48:57', 'aaaaaaaaa', 'abwdadadsdswdwa', './images/4374570f6a8d48b92.jpg'),
-(2, '2 pelawak mencoba bermain musik', '2016-04-14 12:00:25', 'Subagyo', 'Setiap orang mempunyai kondisi tubuh yang berbeda-beda, ada yang bergadang tiap hari, akan tetapi tidak mempengaruhi kesehatannya, akan tetapi ada yang bergadang hanya 1 hari langsung mengalami demam atau meriang. Hal ini disebabkan daya tahan seseorang yang berbeda-beda.\r\n	Hidup sehat didasari oleh 3 hal utama yaitu:\r\n1.	Berolahraga\r\nOlahraga merupakan kegiatan yang mudah untuk dilakukan, tetapi juga ada banyak orang yang sering mengabaikannya. Padahal olahraga merupakan kegiatan yang bisa menyehatkan tubuh kita. Apabila kita berolahraga secara teratur, maka banyak sekali manfaat untuk kesehatan tubuh kita seperti daya tahan tubuh meningkat, bisa menguatkan tulang-tulang, menurunkan lemak pada tubuh, mengurangi stress, menambah kebugaran tubuh dam masih banyak lagi.\r\n2.	Menjaga pola makan\r\nGayarti(2011) mengatakan kekurangan salah satu unsur zat gizi akan menyebabkan tubuh kita mengalami gangguan atau menderita penyakit. Begitu pun sebaliknya, kelebihan gizi akan menyebabkan gangguan kesehatan. Itu sebabnya kita perlu menerapkan pola makan seimbang dengan jumlah yang sesuai dengan kebutuhan. Makanan dengan gizi seimbang dalam pola makan sehat adalah makanan yang mengandung:\r\n', './images/6488570f6a3992bb6.jpg');
+(2, '2 pelawak mencoba bermain musik', '2016-04-14 12:00:25', 'Subagyo', 'Setiap orang mempunyai kondisi tubuh yang berbeda-beda, ada yang bergadang tiap hari, akan tetapi tidak mempengaruhi kesehatannya, akan tetapi ada yang bergadang hanya 1 hari langsung mengalami demam atau meriang. Hal ini disebabkan daya tahan seseorang yang berbeda-beda.\r\n	Hidup sehat didasari oleh 3 hal utama yaitu:\r\n1.	Berolahraga\r\nOlahraga merupakan kegiatan yang mudah untuk dilakukan, tetapi juga ada banyak orang yang sering mengabaikannya. Padahal olahraga merupakan kegiatan yang bisa menyehatkan tubuh kita. Apabila kita berolahraga secara teratur, maka banyak sekali manfaat untuk kesehatan tubuh kita seperti daya tahan tubuh meningkat, bisa menguatkan tulang-tulang, menurunkan lemak pada tubuh, mengurangi stress, menambah kebugaran tubuh dam masih banyak lagi.\r\n2.	Menjaga pola makan\r\nGayarti(2011) mengatakan kekurangan salah satu unsur zat gizi akan menyebabkan tubuh kita mengalami gangguan atau menderita penyakit. Begitu pun sebaliknya, kelebihan gizi akan menyebabkan gangguan kesehatan. Itu sebabnya kita perlu menerapkan pola makan seimbang dengan jumlah yang sesuai dengan kebutuhan. Makanan dengan gizi seimbang dalam pola makan sehat adalah makanan yang mengandung:\r\n', './images/6488570f6a3992bb6.jpg'),
+(3, 'Coba', '2016-04-17 04:40:11', 'Maria Alexandra C', 'Pengalaman yang menyenangkan saat di SI UKDW adalah ketika bertemu banyak teman baru dan bersama-sama mengikuti organisasi, mengerjakan tugas, bermain, bercanda, dll. Hampir semua moment di SI UKDW menyenangkan buat saya. Hal yang menurut saya unggul di SI UKDW adalah kekeluargaannnya. Kita sudah seperti saudara, baik antara sesama mahasiswa ataupun dosen dengan mahasiswa. Manfaat yang saya dapatkan selain pasti mendapatkan ilmunya, saya juga mendapatkan banyak pengalaman-pengalaman berharga yang membuat saya menjadi lebih dewasa, kreatif, kritis, aktif, dll. \r\n\r\nPengalaman menyenangkan yang pernah pernah saya alami adalah saat saya dan teman-teman diberikan kesempatan oleh SI UKDW untuk mengikuti lomba Software Development Competition. Dengan pelatihan dan dukungan yang diberikan oleh SI UKDW, tim saya dapat masuk ke Semifinal (10 besar). Hal yang menjadi keunggulan SI UKDW selain pembelajaran, mahasiswa juga diberikan kesempatan untuk saling berbaur dan mengembangkan softskills dengan adanya kegiatan SI Camp, Makrab dan organisasi-organisasi yang ada di SI UKDW. Kesan kuliah di SI UKDW adalah SI UKDW memperluas wawasan saya di bidang SI serta mempersiapkan saya untuk menghadapi persaingan global di masa mendatang. ', './images/138845712f78bb955d.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,14 +71,15 @@ INSERT INTO `berita` (`id_berita`, `judul`, `tanggal`, `penulis`, `isi`, `gambar
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `pengajar` varchar(40) NOT NULL,
   `deskripsi` text NOT NULL,
   `color` varchar(7) DEFAULT NULL,
   `start` datetime NOT NULL,
-  `end` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+  `end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `events`
@@ -101,20 +105,25 @@ INSERT INTO `events` (`id`, `title`, `pengajar`, `deskripsi`, `color`, `start`, 
 --
 
 CREATE TABLE IF NOT EXISTS `gambar` (
-`id_gambar` int(11) NOT NULL,
-  `nama_gambar` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `id_gambar` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_gambar` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_gambar`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `gambar`
 --
 
 INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
-(1, './images/15332570a274b6649e.jpg'),
+(1, './images/27943571119c637a8d.png'),
 (2, './images/2328356b76d8cc41d7.jpg'),
 (3, './images/119356b76e3f1b0d0.jpg'),
 (4, './images/263405709bf1976038.jpeg'),
-(5, './images/417956b76d3618530.jpg');
+(5, './images/417956b76d3618530.jpg'),
+(6, './images/878957146a1a65bba.jpg'),
+(7, './images/2715357145eb470eb9.jpg'),
+(8, './images/146045714672f54641.jpg'),
+(9, './images/143955714686aa2859.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,21 +132,22 @@ INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `jadwal_lab` (
-`id_jadwal_lab` int(11) NOT NULL,
+  `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,
   `id_lab` int(11) NOT NULL,
   `nama_matkul` varchar(100) NOT NULL,
   `prodi` varchar(50) NOT NULL,
   `status` varchar(100) NOT NULL,
   `tanggal_mulai` date NOT NULL,
-  `tanggal_selesai` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `tanggal_selesai` date NOT NULL,
+  PRIMARY KEY (`id_jadwal_lab`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `jadwal_lab`
 --
 
 INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `status`, `tanggal_mulai`, `tanggal_selesai`) VALUES
-(1, 1, 'Algoritma dan Pemrograman', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
+(1, 1, 'Algoritma dan Pemrograman', 'Sistem Informasi', 'Pengganti', '2016-04-09', '2016-04-09'),
 (3, 5, 'Desain Game', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
 (9, 29, 'Ervan Ganteng', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09');
 
@@ -148,32 +158,26 @@ INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `st
 --
 
 CREATE TABLE IF NOT EXISTS `kritik` (
-`id_kritik` int(11) NOT NULL,
+  `id_kritik` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `pesan` text NOT NULL,
-  `tanggal` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+  `tanggal` datetime NOT NULL,
+  PRIMARY KEY (`id_kritik`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
 
 --
 -- Dumping data for table `kritik`
 --
 
 INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
-(33, 'monxanbel@gmail.com', 'monxanbel', 'uji coba', '2016-04-11 23:27:28'),
-(34, 'monxanbel@gmail.com', 'monxanbel', 'lala', '2016-04-12 23:25:57'),
-(35, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-12 23:36:15'),
-(36, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-12 23:39:08'),
-(37, 'monxanbel@gmail.com', 'monxanbel', 'aaaa', '2016-04-12 23:39:31'),
-(38, 'monxanbel@gmail.com', 'monxanbel', 'oaoaoaoa', '2016-04-12 23:45:49'),
-(39, 'monxanbel@gmail.com', 'monxanbel', 'LALALA', '2016-04-12 23:50:41'),
-(40, 'monxanbel@gmail.com', 'monxanbel', 'aodasaa', '2016-04-12 23:53:18'),
-(41, 'monxanbel@gmail.com', 'monxanbel', 'asadasa', '2016-04-12 23:54:44'),
-(42, 'monxanbel@gmail.com', 'monxanbel', 'adas', '2016-04-12 23:58:40'),
-(43, 'monxanbel@gmail.com', 'monxanbel', 'sadasda', '2016-04-13 00:03:58'),
-(44, 'monxanbel@gmail.com', 'monxanbel', 'lala', '2016-04-13 23:25:32'),
-(45, 'Monxanbel@gmail.com', 'maria', 'lala', '2016-04-13 23:26:52'),
-(46, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-13 23:32:47');
+(1, 'monxanbel@gmail.com', 'monxanbel', 'laaaaaaaaaaaaaaaaaaaaaaaaaaa. kasdaadsa', '2016-04-17 00:00:00'),
+(41, 'monxanbel@gmail.com', 'monxanbel', 'Pengalaman yang menyenangkan saat di SI UKDW adalah ketika bertemu banyak teman baru dan bersama-sama mengikuti organisasi, mengerjakan tugas, bermain, bercanda, dll. Hampir semua moment di SI UKDW menyenangkan buat saya. Hal yang menurut saya unggul di SI UKDW adalah kekeluargaannnya. Kita sudah seperti saudara, baik antara sesama mahasiswa ataupun dosen dengan mahasiswa. Manfaat yang saya dapatkan selain pasti mendapatkan ilmunya, saya juga mendapatkan banyak pengalaman-pengalaman berharga yang membuat saya menjadi lebih dewasa, kreatif, kritis, aktif, dll. \r\n\r\nPengalaman menyenangkan yang pernah pernah saya alami adalah saat saya dan teman-teman diberikan kesempatan oleh SI UKDW untuk mengikuti lomba Software Development Competition. Dengan pelatihan dan dukungan yang diberikan oleh SI UKDW, tim saya dapat masuk ke Semifinal (10 besar). Hal yang menjadi keunggulan SI UKDW selain pembelajaran, mahasiswa juga diberikan kesempatan untuk saling berbaur dan mengembangkan softskills dengan adanya kegiatan SI Camp, Makrab dan organisasi-organisasi yang ada di SI UKDW. Kesan kuliah di SI UKDW adalah SI UKDW memperluas wawasan saya di bidang SI serta mempersiapkan saya untuk menghadapi persaingan global di masa mendatang', '2016-04-17 15:10:18'),
+(42, 'monxanbel@gmail.com', 'monxanbel', 'asmafmafadas', '2016-04-17 18:00:00'),
+(43, 'monxanbel@gmail.com', 'monxanbel', 'saafnbajsdfanczxmczc', '2016-04-17 00:00:00'),
+(44, 'monxanbel@gmail.com', 'monxanbel', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssssssssssss', '2016-04-17 00:00:00'),
+(55, 'monxanbel@gmail.com', 'monxanbel', 'Daftar Drama Korea :\r\n- Marriage Contract\r\n- Reply 1988\r\n- Page Turner\r\n- Goodbye Mr. Black\r\n- Vampire Detective\r\n- Neighborhood''s Hero\r\n- Sweet Savage Family\r\n- Queen in Hyun''s man', '2016-04-18 10:18:00'),
+(56, 'monxanbel@gmail.com', 'monxanbel', 'Function deleteSeragam*\r\nFunction deleteSeragam digunakan untuk menghapus data pembayaran seragam yang sebelumnya sudah ditambahkan ke dalam sistem untuk dilakukan pembayaran seragam. Pada bayar_model, function yang digunakan untuk menghapus data pembayaran seragam adalah deleteSeragam(). View yang digunakan untuk melakukan penghapusan data pembayaran seragam adalah showSeragam.php\r\n\r\nFunction deleteLain*\r\nFunction deleteLain digunakan untuk menghapus data pembayaran lain yang sebelumnya sudah ditambahkan ke dalam sistem untuk dilakukan pembayaran lain. Pada bayar_model, function yang digunakan untuk menghapus data pembayaran lain adalah deleteLain(). View yang digunakan untuk melakukan penghapusan data pembayaran lain adalah showLain.php\r\n\r\nFunction deleteAll\r\nFunction deleteAll digunakan untuk menghapus seluruh data pembayaran SPP, ekskul, seragam, buku dan lain-lain yang sebelumnya sudah ditambahkan ke dalam sistem untuk dilakukan pembayaran. Pada bayar_model, function yang digunakan adalah delSPP(), delEkskul(), delLain(), delSeragam() dan delBuku(). Tiap function tersebut akan menghapus data pada database sesuai dengan id transaksi. Function ini dijalankan ketika pengguna membatalkan transaksi pembayaran yang sudah ditambahkan (pembayaran batal dilakukan dan kwitansi tidak dicetak). \r\n\r\nFunction kwitansi\r\nFunction kwitansi digunakan untuk memindahkan data pembayaran SPP dan ekskul yang semula datanya telah berhasil ditambahkan dan disimpan ke dalam tabel sementara menjadi tabel permanen di dalam sistem. Setelah data dipindahkan, maka data yang ada pada tabel sementara akan dihapus oleh sistem. Selain itu, function ini juga digunakan untuk menambahkan data ke tabel tr_bayar berupa jumlah pembayaran yang dilakukan sesuai dengan jenis pembayarannya. \r\n\r\nFunction addno\r\nFunction addno digunakan untuk menampilkan nomor kwitansi sesuai dengan aturan yang berlaku di Budi Utama saat kwitansi akan dicetak. Pada bayar_model, function yang digunakan untuk mengenerate nomor kwitansi adalah addNoKwitansi(). Function ini dijalankan setelah function kwitansi.\r\n', '2016-04-18 10:30:00');
 
 -- --------------------------------------------------------
 
@@ -182,11 +186,12 @@ INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `lab` (
-`id_lab` int(11) NOT NULL,
+  `id_lab` int(11) NOT NULL AUTO_INCREMENT,
   `lab` varchar(11) NOT NULL,
   `hari` varchar(10) NOT NULL,
-  `sesi` varchar(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=latin1;
+  `sesi` varchar(11) NOT NULL,
+  PRIMARY KEY (`id_lab`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=253 ;
 
 --
 -- Dumping data for table `lab`
@@ -446,86 +451,6 @@ INSERT INTO `lab` (`id_lab`, `lab`, `hari`, `sesi`) VALUES
 (251, 'Lab I', 'Minggu', 'III'),
 (252, 'Lab I', 'Minggu', 'IV');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
- ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `berita`
---
-ALTER TABLE `berita`
- ADD PRIMARY KEY (`id_berita`);
-
---
--- Indexes for table `events`
---
-ALTER TABLE `events`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `gambar`
---
-ALTER TABLE `gambar`
- ADD PRIMARY KEY (`id_gambar`);
-
---
--- Indexes for table `jadwal_lab`
---
-ALTER TABLE `jadwal_lab`
- ADD PRIMARY KEY (`id_jadwal_lab`);
-
---
--- Indexes for table `kritik`
---
-ALTER TABLE `kritik`
- ADD PRIMARY KEY (`id_kritik`);
-
---
--- Indexes for table `lab`
---
-ALTER TABLE `lab`
- ADD PRIMARY KEY (`id_lab`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `berita`
---
-ALTER TABLE `berita`
-MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT for table `gambar`
---
-ALTER TABLE `gambar`
-MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `jadwal_lab`
---
-ALTER TABLE `jadwal_lab`
-MODIFY `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `kritik`
---
-ALTER TABLE `kritik`
-MODIFY `id_kritik` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
---
--- AUTO_INCREMENT for table `lab`
---
-ALTER TABLE `lab`
-MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=253;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

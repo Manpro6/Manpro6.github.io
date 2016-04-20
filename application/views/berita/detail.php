@@ -15,7 +15,7 @@
          <td></td>
          </tr>
          <tr style="height:50px;">
-           <td> <strong><?php echo $berita['penulis'] ?>
+           <td> <strong><?php echo $berita['penulis'] ?> |
           <?php echo $berita['tanggal'] ?></strong></td>
          </tr>
           <tr>

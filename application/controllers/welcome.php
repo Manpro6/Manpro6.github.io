@@ -43,6 +43,7 @@ class welcome extends CI_Controller
 		$this->load->view('template/header');
 		$this->load->model('gambar_model');
 		$this->load->model('berita_model');
+		$data['count'] = $this->gambar_model->count();
 		$data['gambar'] = $this->gambar_model->getGambar();
 		$data['berita'] = $this->berita_model->getTerbaru();
 		$this->load->view('welcome_message', $data);

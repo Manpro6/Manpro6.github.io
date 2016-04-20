@@ -4,7 +4,7 @@
       }
       else {
    ?>
-	<footer class="navbar-wrapper2" style="background-color:#0066ff;margin-top:850px;">
+	<footer class="navbar-wrapper2" style="background-color:#0066ff;margin-top:80%;">
 	<br>
 		<div class="container">
 			<div class="col-md-7">	

@@ -63,7 +63,7 @@
                 <li><a href="<?php echo base_url('/gambar')?>">Gambar</a></li>       
                 <li><a href="<?php echo base_url('/event')?>">Penjadwalan</a></li> 
                 <li><a href="<?php echo base_url('/lab')?>">Jadwal Lab</a></li> 
-                <li><a href="<?php echo base_url('/krisan')?>">Krisan</a></li>
+                <li><a href="<?php echo base_url('/krisan')?>">Kritik & Saran</a></li>
                 <li><a href="<?php echo base_url('/berita')?>">Berita</a></li>  
               </ul>
               <ul style="float:right;" class="nav navbar-nav">
