@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2016 at 07:31 AM
+-- Generation Time: Apr 20, 2016 at 03:42 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `berita` (
   `isi` text NOT NULL,
   `gambar` varchar(50) NOT NULL,
   PRIMARY KEY (`id_berita`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `berita`
@@ -61,8 +61,7 @@ CREATE TABLE IF NOT EXISTS `berita` (
 
 INSERT INTO `berita` (`id_berita`, `judul`, `tanggal`, `penulis`, `isi`, `gambar`) VALUES
 (1, 'aaaaaaaaaaaaa', '2016-04-14 11:48:57', 'aaaaaaaaa', 'abwdadadsdswdwa', './images/4374570f6a8d48b92.jpg'),
-(2, '2 pelawak mencoba bermain musik', '2016-04-14 12:00:25', 'Subagyo', 'Setiap orang mempunyai kondisi tubuh yang berbeda-beda, ada yang bergadang tiap hari, akan tetapi tidak mempengaruhi kesehatannya, akan tetapi ada yang bergadang hanya 1 hari langsung mengalami demam atau meriang. Hal ini disebabkan daya tahan seseorang yang berbeda-beda.\r\n	Hidup sehat didasari oleh 3 hal utama yaitu:\r\n1.	Berolahraga\r\nOlahraga merupakan kegiatan yang mudah untuk dilakukan, tetapi juga ada banyak orang yang sering mengabaikannya. Padahal olahraga merupakan kegiatan yang bisa menyehatkan tubuh kita. Apabila kita berolahraga secara teratur, maka banyak sekali manfaat untuk kesehatan tubuh kita seperti daya tahan tubuh meningkat, bisa menguatkan tulang-tulang, menurunkan lemak pada tubuh, mengurangi stress, menambah kebugaran tubuh dam masih banyak lagi.\r\n2.	Menjaga pola makan\r\nGayarti(2011) mengatakan kekurangan salah satu unsur zat gizi akan menyebabkan tubuh kita mengalami gangguan atau menderita penyakit. Begitu pun sebaliknya, kelebihan gizi akan menyebabkan gangguan kesehatan. Itu sebabnya kita perlu menerapkan pola makan seimbang dengan jumlah yang sesuai dengan kebutuhan. Makanan dengan gizi seimbang dalam pola makan sehat adalah makanan yang mengandung:\r\n', './images/6488570f6a3992bb6.jpg'),
-(3, 'Coba', '2016-04-17 04:40:11', 'Maria Alexandra C', 'Pengalaman yang menyenangkan saat di SI UKDW adalah ketika bertemu banyak teman baru dan bersama-sama mengikuti organisasi, mengerjakan tugas, bermain, bercanda, dll. Hampir semua moment di SI UKDW menyenangkan buat saya. Hal yang menurut saya unggul di SI UKDW adalah kekeluargaannnya. Kita sudah seperti saudara, baik antara sesama mahasiswa ataupun dosen dengan mahasiswa. Manfaat yang saya dapatkan selain pasti mendapatkan ilmunya, saya juga mendapatkan banyak pengalaman-pengalaman berharga yang membuat saya menjadi lebih dewasa, kreatif, kritis, aktif, dll. \r\n\r\nPengalaman menyenangkan yang pernah pernah saya alami adalah saat saya dan teman-teman diberikan kesempatan oleh SI UKDW untuk mengikuti lomba Software Development Competition. Dengan pelatihan dan dukungan yang diberikan oleh SI UKDW, tim saya dapat masuk ke Semifinal (10 besar). Hal yang menjadi keunggulan SI UKDW selain pembelajaran, mahasiswa juga diberikan kesempatan untuk saling berbaur dan mengembangkan softskills dengan adanya kegiatan SI Camp, Makrab dan organisasi-organisasi yang ada di SI UKDW. Kesan kuliah di SI UKDW adalah SI UKDW memperluas wawasan saya di bidang SI serta mempersiapkan saya untuk menghadapi persaingan global di masa mendatang. ', './images/138845712f78bb955d.jpg');
+(2, '2 pelawak mencoba bermain musik', '2016-04-14 12:00:25', 'Subagyo', 'Setiap orang mempunyai kondisi tubuh yang berbeda-beda, ada yang bergadang tiap hari, akan tetapi tidak mempengaruhi kesehatannya, akan tetapi ada yang bergadang hanya 1 hari langsung mengalami demam atau meriang. Hal ini disebabkan daya tahan seseorang yang berbeda-beda.\r\n	Hidup sehat didasari oleh 3 hal utama yaitu:\r\n1.	Berolahraga\r\nOlahraga merupakan kegiatan yang mudah untuk dilakukan, tetapi juga ada banyak orang yang sering mengabaikannya. Padahal olahraga merupakan kegiatan yang bisa menyehatkan tubuh kita. Apabila kita berolahraga secara teratur, maka banyak sekali manfaat untuk kesehatan tubuh kita seperti daya tahan tubuh meningkat, bisa menguatkan tulang-tulang, menurunkan lemak pada tubuh, mengurangi stress, menambah kebugaran tubuh dam masih banyak lagi.\r\n2.	Menjaga pola makan\r\nGayarti(2011) mengatakan kekurangan salah satu unsur zat gizi akan menyebabkan tubuh kita mengalami gangguan atau menderita penyakit. Begitu pun sebaliknya, kelebihan gizi akan menyebabkan gangguan kesehatan. Itu sebabnya kita perlu menerapkan pola makan seimbang dengan jumlah yang sesuai dengan kebutuhan. Makanan dengan gizi seimbang dalam pola makan sehat adalah makanan yang mengandung:\r\n', './images/6488570f6a3992bb6.jpg');
 
 -- --------------------------------------------------------
 
@@ -115,15 +114,14 @@ CREATE TABLE IF NOT EXISTS `gambar` (
 --
 
 INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
-(1, './images/27943571119c637a8d.png'),
+(1, './images/3452571774d6ac243.png'),
 (2, './images/2328356b76d8cc41d7.jpg'),
 (3, './images/119356b76e3f1b0d0.jpg'),
 (4, './images/263405709bf1976038.jpeg'),
 (5, './images/417956b76d3618530.jpg'),
 (6, './images/878957146a1a65bba.jpg'),
 (7, './images/2715357145eb470eb9.jpg'),
-(8, './images/146045714672f54641.jpg'),
-(9, './images/143955714686aa2859.jpg');
+(8, './images/146045714672f54641.jpg');
 
 -- --------------------------------------------------------
 
@@ -177,7 +175,7 @@ INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
 (43, 'monxanbel@gmail.com', 'monxanbel', 'saafnbajsdfanczxmczc', '2016-04-17 00:00:00'),
 (44, 'monxanbel@gmail.com', 'monxanbel', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssssssssssss', '2016-04-17 00:00:00'),
 (55, 'monxanbel@gmail.com', 'monxanbel', 'Daftar Drama Korea :\r\n- Marriage Contract\r\n- Reply 1988\r\n- Page Turner\r\n- Goodbye Mr. Black\r\n- Vampire Detective\r\n- Neighborhood''s Hero\r\n- Sweet Savage Family\r\n- Queen in Hyun''s man', '2016-04-18 10:18:00'),
-(56, 'monxanbel@gmail.com', 'monxanbel', 'Function deleteSeragam*\r\nFunction deleteSeragam digunakan untuk menghapus data pembayaran seragam yang sebelumnya sudah ditambahkan ke dalam sistem untuk dilakukan pembayaran seragam. Pada bayar_model, function yang digunakan untuk menghapus data pembayaran seragam adalah deleteSeragam(). View yang digunakan untuk melakukan penghapusan data pembayaran seragam adalah showSeragam.php\r\n\r\nFunction deleteLain*\r\nFunction deleteLain digunakan untuk menghapus data pembayaran lain yang sebelumnya sudah ditambahkan ke dalam sistem untuk dilakukan pembayaran lain. Pada bayar_model, function yang digunakan untuk menghapus data pembayaran lain adalah deleteLain(). View yang digunakan untuk melakukan penghapusan data pembayaran lain adalah showLain.php\r\n\r\nFunction deleteAll\r\nFunction deleteAll digunakan untuk menghapus seluruh data pembayaran SPP, ekskul, seragam, buku dan lain-lain yang sebelumnya sudah ditambahkan ke dalam sistem untuk dilakukan pembayaran. Pada bayar_model, function yang digunakan adalah delSPP(), delEkskul(), delLain(), delSeragam() dan delBuku(). Tiap function tersebut akan menghapus data pada database sesuai dengan id transaksi. Function ini dijalankan ketika pengguna membatalkan transaksi pembayaran yang sudah ditambahkan (pembayaran batal dilakukan dan kwitansi tidak dicetak). \r\n\r\nFunction kwitansi\r\nFunction kwitansi digunakan untuk memindahkan data pembayaran SPP dan ekskul yang semula datanya telah berhasil ditambahkan dan disimpan ke dalam tabel sementara menjadi tabel permanen di dalam sistem. Setelah data dipindahkan, maka data yang ada pada tabel sementara akan dihapus oleh sistem. Selain itu, function ini juga digunakan untuk menambahkan data ke tabel tr_bayar berupa jumlah pembayaran yang dilakukan sesuai dengan jenis pembayarannya. \r\n\r\nFunction addno\r\nFunction addno digunakan untuk menampilkan nomor kwitansi sesuai dengan aturan yang berlaku di Budi Utama saat kwitansi akan dicetak. Pada bayar_model, function yang digunakan untuk mengenerate nomor kwitansi adalah addNoKwitansi(). Function ini dijalankan setelah function kwitansi.\r\n', '2016-04-18 10:30:00');
+(56, 'monxanbel@gmail.com', 'monxanbel', 'uji coba ya', '2016-04-20 19:30:55');
 
 -- --------------------------------------------------------
 

@@ -3,9 +3,9 @@
   <br>
     <p class="lead">
       <h2 class="featurette-heading" style="text-align: center;">Sertifikasi PPLK</h2>
+      <hr>
       <img class="featurette-image img-responsive center-block" style="width:600px; height:330px:-70px;" src="<?php echo base_url('images/lab-1.jpg')?>">
-      <hr >
-      <H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain : 
+      <br><H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain : 
     </H4>  
     
     <ol>    
@@ -15,10 +15,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sertifikasi</th>
-        <th>Biaya Assesmen</th>
-        <th>Biaya Sertifikasi</th>
-        <th>Biaya Resertifikasi</th>
+        <th style="width:40%;">Sertifikasi</th>
+        <th style="width:20%;">Biaya Assesmen</th>
+        <th style="width:20%;">Biaya Sertifikasi</th>
+        <th style="width:20%;">Biaya Resertifikasi</th>
       </tr>
     </thead>
     <tbody>
@@ -49,10 +49,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sertifikasi</th>
-        <th>Biaya Assesmen</th>
-        <th>Biaya Sertifikasi</th>
-        <th>Biaya Resertifikasi</th>
+        <th style="width:40%;">Sertifikasi</th>
+        <th style="width:20%;">Biaya Assesmen</th>
+        <th style="width:20%;">Biaya Sertifikasi</th>
+        <th style="width:20%;">Biaya Resertifikasi</th>
       </tr>
     </thead>
     <tbody>
@@ -113,10 +113,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sertifikasi</th>
-        <th>Biaya Assesmen</th>
-        <th>Biaya Sertifikasi</th>
-        <th>Biaya Resertifikasi</th>
+        <th style="width:40%;">Sertifikasi</th>
+        <th style="width:20%;">Biaya Assesmen</th>
+        <th style="width:20%;">Biaya Sertifikasi</th>
+        <th style="width:20%;">Biaya Resertifikasi</th>
       </tr>
     </thead>
     <tbody>
@@ -141,10 +141,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sertifikasi</th>
-        <th>Biaya Assesmen</th>
-        <th>Biaya Sertifikasi</th>
-        <th>Biaya Resertifikasi</th>
+        <th style="width:40%;">Sertifikasi</th>
+        <th style="width:20%;">Biaya Assesmen</th>
+        <th style="width:20%;">Biaya Sertifikasi</th>
+        <th style="width:20%;">Biaya Resertifikasi</th>
       </tr>
     </thead>
     <tbody>
@@ -175,10 +175,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sertifikasi</th>
-        <th>Biaya Assesmen</th>
-        <th>Biaya Sertifikasi</th>
-        <th>Biaya Resertifikasi</th>
+        <th style="width:40%;">Sertifikasi</th>
+        <th style="width:20%;">Biaya Assesmen</th>
+        <th style="width:20%;">Biaya Sertifikasi</th>
+        <th style="width:20%;">Biaya Resertifikasi</th>
       </tr>
     </thead>
     <tbody>
@@ -209,10 +209,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Sertifikasi</th>
-        <th>Biaya Assesmen</th>
-        <th>Biaya Sertifikasi</th>
-        <th>Biaya Resertifikasi</th>
+        <th style="width:40%;">Sertifikasi</th>
+        <th style="width:20%;">Biaya Assesmen</th>
+        <th style="width:20%;">Biaya Sertifikasi</th>
+        <th style="width:20%;">Biaya Resertifikasi</th>
       </tr>
     </thead>
     <tbody>
