@@ -42,9 +42,13 @@ class lab extends CI_Controller
         $data = $this->jadwal_lab_model->getAllJadwalLab();
 	
 		$this->load->view('template/header');
-<<<<<<< HEAD
-		$this->load->view('lab/index', array('data' => $data, 'lab' => $rows, 'pagination' => $this->pagination->create_links()));
-				$path = './images/captcha/';
+		$this->load->view('lab/index', array(
+			'data' => $data, 
+			'lab' => $rows, 
+			'pagination' => $this->pagination->create_links(), 
+			'count' => $this->jadwal_lab_model->total_record()
+			));
+		$path = './images/captcha/';
 		if (!file_exists($path) )
 		{
 			$create = mkdir($path, 0777);
@@ -54,7 +58,7 @@ class lab extends CI_Controller
 		$word = array_merge(range('0', '9'), range('A', 'Z'));
 		$acak = shuffle($word);
 		$str  = substr(implode($word), 0, 5);
-		$data_ses = array('captcha_str' => $str);
+		$data_ses = array('captcha_str' => $str	);
 		$this->session->set_userdata($data_ses);
 		$vals = array(
 		    'word'	=> $str, 
@@ -67,15 +71,7 @@ class lab extends CI_Controller
 		$cap = create_captcha($vals);
 		$data['captcha_image'] = $cap['image'];
 		$this->load->view('template/footer', $data);
-=======
-		$this->load->view('lab/index', array(
-			'data' => $data, 
-			'lab' => $rows, 
-			'pagination' => $this->pagination->create_links(), 
-			'count' => $this->jadwal_lab_model->total_record()
-			));
 		$this->load->view('template/footer');
->>>>>>> 0feadfcfc9cd3bab77394c2b66f846389e1250f7
 	}
 
 	public function insert()
