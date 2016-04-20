@@ -7,10 +7,34 @@ class jadwal_lab_model extends CI_Model
       $this->load->database();
     }
 
-    public function getAllJadwalLab($where = "")
+    public function getAllJadwalLabs($where = "")
     {
       $query = "SELECT jadwal_lab.id_lab AS id_lab, nama_matkul, prodi, hari, sesi, lab FROM lab, jadwal_lab WHERE (curdate() BETWEEN jadwal_lab.tanggal_mulai AND jadwal_lab.tanggal_selesai) AND lab.id_lab = jadwal_lab.id_lab";
       $data = $this->db->query($query . $where);
+      return $data->result_array(); 
+    }
+
+    public function getAllJadwalLab()
+    { 
+      if ( isset( $_GET['tanggal'] ) && !empty( $_GET['tanggal'] ) ){
+        $tanggal = $this->input->get('tanggal');
+      }
+      else {
+        $tanggal = date('Y-m-d'); 
+      }
+      $where = "";
+      if ( isset( $_GET['prodi'] ) && !empty( $_GET['prodi'] ) ){
+        if($this->input->get('prodi') == "Semua Program Studi") {
+
+        } else {
+          $where = "AND jadwal_lab.prodi = '" . $this->input->get('prodi') ."'";
+        }
+      }
+      else {
+        $where = ""; 
+      }
+      $query = "SELECT jadwal_lab.id_lab AS id_lab, nama_matkul, prodi, hari, sesi, lab FROM lab, jadwal_lab WHERE ('". $tanggal ."' BETWEEN jadwal_lab.tanggal_mulai AND jadwal_lab.tanggal_selesai) AND lab.id_lab = jadwal_lab.id_lab ". $where;
+      $data = $this->db->query($query);
       return $data->result_array();
     }
 
@@ -42,20 +66,28 @@ class jadwal_lab_model extends CI_Model
 
       $tanggal = $this->input->post('daterange_edit');
 
-      $update_jadwal_lab = array(
-      'id_lab' => $id_lab,   
-      'nama_matkul' => $this->input->post('matkul_edit'),
-      'prodi' => $this->input->post('prodi_edit'),
-      'status' => $this->input->post('status_edit'),
-      'tanggal_mulai' => substr($tanggal, 0, 10),
-      'tanggal_selesai' => substr($tanggal, 13));
-      
-      $this->db->where('id_jadwal_lab', $this->input->post('id_edit')); 
-      $result = $this->db->update('jadwal_lab', $update_jadwal_lab);
-      if($result == 1) {
-        $this->session->set_flashdata('edit', 1);
-      } else {
-        $this->session->set_flashdata('edit', 2);
+      $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."')";
+
+      $cek = $this->db->query($cekDatabase);
+      if ($cek->num_rows() > 0) {
+        $this->session->set_flashdata('edit', 3);
+      }
+      else {
+        $update_jadwal_lab = array(
+        'id_lab' => $id_lab,   
+        'nama_matkul' => $this->input->post('matkul_edit'),
+        'prodi' => $this->input->post('prodi_edit'),
+        'status' => $this->input->post('status_edit'),
+        'tanggal_mulai' => substr($tanggal, 0, 10),
+        'tanggal_selesai' => substr($tanggal, 13));
+        
+        $this->db->where('id_jadwal_lab', $this->input->post('id_edit')); 
+        $result = $this->db->update('jadwal_lab', $update_jadwal_lab);
+        if($result == 1) {
+          $this->session->set_flashdata('edit', 1);
+        } else {
+          $this->session->set_flashdata('edit', 2);
+        }
       }
     }
 
@@ -74,19 +106,27 @@ class jadwal_lab_model extends CI_Model
 
       $tanggal = $this->input->post('daterange');
 
-      $insert_jadwal_lab = array(
-      'id_lab' => $id_lab,   
-      'nama_matkul' => $this->input->post('matkul'),
-      'prodi' => $this->input->post('prodi'),
-      'status' => $this->input->post('status'),
-      'tanggal_mulai' => substr($tanggal, 0, 10),
-      'tanggal_selesai' => substr($tanggal, 13));
+      $cekDatabase = "SELECT * FROM jadwal_lab WHERE id_lab = '".$id_lab."' AND (tanggal_mulai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."') OR (tanggal_selesai BETWEEN '".substr($tanggal, 0, 10)."' AND '".substr($tanggal, 13)."')";
 
-      $result = $this->db->insert('jadwal_lab', $insert_jadwal_lab);
-      if($result == 1) {
-        $this->session->set_flashdata('sukses', 1);
-      } else {
-        $this->session->set_flashdata('sukses', 2);
+      $cek = $this->db->query($cekDatabase);
+      if ($cek->num_rows() > 0) {
+        $this->session->set_flashdata('sukses', 3);
+      }
+      else {
+        $insert_jadwal_lab = array(
+        'id_lab' => $id_lab,   
+        'nama_matkul' => $this->input->post('matkul'),
+        'prodi' => $this->input->post('prodi'),
+        'status' => $this->input->post('status'),
+        'tanggal_mulai' => substr($tanggal, 0, 10),
+        'tanggal_selesai' => substr($tanggal, 13));
+
+        $result = $this->db->insert('jadwal_lab', $insert_jadwal_lab);
+        if($result == 1) {
+          $this->session->set_flashdata('sukses', 1);
+        } else {
+          $this->session->set_flashdata('sukses', 2);
+        }
       }
     }
 

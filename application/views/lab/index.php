@@ -1,7 +1,9 @@
 <?php 
   global $i;
   $iterasi = 1;
+  $indeks = ($this->pagination->cur_page-1)*$this->pagination->per_page;
  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,24 +12,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <?php $session_id = $this->session->userdata('is_logged_in');
+      if($session_id == TRUE) { ?>
     <title>Admin Panel - Jadwal Lab</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <?php } else { ?>
+    <title>Jadwal Lab PPLK</title>
+    <?php } ?>
+    <script src="<?php echo base_url('js/jquery.1.12.0.js');?>"></script>
+    <script src="<?php echo base_url('js/bootstrap.min.js');?>"></script>
     <!-- Include Required Prerequisites -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="<?php echo base_url('js/v_lab.js')?>"></script>     
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-    <!-- Edit Form Modal -->
-    <script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('js/jquery.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('js/moment.min.js');?>"></script>
 
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="<?php echo base_url('js/daterangepicker.js');?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/daterangepicker.css');?>" />
+    
+    <!-- Edit Form Modal -->
+    <script src="<?php echo base_url('js/bootbox.js');?>"></script>
+
+    <!-- Datepicker -->
 
     <script type="text/javascript">
-
-
     $(function() {
+        $('#singledatepicker').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            locale: {
+              format: 'YYYY-MM-DD'
+            },
+            startDate: <?php 
+              if(isset($_GET['tanggal']) && !empty($_GET['tanggal'])) {
+                echo "'".$_GET['tanggal']."'";
+              } else if (!isset($_GET['tanggal'])) { 
+                echo date("Y-m-d");
+              }
+            ?>
+        });
+    });
+
+    $(function() {  
       $('input[name="daterange"]').daterangepicker(
       {
           locale: {
@@ -42,7 +66,7 @@
     });
 
     $(function() {
-      $('input[name="daterange_edit"]').daterangepicker(
+      $('#datepicker').daterangepicker(
       {
           locale: {
             format: 'YYYY-MM-DD'
@@ -56,12 +80,24 @@
     });
 
     $(document).ready(function() {
-      $('.alert').delay(5000).fadeOut();
-      $('.close').click(function(){
-         $(this).parent().fadeOut( "slow", function() {
-            // Animation complete.
-          });
+      $('select[name=pilihProdi]').val('<?php
+        if(isset($_GET['prodi'])) {
+          echo $_GET['prodi'];
+        } else {
+          echo "Semua Program Studi";
+        }
+       ?>');
+      $('select[name=pilihProdi]').on('change', function(){
+        url = "<?php echo base_url('/lab') ?>" + "/?prodi=" + $('select[name=pilihProdi]').val() + "&tanggal=" + $('#singledatepicker').val();
+        $(location).attr("href", url);
       });
+
+      $('#singledatepicker').on('change', function(){
+        url = "<?php echo base_url('/lab') ?>" + "/?prodi=" + $('select[name=pilihProdi]').val() + "&tanggal=" + $('#singledatepicker').val();
+        $(location).attr("href", url);
+      });
+
+      $('.alert').delay(5000).fadeOut();
       $('.editButton').on('click', function() {
         var id = $(this).attr('data-id');
         var matkul = $(this).closest('tr').children('td.matkul').text();
@@ -163,6 +199,10 @@
     .optiongroup {
       float: left;
     }
+
+    .tanggal {
+      float: left;
+    }
     </style>
 </head>
 <body>
@@ -175,45 +215,55 @@
         if($this->session->flashdata('sukses') == 1){
     ?>
     <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Sukses!</strong> Entri jadwal baru berhasil.
-      <a class="close" href="#">Tutup (X)</a>
     </div>
     <?php } else if($this->session->flashdata('sukses') == 2  ) { ?>
 
     <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Gagal!</strong> Entri jadwal baru tidak berhasil.
-      <a class="close" href="#">Tutup (X)</a>
+    </div>
+    <?php } else if($this->session->flashdata('sukses') == 3  ) { ?>
+
+    <div class="alert alert-warning">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Gagal!</strong> Sudah ada jadwal pada tanggal tersebut!
     </div>
     <?php } if($this->session->flashdata('hapus') == 1){
     ?>
     <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Sukses!</strong> Jadwal lab berhasil dihapus.
-      <a class="close" href="#">Tutup (X)</a>
     </div>
     <?php } else if($this->session->flashdata('hapus') == 2  ) { ?>
 
     <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Gagal!</strong> Jadwal lab tidak berhasil dihapus.
-      <a class="close" href="#">Tutup (X)</a>s
     </div>
      ?>
 
     <?php } if($this->session->flashdata('edit') == 1){
     ?>
     <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Sukses!</strong> Jadwal lab berhasil diedit.
-      <a class="close" href="#">Tutup (X)</a>
     </div>
     <?php } else if($this->session->flashdata('edit') == 2  ) { ?>
 
     <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Gagal!</strong> Jadwal lab tidak berhasil diedit.
-      <a class="close" href="#">Tutup (X)</a>s
     </div>
      ?>
+    <?php } else if($this->session->flashdata('edit') == 3  ) { ?>
 
-    <?php } 
-    ?>
+    <div class="alert alert-warning">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Gagal!</strong> Sudah ada jadwal pada tanggal tersebut!
+    </div>
+    <?php } ?>
 
 
     <div class="dropdown">
@@ -228,14 +278,15 @@
        ?>
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a href="?lab=Lab A">Lab A</a></li>
-        <li><a href="?lab=Lab B">Lab B</a></li>
-        <li><a href="?lab=Lab C">Lab C</a></li>
-        <li><a href="?lab=Lab D">Lab D</a></li>
-        <li><a href="?lab=Lab F">Lab F</a></li>
-        <li><a href="?lab=Lab G">Lab G</a></li>
-        <li><a href="?lab=Lab H">Lab H</a></li>
-        <li><a href="?lab=Lab I">Lab I</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab A'); ?>">Lab A</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab B'); ?>">Lab B</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab C'); ?>">Lab C</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab D'); ?>">Lab D</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab E'); ?>">Lab E</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab F'); ?>">Lab F</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab G'); ?>">Lab G</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab H'); ?>">Lab H</a></li>
+        <li><a href="<?php echo base_url('lab/?lab=Lab I'); ?>">Lab I</a></li>
       </ul>
     </div>
     <br>
@@ -255,34 +306,41 @@
           </tr>
         </thead>
         <?php 
-          $urutan = 1;
-          foreach ($lab as $jadwal_lab) {
-            echo "<tbody id ='tbody-table-krisan'>
-                  <tr>
-                    <td>".$urutan."</td>
-                    <td class='matkul'>".$jadwal_lab['nama_matkul']."</td>
-                    <td class='hari'>".$jadwal_lab['hari']."</td>
-                    <td class='sesi'>".$jadwal_lab['sesi']."</td>
-                    <td class='prodi'>".$jadwal_lab['prodi']."</td>
-                    <td class='status'>".$jadwal_lab['status']."</td>
-                    <td class='tanggal_mulai'>".$jadwal_lab['tanggal_mulai']."</td>
-                    <td class='tanggal_selesai'>".$jadwal_lab['tanggal_selesai']."</td>
-                    <td>
-                      <button type='button' class='btn btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."'>Ubah</button>
-                      <button type='button' class='btn btn-danger'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
-                    </td>
-                  </tr>
-                  </tbody>";
-            $urutan++;
-        } ?>
+          if($count > 0){
+            $urutan = $indeks+1;
+            foreach ($lab as $jadwal_lab) {
+              echo "<tbody id ='tbody-table-krisan'>
+                    <tr>
+                      <td>".$urutan."</td>
+                      <td class='matkul'>".$jadwal_lab['nama_matkul']."</td>
+                      <td class='hari'>".$jadwal_lab['hari']."</td>
+                      <td class='sesi'>".$jadwal_lab['sesi']."</td>
+                      <td class='prodi'>".$jadwal_lab['prodi']."</td>
+                      <td class='status'>".$jadwal_lab['status']."</td>
+                      <td class='tanggal_mulai'>".$jadwal_lab['tanggal_mulai']."</td>
+                      <td class='tanggal_selesai'>".$jadwal_lab['tanggal_selesai']."</td>
+                      <td>
+                        <button type='button' class='btn btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."'>Ubah</button>
+                        <button type='button' class='btn btn-danger'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
+                      </td>
+                    </tr>
+                    </tbody>";
+              $urutan++;
+            }
+          }
+          else 
+              echo "<tbody id ='tbody-table-krisan'>
+                    <tr>
+                      <td colspan='9'>Data Tidak Ditemukan</td>
+                    </tr>
+                    </tbody>";
+        ?>
       </table>
       <ul class="pagination">
         <?php echo $pagination; ?> 
       </ul>
     </div>
     
-    
-
     <!-- Trigger the modal with a button -->
     <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add">Tambah Jadwal</button>
     <!-- Modal -->
@@ -485,11 +543,10 @@
       </div>
     </div>
 
-
     <?php } else { ?>
     <p class="berdasarkan">Tampilkan berdasarkan jadwal program studi : </p>
     <div class="dropdown optiongroup">
-      <select class="form-control form-control-a " id="pilihProdi">
+      <select class="form-control form-control-a " id="pilihProdi" name="pilihProdi">
         <option>Semua Program Studi</option>
         <optgroup label="Fakultas Teknologi Informasi">
           <option>Sistem Informasi</option>
@@ -515,6 +572,10 @@
           <option>Kedokteran</option>
         </optgroup>
       </select>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="tanggal" name="pilihTanggal">
+      <input type="text" class="form-control" id="singledatepicker">
     </div>
     <div style="clear: both;"></div>
     <?php } ?>
@@ -552,7 +613,7 @@
 
                 if(count($arr_baru) > 0){
                   foreach ($arr_baru as $row){
-                    echo "<td>".$row["nama_matkul"]."</td>";   
+                    echo "<td class='". $row['prodi'] . "'>". $row["nama_matkul"] ."</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1361,4 +1422,3 @@
   </div>
 </body>
 </html>
-
