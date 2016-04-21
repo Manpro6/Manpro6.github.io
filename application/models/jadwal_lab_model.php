@@ -33,7 +33,7 @@ class jadwal_lab_model extends CI_Model
       else {
         $where = ""; 
       }
-      $query = "SELECT jadwal_lab.id_lab AS id_lab, nama_matkul, prodi, hari, sesi, lab FROM lab, jadwal_lab WHERE ('". $tanggal ."' BETWEEN jadwal_lab.tanggal_mulai AND jadwal_lab.tanggal_selesai) AND lab.id_lab = jadwal_lab.id_lab ". $where; 
+      $query = "SELECT jadwal_lab.id_lab AS id_lab, nama_matkul, prodi, hari, sesi, lab, status FROM lab, jadwal_lab WHERE ('". $tanggal ."' BETWEEN jadwal_lab.tanggal_mulai AND jadwal_lab.tanggal_selesai) AND lab.id_lab = jadwal_lab.id_lab ". $where; 
       $data = $this->db->query($query);
       return $data->result_array();
     }

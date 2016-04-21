@@ -212,6 +212,7 @@
         <li><a href="<?php echo base_url('lab/?lab=Lab H'); ?>">Lab H</a></li>
         <li><a href="<?php echo base_url('lab/?lab=Lab I'); ?>">Lab I</a></li>
       </ul>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add" style="float: right;"> <strong>+</strong>  Tambah Jadwal</button>
     </div>
     <br>
     <div class="table-responsive text-center">          
@@ -266,7 +267,7 @@
     </div>
     
     <!-- Trigger the modal with a button -->
-    <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add">Tambah Jadwal</button>
+
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog" role="document">
@@ -501,7 +502,6 @@
       <input type="text" class="form-control" id="singledatepicker">
     </div>
     <div style="clear: both;"></div>
-    <?php } ?>
     <br>
     <div class="table-responsive">
       <table class="table table-bordered">
@@ -538,7 +538,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -560,7 +566,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -582,7 +594,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -604,7 +622,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -637,7 +661,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -659,7 +689,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -681,7 +717,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -703,7 +745,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -736,7 +784,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -758,7 +812,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -780,7 +840,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -802,7 +868,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -835,7 +907,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -857,7 +935,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -879,7 +963,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -901,7 +991,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -934,7 +1030,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -956,7 +1058,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -978,7 +1086,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1000,7 +1114,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1033,7 +1153,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1055,7 +1181,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1077,7 +1209,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1099,7 +1237,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1132,7 +1276,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1154,7 +1304,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1176,7 +1332,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1198,7 +1360,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1231,7 +1399,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1253,7 +1427,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1275,7 +1455,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1297,7 +1483,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1331,7 +1523,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1353,7 +1551,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";   
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1375,7 +1579,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";  
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1397,7 +1607,13 @@
                   foreach ($arr_baru as $row){
                     $prodi = str_replace(' ', '_', $row['prodi']);
                     $prodi = strtolower($prodi);
-                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"] ."</td>";  
+                    echo "<td class='". $prodi . "' title='". $row['prodi'] ."'>". $row["nama_matkul"];
+                    if($row['status'] != "Reguler"){
+                      echo '&nbsp';
+                      echo '&nbsp';
+                      echo "<img src='". base_url('images/new-icon.gif') . "'>";
+                    }
+                    echo "</td>";    
                   }
                 } else if(count($arr_baru) == 0){
                   echo "<td></td>";
@@ -1440,6 +1656,7 @@
           <h4>      Selasa-Jumat | Sesi I: 07.30, Sesi II: 10.30, Sesi III: 13.30, Sesi IV: 16.30</h3>  
           <br>
         </div>
+        <?php } ?>
     </div>
   </div>
 </body>
