@@ -17,15 +17,6 @@
     <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('css/fullcalendar2.css')?>" rel='stylesheet' />
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
-    <style>
-    #calendar {
-      width: 700px;
-    }
-    .col-centered{
-      float: none;
-      margin: 0 auto;
-    }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -45,7 +36,8 @@
                 <strong>Sukses!</strong> Jadwal berhasil ditambahkan.</div>";
         } 
       ?>
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;" id="add"><span class="glyphicon glyphicon-plus"></span> Tambah Jadwal</button>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' id="add"><span class="glyphicon glyphicon-plus"></span> Tambah Jadwal</button>
+      <br><br>
       <div id="calendar" class="col-centered">
       <p class="lead" style="color:red;"><em><b>*Untuk mengubah/menghapus/melihat data, klik pada data di kalender</b></em></p>
       <br>
@@ -71,7 +63,7 @@
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
             <textarea rows="4" cols="20" name="deskripsi" class="form-control" placeholder="Deskripsi" id="deskripsi" value="" required></textarea>  
-          </div>  
+          </div> 
           <div class="form-group">
             <label for="start">Tanggal Mulai</label>
             <input type="datetime-local" name="start" class="form-control" id="start" required min="<?php echo date("Y-m-d").'T'.date("H:i", strtotime('+5 hours'))?>">
@@ -104,28 +96,28 @@
     </div>
 
     <div style="display:none;">
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalShow' style="float:right;" id="show">Detail Informasi</button>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalShow' id="show">Detail Informasi</button>
     </div>
     <div class="modal fade" id="ModalShow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick=location.reload()>&times;</span></button>
-            <h2 class="modal-title" id="title" style="font-size:18pt;font-weight:bold;"></h2>         
+            <h2 class="modal-title" id="title" class="title"></h2>         
         </div>
         <div class="modal-body">
-            <p style="width:100px;float:left;">Pelaksanaan </p>
-            <p style="width:8px;float:left;">:</p>
-            <p id="start" style="width:120px;float:left;font-weight:bold;"></p>
-            <p style="width:55px;float:left;">sampai</p>
-            <p id="end" style="width:255px;float:left;font-weight:bold;"></p><br>
-            <p style="width:100px;float:left;">Pengajar</p>
-            <p style="width:8px;float:left;">:</p>
-            <p id="pengajar" style="float:left;width:400px;"></p>
-            <p style="width:100px;float:left;">Deskripsi</p>
-            <p style="width:8px;float:left;">:</p>
+            <p id="pelaksanaan">Pelaksanaan </p>
+            <p class="sama">:</p>
+            <p id="start" class="mulai"></p>
+            <p class="sampai">sampai</p>
+            <p id="end" class="selesai"></p><br>
+            <p id="pelaksanaan">Pengajar</p>
+            <p class="sama">:</p>
+            <p id="pengajar" class="ajar"></p>
+            <p id="pelaksanaan">Deskripsi</p>
+            <p class="sama">:</p>
             <br><br>
-            <p id="deskripsi" style="float:left;width:600px;margin-left:50px;"></p>
+            <p id="deskripsi" class="deskripsis"></p>
             <br><br>
         </div>
         <div class="modal-footer">
@@ -157,14 +149,6 @@
           <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
             <textarea rows="4" cols="20" name="deskripsi" class="form-control" placeholder="Deskripsi" id="deskripsiE" value="" required></textarea>  
-          </div>  
-          <div class="form-group" style="display:none;">
-            <label for="start">Tanggal Mulai</label>
-            <input type="text" name="start" class="form-control" id="startE" required readonly>
-          </div>
-          <div class="form-group" style="display:none;">
-            <label for="end">Tanggal Selesai</label>
-            <input type="text" name="end" class="form-control" id="endE" required readonly>
           </div>  
           <div class="form-group">
               <label for="color">Warna</label>

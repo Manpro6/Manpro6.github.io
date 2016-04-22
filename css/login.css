@@ -44,3 +44,19 @@ input[type=submit]:hover {
 h2 {
 	text-shadow: 0 1px 0 black;
 }
+
+.kembali {
+margin-top: 20px;
+font-size: 18px;
+color: white;
+}
+
+.kembali a {
+text-decoration: none;
+font-weight: bold;
+color: yellow;
+}
+
+.kembali a:hover {
+text-decoration: underline;
+}

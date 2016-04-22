@@ -24,7 +24,7 @@
 				<br>
 				<?php echo form_open_multipart('krisan/insert')?> 
 				<form>
-					<table>
+			       <table>
 						<tr style="height:50px;">
 							<td style="color:white;width:110px;font-weight:bold;">Email*</td>
 							<td style="color:white;width:10px;font-weight:bold;">:</td>
@@ -51,9 +51,9 @@
 							<td><input type="text" name="input_captcha" class="form-control" placeholder="Isikan kode captcha" value="" required size=30 style="width:300px;"></td>
 						</tr>
 					</table>
-		      		<p style="color:white;margin-left:115px;"><em>*Harus diisi</em></p>
-		            <button type="submit" class="btn btn-default" style="margin-left:115px;">Kirim</button>
-		    </form>
+		      		<p style="color:white;margin-left:26%;"><em>*Harus diisi</em></p>
+		            <button type="submit" class="btn btn-default" style="margin-left:26%;">Kirim</button>
+			    </form>
 			    <br>
 			</div>
 		</div>

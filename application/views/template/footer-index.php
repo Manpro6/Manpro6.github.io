@@ -52,8 +52,8 @@
 							<td><input type="text" name="input_captcha" class="form-control" placeholder="Isikan kode captcha" value="" required size=30 style="width:300px;"></td>
 						</tr>
 					</table>
-		      		<p style="color:white;margin-left:115px;"><em>*Harus diisi</em></p>
-		            <button type="submit" class="btn btn-default" style="margin-left:115px;">Kirim</button>
+		      		<p style="color:white;margin-left:26%;"><em>*Harus diisi</em></p>
+		            <button type="submit" class="btn btn-default" style="margin-left:26%;">Kirim</button>
 			    </form>
 			    <br>
 			</div>

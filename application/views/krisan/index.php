@@ -9,29 +9,7 @@
     <title>Admin Panel - Kritik & Saran</title>
     <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <style>
-    th{
-      text-align: center;
-    }
-
-    .ruang {
-      text-align: left;
-    }
-
-    thead th {
-      background-color: grey;
-      color: white;
-    }
-
-    .black {
-      color: grey;
-    }
-
-    .tabel_krisan{
-        padding-top: 2%;
-    }
-
-    </style>
+    <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet' />
     <script type="text/javascript">
     $(document).ready(function() {
       $('.detailButton').on('click', function() {
@@ -66,16 +44,16 @@
               <strong>Sukses!</strong> Data kritik dan saran berhasil dihapus.</div>";
       } 
     ?>
-    <div class="table-responsive" id="hide">          
-      <table class="table">
+    <div class="table-responsive">          
+      <table class="table" id="tabel">
         <thead class="table_head">
           <tr>
             <th id="th-no" class="th-result text-center">No</th>
-            <th id="th-tanggal" class="th-result text-center" style="width:120px;">Tanggal</th>            
+            <th id="th-tanggal" class="th-result text-center">Tanggal</th>            
             <th id="th-email" class="th-result text-center">Email</th>
             <th id="th-nama" class="th-result text-center">Nama</th>
             <th id="th-krisan" class="th-result text-center">Kritik & Saran</th>           
-            <th class="button-action" style="width:150px;">Action</th>
+            <th class="button-action aksi th-result text-center">Aksi</th>
           </tr>
         </thead>
         <tbody id ="tbody-table-krisan" class="table table-striped">
@@ -84,11 +62,11 @@
             <?php foreach ($krisan as $mydata):?>
               <tr>
               <?php $no++; $mydata['id_kritik'];?>
-                <td style="text-align:center;" id='id_kritik'><?php echo $no ?></td>
-                <td class="tanggal" style="text-align:center;"><?php echo substr($mydata['tanggal'], 0, 10) ?></td> 
+                <td class="center" id='id_kritik'><?php echo $no ?></td>
+                <td class="tanggal center"><?php echo substr($mydata['tanggal'], 0, 10) ?></td> 
                 <td class="email"><?php echo $mydata['email']?></td>
                 <td class="nama"><?php echo $mydata['nama']?></td>
-                <td style="text-align:justify;">
+                <td class="justify pesan">
                   <?php 
                     $pecah = explode(".", $mydata['pesan']);
                     if(count($pecah) > 1)
@@ -101,7 +79,7 @@
                     }
                   ?>
                 </td>
-                <th style="text-align:center;">           
+                <th class="center">           
                   <?php echo "<a type='button' class='btn btn-xs btn-primary detailButton' data-toggle='modal' data-target='#DetailModal' data-id='"; echo $mydata['id_kritik']."'><span class='glyphicon glyphicon-list'></span> Detail</a>"; ?>
                   <a type="button" href="<?php echo site_url('krisan/delete').'/'.$mydata['id_kritik'] ?>" class="btn btn-xs btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Hapus</a><br>
                 </th>
@@ -114,7 +92,7 @@
           <?php endif ?>
         </tbody>
       </table>
-      <div style="float:right;"><?php echo $pagination ?></div>
+      <div id="pagination"><?php echo $pagination ?></div>
 
       <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -126,24 +104,24 @@
         <div class="modal-body"> 
         <input type="hidden" name="id_detail" class="form-control" id="id_edit"> 
         <table>
-          <tr style="height:30px;">
-            <td style="width:120px;">Nama Pengirim</td>
-            <td style="width:8px;">:</td>
+          <tr>
+            <td class="view">Nama Pengirim</td>
+            <td class="tanda">:</td>
             <td id="namaDetail"></td>
           </tr>
-          <tr style="height:30px;">
-            <td style="width:120px;">Email Pengirim</td>
-            <td style="width:8px;">:</td>
+          <tr>
+            <td class="view">Email Pengirim</td>
+            <td class="tanda">:</td>
             <td id="emailDetail"></td>
           </tr>
-          <tr style="height:30px;">
-            <td style="width:120px;">Kritik & Saran</td>
-            <td style="width:8px;">:</td>
+          <tr>
+            <td class="view">Kritik & Saran</td>
+            <td class="tanda">:</td>
             <td></td>
           </tr>
         </table>
         <br>
-        <div id="pesanDetail" style="text-align:justify"></div>
+        <div id="pesanDetail" class="justify"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick=location.reload()>Kembali</button>

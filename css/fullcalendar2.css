@@ -18,6 +18,13 @@ body .fc { /* extra precedence to overcome jqui */
 	font-size: 1em;
 }
 
+#calendar {
+  width: 650px;
+}
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
 
 /* Colors
 --------------------------------------------------------------------------------------------------*/

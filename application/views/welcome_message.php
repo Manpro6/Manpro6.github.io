@@ -17,15 +17,7 @@ $events = $req->fetchAll();
     <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('css/fullcalendar.css')?>" rel='stylesheet' />
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
-    <style>
-    #calendar {
-      width:300px;
-    }
-    .col-centered{
-      float: none;
-      margin-bottom: 10px;
-    }
-    </style>
+    <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet' />
 </head>
 <body link="blue">
 	<div class="container">
@@ -58,7 +50,7 @@ $events = $req->fetchAll();
 				<?php endforeach; ?>
    <br><br>
    <strong><font style="font-size:24px;">Berita PPLK</font></strong>
-   <div style="height:3px; background-color: #0000FD;"></div>
+   <div id="line"></div>
    <br>
    <table >
         <?php if($berita) : ?>
@@ -84,7 +76,7 @@ $events = $req->fetchAll();
           }
           ?>
       <tr>
-        <td><img style="width:300px; height:150px;margin:10px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
+        <td><img class="berita" src="<?php echo base_url($aaa['gambar'])?>"></td>
         <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo strtoupper($aaa['judul']) ?></strong>
         <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
       </tr>
@@ -115,17 +107,17 @@ $events = $req->fetchAll();
       <p class="lead" style="color:red;"><em><b>*Untuk melihat detail informasi, klik pada data di kalender</b></em></p>
       <h4><b>Detail Event</b></h4>
       <hr>
-      <p id="judul" style="width:60px;float:left;margin-top:8px;"></p>
-      <p id="titik" style="width:8px;float:left;margin-top:8px;"></p>
-      <p id="title" style="font-weight:bold;margin-top:8px;"></p>
-      <p id="ajar" style="width:60px;float:left;"></p>
-      <p id="titik1" style="width:8px;float:left;"></p>
+      <p id="judul" class="sampai2"></p>
+      <p id="titik" class="sama2"></p>
+      <p id="title" class="title2"></p>
+      <p id="ajar" class="sampai"></p>
+      <p id="titik1" class="sama"></p>
       <p id="pengajar"></p>
-      <p id="krg1" style="width:5px;float:left;"></p>
-      <p id="start" style="width:115px;float:left;"></p>
-      <p id="sampai" style="width:8px;float:left;"></p>
-      <p id="end" style="width:113px;float:left;"></p>
-      <p id="krg2" style="width:5px;float:left;"></p>
+      <p id="krg1" class="titik"></p>
+      <p id="start" class="tanggal"></p>
+      <p id="sampai" class="sama"></p>
+      <p id="end" class="tanggal"></p>
+      <p id="krg2" class="titik"></p>
 		</div>		
 	</div>
 </body>

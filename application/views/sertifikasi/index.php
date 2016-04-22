@@ -4,7 +4,7 @@
     <p class="lead">
       <h2 class="featurette-heading" style="text-align: center;">Sertifikasi PPLK</h2>
       <hr>
-      <img class="featurette-image img-responsive center-block" style="width:600px; height:330px:-70px;" src="<?php echo base_url('images/lab-1.jpg')?>">
+      <img class="featurette-image img-responsive center-block" src="<?php echo base_url('images/lab-1.jpg')?>">
       <br><H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain : 
     </H4>  
     

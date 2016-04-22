@@ -18,6 +18,17 @@ body .fc { /* extra precedence to overcome jqui */
 	font-size: 1em;
 }
 
+#calendar {
+  width:300px;
+}
+.col-centered{
+  float: none;
+  margin-bottom: 10px;
+}
+
+thead th {
+  background-color: #CCC;
+}
 
 /* Colors
 --------------------------------------------------------------------------------------------------*/

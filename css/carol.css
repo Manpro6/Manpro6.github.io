@@ -57,3 +57,178 @@
     margin-bottom: 20px;
     font-size: 21px;
     line-height: 1.4;}
+
+.pic {
+  width: 20%;
+}
+
+.img {
+  width:400px;
+  height:200px;
+}
+
+.margin {
+  margin-top: 4%;
+  margin-left:18%;
+}
+
+.showNone {
+  text-align:center;
+  font-size:12pt;
+  display:none;
+}
+
+.showFill {
+  text-align:center;
+  font-size:12pt;
+}
+
+#formatTabel {
+  margin: auto;
+  width: 60%;
+  overflow:auto;
+  text-align:center;
+}
+
+#tabel thead th {
+  background-color: #CCC;
+}
+
+.title {
+  font-size:18pt;
+  font-weight:bold;
+}
+
+.title2 {
+  font-weight:bold;
+  margin-top:3%;
+}
+
+#pelaksanaan {
+  width:100px;
+  float:left;
+}
+
+.sama {
+  width:8px;
+  float:left;
+}
+
+.sama2 {
+  width:8px;
+  float:left;
+  margin-top: 3%;
+}
+
+.titik {
+  width:5px;
+  float:left;
+}
+
+.deskripsis {
+  float:left;
+  width:600px;
+  margin-left:10%;
+}
+
+.mulai {
+  width:120px;
+  float:left;
+  font-weight:bold;
+}
+
+.selesai {
+  width:255px;
+  float:left;
+  font-weight:bold;
+}
+
+.sampai {
+  width:60px;
+  float:left;
+}
+
+.sampai2 {
+  width:60px;
+  float:left;
+  margin-top: 3%;
+}
+
+.ajar {
+  float:left;
+  width:400px;
+}
+
+.tanggal {
+  width:115px;
+  float:left;
+}
+
+.berita {
+  width:300px;
+  height:150px;
+  margin:10px;
+}
+
+#kursus {
+  width:600px;
+  height:330px;
+  float:right;
+}
+
+#krs {
+  width:45%;
+  float:left;
+}
+
+#krs2 {
+  width:45%;
+  float:left;
+  margin-left: 3%;
+}
+
+#subKrs {
+  margin-left:-4%;
+}
+
+.view {
+  width:120px
+}
+
+.tanda {
+  width:8px;
+  height: 30px;
+}
+
+.center {
+  text-align:center;
+}
+
+.justify {
+  text-align:justify;
+}
+
+#pagination {
+  float: right;
+}
+
+.email {
+  width:200px;
+}
+
+.nama {
+  width: 150px;
+}
+
+.pesan {
+  width: 500px;
+}
+
+.aksi {
+  width:150px;
+}
+
+#line {
+  height:3px;
+  background-color: #0000FD;
+}

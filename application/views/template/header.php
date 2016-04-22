@@ -31,16 +31,9 @@
   <script src="<?php echo base_url('js/classie.js')?>"></script>
   <script src="<?php echo base_url('js/jquery.js')?>"></script>
   <script src="<?php echo base_url('js/jqBootstrapValidation.js')?>"></script>
-  <style>
-    hover {
-    background-color:#ff6600;
-    color:black;
-    cursor: pointer;
-  }
-  </style>
 </head>
 <body>
- <div class="container-fluid blue-background" style="margin-top:0px;">
+ <div class="container-fluid blue-background">
     <div class="container">
       <nav class="navbar navbar-default">
         <div class="navbar-header">

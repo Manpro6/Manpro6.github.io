@@ -1,10 +1,5 @@
 <head><title>Admin Panel - Edit Gambar</title></head>
-<style>
-  thead th {
-    background-color: grey;
-    color: white;
-  }
-</style>
+<link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet'/>
 <script type="text/javascript">
     $(document).ready(function() {
       $('.btnEdit').on('click', function() {
@@ -50,23 +45,23 @@
             <strong>Sukses!</strong> Gambar berhasil dihapus.</div>";
     }
   ?>
-  <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="margin-bottom:20px;"><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
-
-    <table class="table" style="margin: auto; width:60%; overflow:auto; text-align:center;">
+  <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd'><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
+  <br><br>
+    <table class="table" id="formatTabel">
       <thead style="background:#CCC;"><tr>
-        <th style="text-align:center;font-size:12pt;display:none;">Id Gambar</th>
-        <th style="text-align:center;font-size:12pt;display:none;">Nama Gambar</th>
-        <th style="text-align:center;font-size:12pt;">Gambar</th>
-        <th style="text-align:center;font-size:12pt;width:">Action</th>
+        <th class="showNone">Id Gambar</th>
+        <th class="showNone">Nama Gambar</th>
+        <th class="showFill">Gambar</th>
+        <th class="showFill">Aksi</th>
       </tr></thead>
       <tbody>
         <?php if($gambar) : ?>
               <?php foreach ($gambar as $mydata):?>
             <tr>
-            <td style="text-align:center;display:none;" class="id"><?php echo $mydata['id_gambar']?></td> 
-            <td style="text-align:center;display:none;" class="path"><?php echo $mydata['nama_gambar']?></td>
-            <td><img style="width:400px; height:200px;" src="<?php echo base_url($mydata['nama_gambar'])?>"></td>
-            <th style="text-align:center;"> <!--  -->
+            <td class="showNone" class="id"><?php echo $mydata['id_gambar']?></td> 
+            <td class="showNone" class="path"><?php echo $mydata['nama_gambar']?></td>
+            <td><img class="img" src="<?php echo base_url($mydata['nama_gambar'])?>"></td>
+            <th class="center">
               <?php echo "<a type='button' class='btn btn-xs btn-primary btnEdit' data-toggle='modal' data-target='#ModalEdit' data-id='"; echo $mydata['id_gambar']."'><span class='glyphicon glyphicon-edit'></span> Ubah</a>"; ?>
               <a type="button" href="<?php echo site_url('gambar/delete').'/'.$mydata['id_gambar'] ?>" class="btn btn-xs btn-danger" onclick="return confirm('Anda yakin ingin menghapus gambar ini?')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Hapus</a><br><br>
             </th>
@@ -79,7 +74,7 @@
             <?php endif ?>
       </tbody>
     </table>
-    <div style="float:right;"><?php echo $pagination ?></div>
+    <div id="pagination"><?php echo $pagination ?></div>
 
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -87,13 +82,13 @@
       <form action="<?= site_url('gambar/insert') ?>" method="post" enctype="multipart/form-data">    
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><b>Upload Gambar</b></h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Unggah Gambar</b></h4>
         </div>
         <div class="modal-body">    
               <div class="form-group">
                 <table border=0>
-                 <tr style="height:50px;">
-                  <td style="width:20%;">File Gambar :</td>
+                 <tr>
+                  <td class="pic">File Gambar :</td>
                   <td>
                     <div class="col-sm-6">
                         <input type="file" name="pic" required>
@@ -105,7 +100,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-          <button type="submit" class="btn btn-primary">Upload</button>
+          <button type="submit" class="btn btn-primary">Unggah</button>
         </div>
       </form>
       </div>
@@ -118,15 +113,15 @@
       <form action="<?= site_url('gambar/update') ?>" method="post" enctype="multipart/form-data">   
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><b>Upload Perubahan Gambar</b></h4>
+        <h4 class="modal-title" id="myModalLabel"><b>Unggah Perubahan Gambar</b></h4>
         </div>
         <div class="modal-body">    
           <input type="hidden" name="id_gambar" class="form-control" id="idEdit"> 
           <input type="hidden" name="path" class="form-control" id="path"> 
               <div class="form-group">
                 <table border=0>
-                 <tr style="height:50px;">
-                  <td style="width:20%;">File Gambar :</td>
+                 <tr>
+                  <td class="pic">File Gambar :</td>
                   <td>
                     <div class="col-sm-6">
                         <input type="file" name="pic" required>
@@ -134,12 +129,12 @@
                     </td>
                  </tr>
                </table>
-               <div id="gambar" style="margin-left:18%;"></div>
+               <div id="gambar" class="margin"></div>
               </div>          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-          <button type="submit" class="btn btn-primary">Upload</button>
+          <button type="submit" class="btn btn-primary">Unggah</button>
         </div>
       </form>
       </div>
