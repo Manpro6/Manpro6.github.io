@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.css')?>">
   <link rel="stylesheet" href= <?php echo base_url('css/carol.css')?>>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/nav.css')?>">
-
+  
   <!-- Bootstrap Core JS -->
   <script src="<?php echo base_url('js/jquery-2.1.3.min.js')?>"></script>
   <script src="<?php echo base_url('js/bootstrap.min.js')?>"></script>
@@ -37,7 +37,7 @@
     <div class="container">
       <nav class="navbar navbar-default">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>

@@ -14,11 +14,11 @@ class lab extends CI_Controller
 		//load library pagination
         $this->load->library('pagination');
 
-        if (count($_GET) > 0) $config['suffix'] = '?' . http_build_query($_GET, '', "&");
+        if (count($_GET) > 0) $config['suffix'] = '1' . http_build_query($_GET, '', "&");
 
 		//configurasi pagination
         $config['base_url'] = base_url().'/lab/index/';
-        $config['first_url'] = $config['base_url'].'?'.http_build_query($_GET);
+        $config['first_url'] = $config['base_url'].'1'.http_build_query($_GET);
         $config['total_rows'] = $this->jadwal_lab_model->total_record();
         $config['per_page'] = 5;
         $config['num_links'] = 10;
@@ -39,11 +39,11 @@ class lab extends CI_Controller
         $rows = $this->jadwal_lab_model->user_limit($config['per_page'], $offset);
 		
 		
-        $data = $this->jadwal_lab_model->getAllJadwalLab();
+        $datas = $this->jadwal_lab_model->getAllJadwalLab();
 	
 		$this->load->view('template/header');
 		$this->load->view('lab/index', array(
-			'data' => $data, 
+			'data' => $datas, 
 			'lab' => $rows, 
 			'pagination' => $this->pagination->create_links(), 
 			'count' => $this->jadwal_lab_model->total_record()
@@ -71,7 +71,6 @@ class lab extends CI_Controller
 		$cap = create_captcha($vals);
 		$data['captcha_image'] = $cap['image'];
 		$this->load->view('template/footer', $data);
-		$this->load->view('template/footer');
 	}
 
 	public function insert()
