@@ -3,11 +3,9 @@
   <br>
     <p class="lead">
       <h2 class="featurette-heading" style="text-align: center;">Sertifikasi PPLK</h2>
-<<<<<<< HEAD
       <hr>
-      <img class="featurette-image img-responsive center-block" src="<?php echo base_url('images/lab-1.jpg')?>">
-      <br><H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain : 
-=======
+      <!-- <img class="featurette-image img-responsive center-block" src="<?php echo base_url('images/lab-1.jpg')?>">
+      <br><H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain :  -->
       <div class="container">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -52,7 +50,6 @@
       
       <hr >
       <H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain : 
->>>>>>> b5ff5f037791c918d44bb8ef32027bbf08cf447d
     </H4>  
     
     <ol>    

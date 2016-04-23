@@ -42,11 +42,13 @@ class event_model extends CI_Model
 
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('events', $update_event);
+        redirect('event?msg=3');
       }
       else
       {
         $this->db->where('id', $this->input->post('id'));
         $this->db->delete('events');
+        redirect('event?msg=4');
       }
     }
 }

@@ -2,6 +2,7 @@
 <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet'/>
 <script type="text/javascript">
     $(document).ready(function() {
+      $('.alert').delay(5000).fadeOut();
       $('.btnEdit').on('click', function() {
         var id = $(this).attr('data-id');
         var path = $(this).closest('tr').children('td.path').text();
@@ -45,10 +46,11 @@
             <strong>Sukses!</strong> Gambar berhasil dihapus.</div>";
     }
   ?>
-  <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd'><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
-  <br><br>
+  <div class="col-xs-12">
+    <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd'><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
+  </div>
     <table class="table" id="formatTabel">
-      <thead style="background:#CCC;"><tr>
+      <thead><tr>
         <th class="showNone">Id Gambar</th>
         <th class="showNone">Nama Gambar</th>
         <th class="showFill">Gambar</th>
@@ -62,8 +64,8 @@
             <td class="showNone" class="path"><?php echo $mydata['nama_gambar']?></td>
             <td><img class="img" src="<?php echo base_url($mydata['nama_gambar'])?>"></td>
             <th class="center">
-              <?php echo "<a type='button' class='btn btn-xs btn-primary btnEdit' data-toggle='modal' data-target='#ModalEdit' data-id='"; echo $mydata['id_gambar']."'><span class='glyphicon glyphicon-edit'></span> Ubah</a>"; ?>
-              <a type="button" href="<?php echo site_url('gambar/delete').'/'.$mydata['id_gambar'] ?>" class="btn btn-xs btn-danger" onclick="return confirm('Anda yakin ingin menghapus gambar ini?')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Hapus</a><br><br>
+              <?php echo "<a type='button' class='btn btn-sm btn-info btnEdit' data-toggle='modal' data-target='#ModalEdit' data-id='"; echo $mydata['id_gambar']."'><span class='glyphicon glyphicon-edit'></span> Ubah</a>"; ?>
+              <a type="button" href="<?php echo site_url('gambar/delete').'/'.$mydata['id_gambar'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus gambar ini?')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Hapus</a><br><br>
             </th>
             </tr>
               <?php endforeach; ?>
@@ -81,7 +83,7 @@
       <div class="modal-content">
       <form action="<?= site_url('gambar/insert') ?>" method="post" enctype="multipart/form-data">    
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="gambar"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Unggah Gambar</b></h4>
         </div>
         <div class="modal-body">    
@@ -99,8 +101,8 @@
               </div>          
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-          <button type="submit" class="btn btn-primary">Unggah</button>
+          <button type="button" class="btn btn-default" onclick=location.href="gambar">Batal</button>
+          <button type="submit" class="btn btn-primary">Unggah Gambar</button>
         </div>
       </form>
       </div>
@@ -112,7 +114,7 @@
       <div class="modal-content">
       <form action="<?= site_url('gambar/update') ?>" method="post" enctype="multipart/form-data">   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="gambar"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Unggah Perubahan Gambar</b></h4>
         </div>
         <div class="modal-body">    
@@ -133,8 +135,8 @@
               </div>          
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-          <button type="submit" class="btn btn-primary">Unggah</button>
+          <button type="button" class="btn btn-default" onclick=location.href="gambar">Batal</button>
+          <button type="submit" class="btn btn-primary">Unggah Perubahan</button>
         </div>
       </form>
       </div>

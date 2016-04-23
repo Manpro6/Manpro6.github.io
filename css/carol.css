@@ -63,7 +63,12 @@
 }
 
 .img {
-  width:400px;
+  width:530px;
+  height:200px;
+}
+
+.img2 {
+  width:450px;
   height:200px;
 }
 
@@ -84,14 +89,8 @@
 }
 
 #formatTabel {
-  margin: auto;
-  width: 60%;
-  overflow:auto;
+  width: 70%;
   text-align:center;
-}
-
-#tabel thead th {
-  background-color: #CCC;
 }
 
 .title {
@@ -221,14 +220,18 @@
 }
 
 .pesan {
-  width: 500px;
+  width: 470px;
 }
 
 .aksi {
-  width:150px;
+  width:180px;
 }
 
 #line {
   height:3px;
   background-color: #0000FD;
+}
+
+.led {
+  color:red;
 }

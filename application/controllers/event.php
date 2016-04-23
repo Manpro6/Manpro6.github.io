@@ -18,6 +18,14 @@ class event extends CI_Controller
                 {
                     $data['sesi'] = 2;
                 }
+                elseif(($_GET['msg']) == 3)
+                {
+                    $data['sesi'] = 3;
+                }
+                elseif(($_GET['msg']) == 4)
+                {
+                    $data['sesi'] = 4;
+                }
     		}
 			$this->load->view('template/header');
 			$this->load->view('event/index', $data);
@@ -40,7 +48,6 @@ class event extends CI_Controller
 	{
 		$this->load->model('event_model');
 		$data = $this->event_model->updateEvent();
-		redirect('event');
 	}
 }
 ?>

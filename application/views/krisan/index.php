@@ -12,6 +12,7 @@
     <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet' />
     <script type="text/javascript">
     $(document).ready(function() {
+      $('.alert').delay(5000).fadeOut();
       $('.detailButton').on('click', function() {
         var id = $(this).attr('data-id');
         var tanggal = $(this).closest('tr').children('td.tanggal').text();
@@ -45,7 +46,7 @@
       } 
     ?>
     <div class="table-responsive">          
-      <table class="table" id="tabel">
+      <table class="table">
         <thead class="table_head">
           <tr>
             <th id="th-no" class="th-result text-center">No</th>
@@ -80,8 +81,8 @@
                   ?>
                 </td>
                 <th class="center">           
-                  <?php echo "<a type='button' class='btn btn-xs btn-primary detailButton' data-toggle='modal' data-target='#DetailModal' data-id='"; echo $mydata['id_kritik']."'><span class='glyphicon glyphicon-list'></span> Detail</a>"; ?>
-                  <a type="button" href="<?php echo site_url('krisan/delete').'/'.$mydata['id_kritik'] ?>" class="btn btn-xs btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Hapus</a><br>
+                  <?php echo "<a type='button' class='btn btn-sm btn-info detailButton' data-toggle='modal' data-target='#DetailModal' data-id='"; echo $mydata['id_kritik']."'><span class='glyphicon glyphicon-list'></span> Detail</a>"; ?>
+                  <a type="button" href="<?php echo site_url('krisan/delete').'/'.$mydata['id_kritik'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Hapus</a><br>
                 </th>
               </tr>
             <?php endforeach; ?>
@@ -98,7 +99,7 @@
       <div class="modal-dialog" role="document">
       <div class="modal-content">   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="krisan"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Detail Kritik & Saran</b></h4>
         </div>
         <div class="modal-body"> 
@@ -124,7 +125,7 @@
         <div id="pesanDetail" class="justify"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick=location.reload()>Kembali</button>
+          <button type="button" class="btn btn-primary" onclick=location.href="krisan">Kembali</button>
         </div>
       </div>
       </div>

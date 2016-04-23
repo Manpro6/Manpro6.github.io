@@ -17,6 +17,11 @@
     <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('css/fullcalendar2.css')?>" rel='stylesheet' />
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('.alert').delay(5000).fadeOut();
+    });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -35,20 +40,35 @@
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                 <strong>Sukses!</strong> Jadwal berhasil ditambahkan.</div>";
         } 
+        elseif($sesi == 3)
+        {
+          echo "<div class='alert alert-success alert-dismissible' role='alert'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                <strong>Sukses!</strong> Jadwal berhasil diubah.</div>";
+        } 
+        elseif($sesi == 4)
+        {
+          echo "<div class='alert alert-success alert-dismissible' role='alert'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                <strong>Sukses!</strong> Jadwal berhasil dihapus.</div>";
+        } 
       ?>
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' id="add"><span class="glyphicon glyphicon-plus"></span> Tambah Jadwal</button>
-      <br><br>
-      <div id="calendar" class="col-centered">
-      <p class="lead" style="color:red;"><em><b>*Untuk mengubah/menghapus/melihat data, klik pada data di kalender</b></em></p>
-      <br>
-       
+      <div class="col-md-7">
+        <div id="calendar"></div>
+      </div>
+      <div class="col-md-5">
+        <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' id="add"><span class="glyphicon glyphicon-plus"></span> Tambah Jadwal</button>
+        <br><br><br><br><br>
+        <p class="led"><em><b>*Untuk mengubah/menghapus/melihat data, klik pada data di kalender</b></em></p>
+       </div>
+   
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
       <div class="modal-content">
       <?php echo form_open('event/insert') ?>  
       <form>   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.reload()><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="event"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Tambah Jadwal</b></h4>
         </div>
         <div class="modal-body">   
@@ -87,8 +107,8 @@
           </div>      
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-default" onclick=location.href="event">Batal</button>
+          <button type="submit" class="btn btn-primary">Tambah Jadwal</button>
         </div>
       </form>
       </div>
@@ -102,7 +122,7 @@
       <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick=location.reload()>&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick=location.href="event">&times;</span></button>
             <h2 class="modal-title" id="title" class="title"></h2>         
         </div>
         <div class="modal-body">
@@ -122,7 +142,7 @@
         </div>
         <div class="modal-footer">
           <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalEdit' id='edit'>Ubah/Hapus Jadwal</button>
-          <button type="button" class="btn btn-default" onclick=location.reload()>Tutup</button>
+          <button type="button" class="btn btn-default" onclick=location.href="event">Tutup</button>
         </div>
       </div>
     </div>
@@ -169,8 +189,8 @@
           </div>
       </div>    
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-default" onclick=location.href="event">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         </div>
       </form>
       </div>

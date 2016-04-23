@@ -20,10 +20,17 @@ body .fc { /* extra precedence to overcome jqui */
 
 #calendar {
   width: 650px;
+  float: left;
+  margin: auto;
 }
-.col-centered{
-  float: none;
-  margin: 0 auto;
+
+#add {
+	float:right;
+}
+
+.led {
+	color:red;
+	text-align:center;
 }
 
 /* Colors

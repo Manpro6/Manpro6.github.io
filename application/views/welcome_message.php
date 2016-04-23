@@ -87,9 +87,7 @@ $events = $req->fetchAll();
           </tr>
       <?php endif ?>
     </table>
-
-
-
+    
 			<?php endif ?> 
 		      </div>
 		      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
