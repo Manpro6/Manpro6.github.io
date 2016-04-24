@@ -57,6 +57,10 @@ class krisan extends CI_Controller
 			$this->load->view('krisan/index', $data);
 			$this->load->view('template/footer');
 		}
+		else
+		{
+			redirect('login');
+		}
 	}
 
 	public function insert()
@@ -75,10 +79,12 @@ class krisan extends CI_Controller
 
 			$config = Array(
 			    'protocol' => 'smtp',
-			    'smtp_host' => 'ssl://smtp.googlemail.com',
+			    'smtp_host' => 'ssl://smtp.gmail.com',
 			    'smtp_port' => 25,
 			    'smtp_user' => 'pplk@gmail.com',
 			    'smtp_pass' => 'ukdw1986',
+			    'mailtype' => 'text',
+        		'validation' => TRUE, // bool whether to validate email or not
 			);
 			$this->load->library('email', $config);
 			$this->email->set_newline("\r\n");   
@@ -94,7 +100,7 @@ class krisan extends CI_Controller
 	        else
 	        {
 	        	show_error($this->email->print_debugger());
-	        }	
+	        }
 			redirect('welcome?msg=1');
 		}	
 	}

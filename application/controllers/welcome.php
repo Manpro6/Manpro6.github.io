@@ -37,7 +37,7 @@ class welcome extends CI_Controller
         {
             if($_GET['msg'] == 1)
             {
-                echo "<script>alert('Kritik dan Saran sukses ditambahkan');window.location.href='../';</script>";
+                echo "<script>alert('Kritik dan Saran sukses ditambahkan');window.location.href='welcome';</script>";
             }    
         }
 		$this->load->view('template/header');
