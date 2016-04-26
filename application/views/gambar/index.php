@@ -46,9 +46,7 @@
             <strong>Sukses!</strong> Gambar berhasil dihapus.</div>";
     }
   ?>
-  <div class="col-xs-12">
-    <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd'><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
-  </div>
+    <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="float:right;"><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
     <table class="table" id="formatTabel">
       <thead><tr>
         <th class="showNone">Id Gambar</th>

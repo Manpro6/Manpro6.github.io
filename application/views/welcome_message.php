@@ -58,11 +58,15 @@ $events = $req->fetchAll();
 		        	<?php
                 if($mydata['id_gambar'] == 1)
                 {
-                  echo "<div class='item active'><img class='first-slide' src='$mydata[nama_gambar]'></div>";
+                  ?>
+                  <div class="item active"><img class="first-slide" src="<?php echo base_url($mydata['nama_gambar'])?>"></div>
+                  <?php
                 }
                 else
                 {
-                  echo "<div class='item'><img src='$mydata[nama_gambar]'></div>";
+                  ?>
+                  <div class="item"><img src="<?php echo base_url($mydata['nama_gambar'])?>"></div>
+                  <?php
                 }		    
 					?>   
 				<?php endforeach; ?>

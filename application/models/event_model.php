@@ -34,15 +34,26 @@ class event_model extends CI_Model
       $cek = $this->input->post('delete');
       if($cek == null)
       {
-        $update_event = array(
-        'title' => $this->input->post('title'),
-        'pengajar' => $this->input->post('pengajar'),
-        'deskripsi' => $this->input->post('deskripsi'),
-        'color' => $this->input->post('color'));     
+        $start = $this->input->post('start');
+        $end = $this->input->post('end');
+        if($start >= $end)
+        {
+          redirect('event?msg=1');
+        }
+        else
+        {
+          $update_event = array(
+          'title' => $this->input->post('title'),
+          'pengajar' => $this->input->post('pengajar'),
+          'deskripsi' => $this->input->post('deskripsi'),
+          'color' => $this->input->post('color'),
+          'start' => $start,               
+          'end' => $end);     
 
-        $this->db->where('id', $this->input->post('id'));
-        $this->db->update('events', $update_event);
-        redirect('event?msg=3');
+          $this->db->where('id', $this->input->post('id'));
+          $this->db->update('events', $update_event);
+          redirect('event?msg=3');
+        }
       }
       else
       {
@@ -50,6 +61,13 @@ class event_model extends CI_Model
         $this->db->delete('events');
         redirect('event?msg=4');
       }
+    }
+
+    public function baca($id)
+    {
+      $query = $this->db->query("SELECT * FROM `events` WHERE id = '$id'");
+      $hasil = $query->row_array();
+      return $hasil;
     }
 }
 ?>
