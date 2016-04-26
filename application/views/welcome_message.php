@@ -19,6 +19,24 @@ $events = $req->fetchAll();
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
     <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet' />
 </head>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.alert').delay(5000).fadeOut();
+      $('.btnEdit').on('click', function() {
+        var id = $(this).attr('data-id');
+        var path = $(this).closest('tr').children('td.path').text();
+
+        $('#idEdit').attr("value", id);
+        $('#path').val(path);
+        $.ajax({
+            url : "<?php echo site_url('berita/showBerita'); ?>/"+id,
+            success: function(data){
+                $('#berita').html(data);
+            }
+        });
+      });
+    });
+    </script>
 <body link="blue">
 	<div class="container">
 		<br>
@@ -86,8 +104,9 @@ $events = $req->fetchAll();
           <em>Tidak ada berita untuk ditampilkan</em></td>
           </tr>
       <?php endif ?>
+
     </table>
-    
+    <div id="pagination"><?php echo $pagination ?></div>
 			<?php endif ?> 
 		      </div>
 		      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

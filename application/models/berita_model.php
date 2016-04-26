@@ -54,6 +54,16 @@
       $this->db->where('id_berita', $id);
       $this->db->update('berita', $update_berita);
     }
-    
+      public function user_limit($limit, $start = 0)
+    {     
+      $this->db->select('*');
+      $this->db->from('berita');
+      $this->db->limit($limit, $start);       
+      return $this->db->get()->result_array();
+    }
+     public function count()
+    {
+      return $this->db->get('berita')->num_rows();
+    }
   }
 ?>
