@@ -34,7 +34,7 @@
             </td>
             <th style="text-align:justify;"><br><br><br>
              <a type="button" href="<?php echo site_url('berita/ubah').'/'.$mydata['id_berita'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-edit"></span>&nbsp; Ubah</a><br><br>
-             <a type="button" href="<?php echo site_url('berita/delete').'/'.$mydata['id_berita'] ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#modal-delete"></span>&nbsp; Delete</a><br><br>
+             <a type="button" href="<?php echo site_url('berita/delete').'/'.$mydata['id_berita'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus berita ini?')"><span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#modal-delete"></span>&nbsp; Delete</a><br><br>
             </th>
             </tr>
               <?php endforeach; ?>

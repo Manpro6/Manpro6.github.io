@@ -149,5 +149,11 @@ class berita extends CI_Controller
         $this->load->view('template/footer', $data);
     
     }
+    public function showBerita($id_berita)
+    {
+        $this->load->model('berita_model');
+        $data['berita'] = $this->berita_model->getById($id_berita);
+        $this->load->view('berita/tampilberita', $data);
+    }
  }
 ?>
