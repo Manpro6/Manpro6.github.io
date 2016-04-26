@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2016 at 03:42 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Apr 26, 2016 at 04:58 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `pplk`
@@ -26,10 +26,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE `admin` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`username`)
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -45,15 +44,14 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 -- Table structure for table `berita`
 --
 
-CREATE TABLE IF NOT EXISTS `berita` (
-  `id_berita` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `berita` (
+  `id_berita` int(11) NOT NULL,
   `judul` varchar(50) NOT NULL,
   `tanggal` datetime NOT NULL,
   `penulis` varchar(40) NOT NULL,
   `isi` text NOT NULL,
-  `gambar` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_berita`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `gambar` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `berita`
@@ -69,16 +67,15 @@ INSERT INTO `berita` (`id_berita`, `judul`, `tanggal`, `penulis`, `isi`, `gambar
 -- Table structure for table `events`
 --
 
-CREATE TABLE IF NOT EXISTS `events` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `pengajar` varchar(40) NOT NULL,
   `deskripsi` text NOT NULL,
   `color` varchar(7) DEFAULT NULL,
   `start` datetime NOT NULL,
-  `end` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+  `end` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
@@ -93,9 +90,8 @@ INSERT INTO `events` (`id`, `title`, `pengajar`, `deskripsi`, `color`, `start`, 
 (16, 'paskah2', '', '', '#FF0000', '2016-03-26 08:00:00', '2016-03-26 10:00:00'),
 (20, 'paskah1', 'Erick Kurniawan', 'pelatihan untuk PT. SETIA BUDI UTAMA Jakarta', '#0071c5', '2016-03-26 09:00:00', '2016-03-26 14:00:00'),
 (21, 'paskah3', '', 'lalala', '#008000', '2016-03-26 03:00:00', '2016-03-26 05:00:00'),
-(23, 'asd', 'asda', 'asdasd', '#FF8C00', '2016-05-31 11:11:00', '2016-03-24 01:11:00'),
-(24, 'dsa', 'dsa', 'dsa', '#FF8C00', '2016-03-31 01:01:00', '2016-03-01 03:33:00'),
-(25, 'kursus ASP.NET MVC 5', 'Erick Kurniawan', 'Kursus ASP.NET MVC 5 mulai dari bootstrap, dsb.', '#000', '2016-04-14 10:00:00', '2016-04-18 10:00:00');
+(25, 'kursus ASP.NET MVC 5', 'Erick Kurniawan', 'Kursus ASP.NET MVC 5 mulai dari bootstrap, dsb.', '#000', '2016-04-14 10:00:00', '2016-04-18 10:00:00'),
+(26, 'Codeigniter', 'Halim Budi Santoso', 'uji coba PHP CI', '#0071c5', '2016-04-26 18:00:00', '2016-04-28 19:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,11 +99,10 @@ INSERT INTO `events` (`id`, `title`, `pengajar`, `deskripsi`, `color`, `start`, 
 -- Table structure for table `gambar`
 --
 
-CREATE TABLE IF NOT EXISTS `gambar` (
-  `id_gambar` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_gambar` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_gambar`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+CREATE TABLE `gambar` (
+  `id_gambar` int(11) NOT NULL,
+  `nama_gambar` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gambar`
@@ -129,25 +124,24 @@ INSERT INTO `gambar` (`id_gambar`, `nama_gambar`) VALUES
 -- Table structure for table `jadwal_lab`
 --
 
-CREATE TABLE IF NOT EXISTS `jadwal_lab` (
-  `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `jadwal_lab` (
+  `id_jadwal_lab` int(11) NOT NULL,
   `id_lab` int(11) NOT NULL,
   `nama_matkul` varchar(100) NOT NULL,
   `prodi` varchar(50) NOT NULL,
   `status` varchar(100) NOT NULL,
   `tanggal_mulai` date NOT NULL,
-  `tanggal_selesai` date NOT NULL,
-  PRIMARY KEY (`id_jadwal_lab`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `tanggal_selesai` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jadwal_lab`
 --
 
 INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `status`, `tanggal_mulai`, `tanggal_selesai`) VALUES
-(1, 1, 'Algoritma dan Pemrograman', 'Sistem Informasi', 'Pengganti', '2016-04-09', '2016-04-09'),
 (3, 5, 'Desain Game', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
-(9, 29, 'Ervan Ganteng', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09');
+(9, 29, 'Ervan Ganteng', 'Sistem Informasi', 'Reguler', '2016-04-09', '2016-04-09'),
+(10, 1, 'Praktikum RPL', 'Sistem Informasi', 'Reguler', '2016-04-23', '2016-04-23');
 
 -- --------------------------------------------------------
 
@@ -155,14 +149,13 @@ INSERT INTO `jadwal_lab` (`id_jadwal_lab`, `id_lab`, `nama_matkul`, `prodi`, `st
 -- Table structure for table `kritik`
 --
 
-CREATE TABLE IF NOT EXISTS `kritik` (
-  `id_kritik` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `kritik` (
+  `id_kritik` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `pesan` text NOT NULL,
-  `tanggal` datetime NOT NULL,
-  PRIMARY KEY (`id_kritik`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
+  `tanggal` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kritik`
@@ -173,9 +166,48 @@ INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
 (41, 'monxanbel@gmail.com', 'monxanbel', 'Pengalaman yang menyenangkan saat di SI UKDW adalah ketika bertemu banyak teman baru dan bersama-sama mengikuti organisasi, mengerjakan tugas, bermain, bercanda, dll. Hampir semua moment di SI UKDW menyenangkan buat saya. Hal yang menurut saya unggul di SI UKDW adalah kekeluargaannnya. Kita sudah seperti saudara, baik antara sesama mahasiswa ataupun dosen dengan mahasiswa. Manfaat yang saya dapatkan selain pasti mendapatkan ilmunya, saya juga mendapatkan banyak pengalaman-pengalaman berharga yang membuat saya menjadi lebih dewasa, kreatif, kritis, aktif, dll. \r\n\r\nPengalaman menyenangkan yang pernah pernah saya alami adalah saat saya dan teman-teman diberikan kesempatan oleh SI UKDW untuk mengikuti lomba Software Development Competition. Dengan pelatihan dan dukungan yang diberikan oleh SI UKDW, tim saya dapat masuk ke Semifinal (10 besar). Hal yang menjadi keunggulan SI UKDW selain pembelajaran, mahasiswa juga diberikan kesempatan untuk saling berbaur dan mengembangkan softskills dengan adanya kegiatan SI Camp, Makrab dan organisasi-organisasi yang ada di SI UKDW. Kesan kuliah di SI UKDW adalah SI UKDW memperluas wawasan saya di bidang SI serta mempersiapkan saya untuk menghadapi persaingan global di masa mendatang', '2016-04-17 15:10:18'),
 (42, 'monxanbel@gmail.com', 'monxanbel', 'asmafmafadas', '2016-04-17 18:00:00'),
 (43, 'monxanbel@gmail.com', 'monxanbel', 'saafnbajsdfanczxmczc', '2016-04-17 00:00:00'),
-(44, 'monxanbel@gmail.com', 'monxanbel', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssssssssssss', '2016-04-17 00:00:00'),
+(44, 'monxanbel@gmail.com', 'monxanbel', 'saaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2016-04-17 00:00:00'),
 (55, 'monxanbel@gmail.com', 'monxanbel', 'Daftar Drama Korea :\r\n- Marriage Contract\r\n- Reply 1988\r\n- Page Turner\r\n- Goodbye Mr. Black\r\n- Vampire Detective\r\n- Neighborhood''s Hero\r\n- Sweet Savage Family\r\n- Queen in Hyun''s man', '2016-04-18 10:18:00'),
-(56, 'monxanbel@gmail.com', 'monxanbel', 'uji coba ya', '2016-04-20 19:30:55');
+(56, 'monxanbel@gmail.com', 'monxanbel', 'uji coba ya', '2016-04-20 19:30:55'),
+(57, 'monxanbel@gmail.com', 'monxanbel', 'aaaa', '2016-04-21 10:00:00'),
+(58, 'monxanbel@gmail.com', 'monxanbel', 'bbbb', '2016-04-21 11:00:00'),
+(59, 'monxanbel@gmail.com', 'monxanbel', 'ccc', '2016-04-21 12:00:00'),
+(60, 'monxanbel@gmail.com', 'monxanbel', 'ddd', '2016-04-21 00:00:00'),
+(61, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-23 22:43:24'),
+(62, 'monxanbel@gmail.com', 'monxanbel', 'kakakaka', '2016-04-23 22:47:53'),
+(63, 'monxanbel@gmail.com', 'monxanbel', 'uji coba', '2016-04-23 23:28:18'),
+(64, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-23 23:30:37'),
+(65, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-23 23:31:58'),
+(66, 'Monxanbel@gmail.com', 'monxanbel', 'kakakaka', '2016-04-24 05:20:18'),
+(67, 'monxanbel@gmail.com', 'monxanbel', 'skalamcla', '2016-04-24 05:27:31'),
+(68, 'monxanbel@gmail.com', 'monxanbel', 'skalamcla', '2016-04-24 05:27:32'),
+(69, 'monxanbel@gmail.com', 'monxanbel', 'skalamcla', '2016-04-24 05:30:07'),
+(70, 'monxanbel@gmail.com', 'monxanbel', 'kakakakaka', '2016-04-24 05:41:57'),
+(71, 'monxanbel@gmail.com', 'monxanbel', 'kakakakaka', '2016-04-24 05:49:05'),
+(72, 'monxanbel@gmail.com', 'monxanbel', 'kakakaka', '2016-04-24 09:43:47'),
+(73, 'monxanbel@gmail.com', 'monxanbel', 'uji coba jika berhasil ya', '2016-04-24 09:49:03'),
+(74, 'pplk.ukdw@gmail.com', 'pplk', 'jasdkaa', '2016-04-24 09:54:14'),
+(75, 'monxanbel@gmail.com', 'monxanbel', 'lalalal', '2016-04-24 09:57:44'),
+(76, 'monxanbel@gmail.com', 'monxanbel', 'jajaja', '2016-04-24 10:02:09'),
+(77, 'monxanbel@gmail.com', 'monxanbel', 'aasaaa', '2016-04-24 10:06:33'),
+(78, 'monxanbel@gmail.com', 'monxanbel', 'aasaaa', '2016-04-24 10:06:45'),
+(79, 'monxanbel@gmail.com', 'monxanbel', 'kakakaloo', '2016-04-24 10:11:19'),
+(80, 'monxanbel@gmail.com', 'monxanbel', 'kakaka', '2016-04-24 10:15:03'),
+(81, 'monxanbel@gmail.com', 'monxanbel', 'kakalsadda', '2016-04-24 10:17:39'),
+(82, 'monxanbel@gmail.com', 'monxanbel', 'laoalao', '2016-04-24 10:20:24'),
+(83, 'monxanbel@gmail.com', 'maria', 'masaaa', '2016-04-24 10:25:47'),
+(84, 'monxanbel@gmail.com', 'monxanbel', 'lasdladas', '2016-04-24 10:28:49'),
+(85, 'monxanbel@gmail.com', 'monxanbel', 'lpadasa', '2016-04-24 10:33:32'),
+(86, 'monxanbel@gmail.com', 'monxanbel', 'oapsdasda', '2016-04-24 10:37:12'),
+(87, 'monxanbel@gmail.com', 'monxanbel', 'mlapapa', '2016-04-24 10:41:00'),
+(88, 'monxanbel@gmail.com', 'monxanbel', 'lal,asda', '2016-04-24 10:41:49'),
+(89, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-24 11:00:46'),
+(90, 'monxanbel@gmail.com', 'monxanbel', 'oalalala', '2016-04-24 11:12:28'),
+(91, 'monxanbel@gmail.com', 'monxanbel', 'lalalsasda', '2016-04-24 11:13:23'),
+(92, 'monxanbel@gmail.com', 'monxanbel', 'lalilulelo', '2016-04-24 11:18:35'),
+(93, 'monxanbel@gmail.com', 'monxanbel', 'kaksla', '2016-04-24 11:20:55'),
+(94, 'monxanbel@gmail.com', 'monxanbel', 'lalala', '2016-04-24 11:22:15'),
+(95, 'monxanbel@gmail.com', 'monxanbel', 'laodasa', '2016-04-24 11:25:15');
 
 -- --------------------------------------------------------
 
@@ -183,13 +215,12 @@ INSERT INTO `kritik` (`id_kritik`, `email`, `nama`, `pesan`, `tanggal`) VALUES
 -- Table structure for table `lab`
 --
 
-CREATE TABLE IF NOT EXISTS `lab` (
-  `id_lab` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `lab` (
+  `id_lab` int(11) NOT NULL,
   `lab` varchar(11) NOT NULL,
   `hari` varchar(10) NOT NULL,
-  `sesi` varchar(11) NOT NULL,
-  PRIMARY KEY (`id_lab`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=253 ;
+  `sesi` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lab`
@@ -449,6 +480,86 @@ INSERT INTO `lab` (`id_lab`, `lab`, `hari`, `sesi`) VALUES
 (251, 'Lab I', 'Minggu', 'III'),
 (252, 'Lab I', 'Minggu', 'IV');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gambar`
+--
+ALTER TABLE `gambar`
+  ADD PRIMARY KEY (`id_gambar`);
+
+--
+-- Indexes for table `jadwal_lab`
+--
+ALTER TABLE `jadwal_lab`
+  ADD PRIMARY KEY (`id_jadwal_lab`);
+
+--
+-- Indexes for table `kritik`
+--
+ALTER TABLE `kritik`
+  ADD PRIMARY KEY (`id_kritik`);
+
+--
+-- Indexes for table `lab`
+--
+ALTER TABLE `lab`
+  ADD PRIMARY KEY (`id_lab`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `gambar`
+--
+ALTER TABLE `gambar`
+  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `jadwal_lab`
+--
+ALTER TABLE `jadwal_lab`
+  MODIFY `id_jadwal_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `kritik`
+--
+ALTER TABLE `kritik`
+  MODIFY `id_kritik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+--
+-- AUTO_INCREMENT for table `lab`
+--
+ALTER TABLE `lab`
+  MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

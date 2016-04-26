@@ -171,6 +171,14 @@
             <textarea rows="4" cols="20" name="deskripsi" class="form-control" placeholder="Deskripsi" id="deskripsiE" value="" required></textarea>  
           </div>  
           <div class="form-group">
+            <label for="start">Tanggal Mulai</label>
+            <div id="startE"></div>
+          </div>
+          <div class="form-group">
+            <label for="start">Tanggal Selesai</label>
+            <div id="endE"></div>
+          </div>
+          <div class="form-group">
               <label for="color">Warna</label>
               <select name="color" class="form-control" id="colorE" required>
                 <option value="">-- Pilih Warna --</option>
@@ -232,10 +240,21 @@
           $('#ModalEdit #titleE').val(event.title);
           $('#ModalEdit #pengajarE').val(event.pengajar);
           $('#ModalEdit #deskripsiE').val(event.deskripsi);
-          $('#ModalEdit #startE').val(event.start.format('DD/MM/YYYY HH:mm'));
-          $('#ModalEdit #endE').val(event.end.format('DD/MM/YYYY HH:mm'));
+          $('#ModalEdit #endE').val(event.end.format('DD/MM/YYYYTHH:mm'));
           $('#ModalEdit #colorE').val(event.color);
           $('#show').click();
+          $.ajax({
+            url : "<?php echo site_url('event/bacaStart'); ?>/"+event.id,
+            success: function(data){
+                $('#startE').html(data);
+            }
+          });
+          $.ajax({
+            url : "<?php echo site_url('event/bacaEnd'); ?>/"+event.id,
+            success: function(data){
+                $('#endE').html(data);
+            }
+          });
        });
       },    
       events: [

@@ -49,5 +49,19 @@ class event extends CI_Controller
 		$this->load->model('event_model');
 		$data = $this->event_model->updateEvent();
 	}
+
+    public function bacaStart($id)
+    {
+        $this->load->model('event_model');
+        $data['eve'] = $this->event_model->baca($id);
+        $this->load->view('event/start', $data);
+    }
+
+    public function bacaEnd($id)
+    {
+        $this->load->model('event_model');
+        $data['eve'] = $this->event_model->baca($id);
+        $this->load->view('event/end', $data);
+    }
 }
 ?>
