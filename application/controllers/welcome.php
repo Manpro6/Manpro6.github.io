@@ -51,7 +51,7 @@ class welcome extends CI_Controller
 
 
 
-		$config['base_url'] = base_url().'welcome_message';
+		$config['base_url'] = base_url().'welcome/index';
         $config['total_rows'] = $this->berita_model->count();
         $config['per_page'] = "3";
         $config['uri_segment'] = 3;
