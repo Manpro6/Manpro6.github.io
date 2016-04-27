@@ -49,7 +49,7 @@
 </div>
       
       <hr >
-      <H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, antara lain : 
+      <H4 style="margin-left:15px;">PPLK UKDW menyediakan berbagai macam sertifikasi yang dapat diikuti, jika anda ingin mendaftar sertifikasi silahkan <a style="color:blue", href="http://www.lsp-telematika.or.id/asesmen/index.php";>klik disini</a>
     </H4>  
     
     <ol>    
