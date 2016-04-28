@@ -245,9 +245,9 @@
                       <td class='tanggal_mulai'>".$jadwal_lab['tanggal_mulai']."</td>
                       <td class='tanggal_selesai'>".$jadwal_lab['tanggal_selesai']."</td>
                       <td>
-                        <button type='button' class='btn btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."' ><span class='glyphicon glyphicon-edit'></span>&nbsp;Ubah</button>
-                        <button type='button' class='btn btn-danger' onclick='return confirm(&#39;Anda yakin ingin menghapus jadwal lab ini?&#39;)'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>
-                        <span class='glyphicon glyphicon-trash'></span>&nbsp;Hapus</button>
+                        <button type='button' class='btn btn-sm btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."' ><span class='glyphicon glyphicon-edit'></span>&nbsp;Ubah</button>
+                        <a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."' class='btn btn-sm btn-danger' onclick='return confirm(&#39;Anda yakin ingin menghapus jadwal lab ini?&#39;)'>
+                        <span class='glyphicon glyphicon-trash'></span>&nbsp;Hapus</a>
                       </td>
                     </tr>
                     </tbody>";
@@ -360,8 +360,8 @@
             </div> 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-            <button type="submit" class="btn btn-primary">Tambah Jadwal</button>
+            <button type="button" class="btn btn-sm btn-default" onclick=location.reload()>Batal</button>
+            <button type="submit" class="btn btn-sm btn-primary">Tambah Jadwal</button>
           </div>
         </form>
         </div>
@@ -460,8 +460,8 @@
             </div> 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <button type="button" class="btn btn-sm btn-default" onclick=location.reload()>Batal</button>
+            <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>
           </div>
         </form>
         </div>
