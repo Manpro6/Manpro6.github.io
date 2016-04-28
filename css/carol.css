@@ -235,3 +235,37 @@
 .led {
   color:red;
 }
+
+#header {
+  color:white;
+  font-size:12pt;
+}
+
+#konten {
+  color:white;
+  font-size:10pt;
+}
+
+#box {
+  color:white;
+  width:110px;
+  font-weight:bold;
+  font-size:10pt;
+}
+
+#size {
+  width:300px;
+  height:30px;
+}
+
+#area {
+  width:300px;
+  margin-top:10px;
+  height:60px;
+}
+
+#sama {
+  color:white;
+  width:10px;
+  font-weight:bold;
+}
