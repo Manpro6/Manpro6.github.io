@@ -1,6 +1,6 @@
 <head><title>Admin Panel - Edit Berita</title></head>
 <div class="container">
-  <h2>Daftar berita</h2><hr>
+  <h2>Daftar Berita PPLK</h2><hr>
   <div style="float: right; margin-right: 30px;">
     <a href="<?php echo site_url('berita/add')?>" class="btn btn-xs btn-primary">
       <button type='button' class='btn btn-primary' style="border: none;"><span class="glyphicon glyphicon-plus"></span> Tambah Berita</button>
