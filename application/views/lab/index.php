@@ -246,7 +246,7 @@
                       <td class='tanggal_selesai'>".$jadwal_lab['tanggal_selesai']."</td>
                       <td>
                         <button type='button' class='btn btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."' ><span class='glyphicon glyphicon-edit'></span>&nbsp;Ubah</button>
-                        <button type='button' class='btn btn-danger' onclick='return confirm('Anda yakin ingin menghapus data ini?')'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>
+                        <button type='button' class='btn btn-danger' onclick='return confirm(&#39;Anda yakin ingin menghapus jadwal lab ini?&#39;)'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>
                         <span class='glyphicon glyphicon-trash'></span>&nbsp;Hapus</button>
                       </td>
                     </tr>
