@@ -72,11 +72,55 @@
                     $pecah = explode(".", $mydata['pesan']);
                     if(count($pecah) > 1)
                     {
-                      echo $pecah[0]." .....";
+                      $pecah2 = explode(" ", $pecah[0]);
+                      if(count($pecah2) > 1)
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0]." .....";
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      } 
+                      else
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0]." .....";
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      }            
                     }
                     else
                     {
-                      echo $pecah[0];
+                      $pecah2 = explode(" ", $pecah[0]);
+                      if(count($pecah2) > 1)
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0];
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      } 
+                      else
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0];
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      }         
                     }
                   ?>
                 </td>
@@ -99,7 +143,7 @@
       <div class="modal-dialog" role="document">
       <div class="modal-content">   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="krisan"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Detail Kritik & Saran</b></h4>
         </div>
         <div class="modal-body"> 
@@ -125,7 +169,7 @@
         <div id="pesanDetail" class="justify"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick=location.href="krisan">Kembali</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Kembali</button>
         </div>
       </div>
       </div>

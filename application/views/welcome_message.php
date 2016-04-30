@@ -45,7 +45,7 @@ $events = $req->fetchAll();
 		<p style="font-size:24px;">&nbsp; (PPLK)</p>
 		<hr>
 		<div class="col-md-8">
-			<div id="myCarousel" class="carousel slide">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		      <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <?php for ($i=1; $i < $count; $i++) { 

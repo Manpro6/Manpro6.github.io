@@ -17,3 +17,5 @@ GUEST PAGE
 
 1. batasi string saat penampilan berita di pplk (misal 120 string only, lalu diberikan link 'baca selengkapnya')
 
+CATATAN :
+ Bug nomor 3 di Admin Panel setelah dicoba di tempat xandra sudah benar. Boleh dicoba di laptop lainnya, jika masih ada bug dan bugnya sama, bisa diberitahukan.
