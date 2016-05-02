@@ -12,7 +12,6 @@ class Gambar extends CI_Controller
 	{
         $this->load->model('gambar_model');
         $session_id = $this->session->userdata('is_logged_in');
-        $data['sesi'] = 0;
         if($session_id == TRUE)
         {
             $this->load->view('template/header');        

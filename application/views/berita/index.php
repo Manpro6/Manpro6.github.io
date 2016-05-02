@@ -7,9 +7,10 @@
     </a>
   </div>
   <br><br>       
+  <div>          
     <table class="table table-striped" style="margin: auto; width:70%; overflow:auto; text-align:center;">
     
-      <tbody>
+      <tbody id ="tbody-table-krisan" class="table table-striped">
         <?php if($berita) : ?>
               <?php foreach ($berita as $mydata):?>
                 <?php $isi = $mydata['isi']?>
@@ -30,9 +31,7 @@
 
            $input=implode(" ", $parts);
           }
-          ?>
-            
-            
+          ?>            
             <tr><td><strong><?php echo $mydata['judul'] ?></strong></td></tr>
           <th><img style="width:300px; height:150px;" src="<?php echo base_url($mydata['gambar'])?>"></th>
             <th style="text-align:justify;"><br><?php echo $input ?>...</th>
@@ -53,5 +52,6 @@
             <?php endif ?>
       </tbody>
     </table>
+  </div>
   </div>
 </div>

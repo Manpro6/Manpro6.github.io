@@ -4,7 +4,6 @@ class event extends CI_Controller
 {
 	public function index()
 	{
-		$data['sesi'] = 0;
 		$session_id = $this->session->userdata('is_logged_in');
         if($session_id == TRUE)
         {

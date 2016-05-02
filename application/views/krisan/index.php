@@ -38,13 +38,17 @@
     <h2>Kritik dan Saran</h2>
     <hr> 
     <?php
-      if($sesi == 1)
-      {
-        echo "<div class='alert alert-success alert-dismissible' role='alert'>
+      $session_id = $this->session->userdata('is_logged_in');
+      if($session_id == TRUE)
+      {      
+        if($this->session->flashdata('index') == 1)
+        {
+          echo "<div class='alert alert-success alert-dismissible' role='alert'>
               <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
               <strong>Sukses!</strong> Data kritik dan saran berhasil dihapus.</div>";
-      } 
-    ?>
+        }
+      }     
+  ?>
     <div class="table-responsive">          
       <table class="table">
         <thead class="table_head">

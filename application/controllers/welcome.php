@@ -48,9 +48,6 @@ class welcome extends CI_Controller
 		$data['gambar'] = $this->gambar_model->getGambar();
 		$data['berita'] = $this->berita_model->getTerbaru();
 
-
-
-
 		$config['base_url'] = base_url().'welcome/index';
         $config['total_rows'] = $this->berita_model->count();
         $config['per_page'] = "3";
@@ -83,3 +80,4 @@ class welcome extends CI_Controller
 		$this->load->view('template/footer-index', $data);
 	}
 }
+?>

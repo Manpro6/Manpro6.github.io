@@ -1,4 +1,4 @@
-<head><title>Admin Panel - Edit Gambar</title></head>
+<head><title>Admin Panel - Gambar</title></head>
 <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet'/>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -51,14 +51,17 @@
       }     
   ?>
     <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalAdd' style="float:right;"><span class="glyphicon glyphicon-plus"></span> Tambah Gambar</button>
-    <table class="table" id="formatTabel">
-      <thead><tr>
-        <th id="showNone">Id Gambar</th>
-        <th id="showNone">Nama Gambar</th>
-        <th class="showFill">Gambar</th>
-        <th class="showFill">Aksi</th>
-      </tr></thead>
-      <tbody>
+    <div class="table-responsive">          
+      <table class="table" id="formatTabel">
+        <thead class="table_head">
+          <tr>
+            <th id="showNone">Id Gambar</th>
+            <th id="showNone">Nama Gambar</th>
+            <th class="showFill">Gambar</th>
+            <th class="showFill">Aksi</th>
+          </tr>
+        </thead>
+      <tbody id ="tbody-table-krisan" class="table table-striped">
         <?php if($gambar) : ?>
               <?php foreach ($gambar as $mydata):?>
             <tr>
@@ -78,6 +81,7 @@
             <?php endif ?>
       </tbody>
     </table>
+  </div>
     <div id="pagination"><?php echo $pagination ?></div>
 
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

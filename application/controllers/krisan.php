@@ -14,17 +14,9 @@ class krisan extends CI_Controller
 	public function index($page = 0)
 	{		
 		$this->load->model('krisan_model');
-		$data['sesi'] = 0;
 		$session_id = $this->session->userdata('is_logged_in');
         if($session_id == TRUE)
         {
-        	if(isset($_GET['msg']))
-			{
-				if($_GET['msg'] == 1)
-				{
-					$data['sesi'] = 1;
-				}
-			}
 			$config['base_url'] = base_url().'krisan/index';
 			$config['total_rows'] = $this->krisan_model->tot_num_rows();
 			$config['per_page'] = "5";
@@ -65,6 +57,8 @@ class krisan extends CI_Controller
 
 	public function insert()
 	{
+		print_r($this->input->post('input_captcha'));
+		print_r($this->session->userdata('captcha_str'));
 		if($this->input->post('input_captcha') != $this->session->userdata('captcha_str'))
 		{
 			echo "<script>
@@ -76,7 +70,7 @@ class krisan extends CI_Controller
 		{
 			$this->load->model('krisan_model');
 			$lihat = $this->krisan_model->input();
-
+			$isi = "Email ".$this->input->post('email')." telah menambahkan kritik & saran, dengan pesan '".$this->input->post('pesan')."'";
 			$config = Array(
 			    'protocol' => 'smtp',
 			    'smtp_host' => 'ssl://smtp.gmail.com',
@@ -92,7 +86,7 @@ class krisan extends CI_Controller
 	        $this->email->from($this->input->post('email'), $this->input->post('nama'));
 	        $this->email->to('pplk.ukdw@gmail.com'); 
 	        $this->email->subject('Kritik & Saran PPLK');
-	        $this->email->message($this->input->post('pesan'));  	        
+	        $this->email->message($isi);  	        
 	        if($this->email->send())
 	        {
 	        	echo $this->email->print_debugger();
@@ -109,7 +103,8 @@ class krisan extends CI_Controller
 	{
 		$this->load->model('krisan_model');
 		$this->krisan_model->delete($id_kritik);
-		redirect('krisan?msg=1');
+		$this->session->set_flashdata('index', 1); 
+		redirect('krisan');
 	}
 
 	public function bacaPesan($id_kritik)

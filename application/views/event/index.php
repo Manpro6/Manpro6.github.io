@@ -138,6 +138,7 @@
             <p id="pelaksanaan">Pengajar</p>
             <p class="sama">:</p>
             <p id="pengajar" class="ajar"></p>
+            <br><br>
             <p id="pelaksanaan">Deskripsi</p>
             <p class="sama">:</p>
             <br><br>
