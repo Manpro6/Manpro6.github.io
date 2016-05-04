@@ -7,7 +7,7 @@
   		<hr>
   		Melalui <em>DWCU Training and Testing Competence Centre</em>, PPLK UKDW menyediakan berbagai macam kursus yang dapat diikuti, antara lain : 
   	</p>	
-  	<img class="featurette-image img-responsive center-block" id="kursus" src="<?php echo base_url('images/training.jpg')?>">
+  	<img class="featurette-image img-responsive center-block" id="kursus" src="<?php echo base_url('images/Training.jpg')?>">
   	<ol>  	
 	  	<div id="krs">
 	  		<br>

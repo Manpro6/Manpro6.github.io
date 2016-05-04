@@ -47,10 +47,9 @@
   background-color: #777;}
 
   .carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
+  display: block;
+  margin: 0px auto;
+  text-align: center;
   height: 375px;}
 
   .carousel-caption p {
@@ -63,13 +62,7 @@
 }
 
 .img {
-  width:530px;
-  height:200px;
-}
-
-.img2 {
   width:450px;
-  height:200px;
 }
 
 .margin {
@@ -77,7 +70,7 @@
   margin-left:18%;
 }
 
-.showNone {
+#showNone {
   text-align:center;
   font-size:12pt;
   display:none;
@@ -155,7 +148,6 @@
 
 .ajar {
   float:left;
-  width:400px;
 }
 
 .tanggal {
@@ -234,4 +226,38 @@
 
 .led {
   color:red;
+}
+
+#header {
+  color:white;
+  font-size:12pt;
+}
+
+#konten {
+  color:white;
+  font-size:10pt;
+}
+
+#box {
+  color:white;
+  width:110px;
+  font-weight:bold;
+  font-size:10pt;
+}
+
+#size {
+  width:300px;
+  height:30px;
+}
+
+#area {
+  width:300px;
+  margin-top:10px;
+  height:60px;
+}
+
+#sama {
+  color:white;
+  width:10px;
+  font-weight:bold;
 }

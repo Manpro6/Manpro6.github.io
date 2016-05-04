@@ -12,29 +12,9 @@ class Gambar extends CI_Controller
 	{
         $this->load->model('gambar_model');
         $session_id = $this->session->userdata('is_logged_in');
-        $data['sesi'] = 0;
         if($session_id == TRUE)
         {
-            $this->load->view('template/header');
-            if(isset($_GET['msg']))
-            {
-                if(($_GET['msg']) == 1)
-                {
-                    $data['sesi'] = 1;
-                }
-                elseif(($_GET['msg']) == 2)
-                {
-                    $data['sesi'] = 2;
-                }
-                elseif(($_GET['msg']) == 3)
-                {
-                    $data['sesi'] = 3;
-                }
-                elseif(($_GET['msg']) == 4)
-                {
-                    $data['sesi'] = 4;
-                }
-    		}           
+            $this->load->view('template/header');        
             $config['base_url'] = base_url().'gambar/index';
             $config['total_rows'] = $this->gambar_model->count();
             $config['per_page'] = "3";
@@ -89,14 +69,15 @@ class Gambar extends CI_Controller
         $url = $this->do_upload();
         if($url == null)
         {
-            redirect('gambar?msg=3'); 
+            $this->session->set_flashdata('index', 3); 
         }
         else
         {
             $this->load->model('gambar_model');
             $this->gambar_model->insert($url);
-            redirect('gambar?msg=2');
+            $this->session->set_flashdata('index', 1);
         }
+        redirect('gambar');
     }
 
     public function update()
@@ -108,7 +89,7 @@ class Gambar extends CI_Controller
             $url = $this->do_upload();
             if($url == null)
             {
-                redirect('gambar?msg=3'); 
+                $this->session->set_flashdata('index', 3); 
             }
             else
             {
@@ -116,9 +97,10 @@ class Gambar extends CI_Controller
                 {    
                     $this->load->model('gambar_model');
                     $this->gambar_model->update($id, $url);
-                    redirect('gambar?msg=1');
+                    $this->session->set_flashdata('index', 2); 
                 } 
-            }          
+            }  
+            redirect('gambar');        
         }
     }
 
@@ -130,7 +112,8 @@ class Gambar extends CI_Controller
         {
             $this->gambar_model->delete($id_gambar);
         }
-        redirect('gambar?msg=4');
+        $this->session->set_flashdata('index', 4);
+        redirect('gambar'); 
     }
 
     public function showGambar($id_gambar)

@@ -38,13 +38,17 @@
     <h2>Kritik dan Saran</h2>
     <hr> 
     <?php
-      if($sesi == 1)
-      {
-        echo "<div class='alert alert-success alert-dismissible' role='alert'>
+      $session_id = $this->session->userdata('is_logged_in');
+      if($session_id == TRUE)
+      {      
+        if($this->session->flashdata('index') == 1)
+        {
+          echo "<div class='alert alert-success alert-dismissible' role='alert'>
               <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
               <strong>Sukses!</strong> Data kritik dan saran berhasil dihapus.</div>";
-      } 
-    ?>
+        }
+      }     
+  ?>
     <div class="table-responsive">          
       <table class="table">
         <thead class="table_head">
@@ -72,11 +76,55 @@
                     $pecah = explode(".", $mydata['pesan']);
                     if(count($pecah) > 1)
                     {
-                      echo $pecah[0]." .....";
+                      $pecah2 = explode(" ", $pecah[0]);
+                      if(count($pecah2) > 1)
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0]." .....";
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      } 
+                      else
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0]." .....";
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      }            
                     }
                     else
                     {
-                      echo $pecah[0];
+                      $pecah2 = explode(" ", $pecah[0]);
+                      if(count($pecah2) > 1)
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0];
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      } 
+                      else
+                      {
+                        if(strlen($pecah2[0]) <= 50)
+                        {
+                          echo $pecah[0];
+                        }
+                        else
+                        {
+                          echo substr($pecah[0], 0, 50)." .....";
+                        }
+                      }         
                     }
                   ?>
                 </td>
@@ -99,7 +147,7 @@
       <div class="modal-dialog" role="document">
       <div class="modal-content">   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="krisan"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Detail Kritik & Saran</b></h4>
         </div>
         <div class="modal-body"> 
@@ -125,7 +173,7 @@
         <div id="pesanDetail" class="justify"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick=location.href="krisan">Kembali</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Kembali</button>
         </div>
       </div>
       </div>

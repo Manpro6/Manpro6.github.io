@@ -45,7 +45,7 @@ $events = $req->fetchAll();
 		<p style="font-size:24px;">&nbsp; (PPLK)</p>
 		<hr>
 		<div class="col-md-8">
-			<div id="myCarousel" class="carousel slide">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		      <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <?php for ($i=1; $i < $count; $i++) { 
@@ -74,7 +74,7 @@ $events = $req->fetchAll();
    <strong><font style="font-size:24px;">Berita PPLK</font></strong>
    <div id="line"></div>
    <br>
-   <table >
+   <table>
         <?php if($berita) : ?>
               <?php foreach ($berita as $aaa):?>
                 <?php $isi = $aaa['isi']?>
@@ -108,10 +108,10 @@ $events = $req->fetchAll();
           <em>Tidak ada berita untuk ditampilkan</em></td>
           </tr>
       <?php endif ?>
-
+      <?php endif ?>
     </table>
     <div id="pagination"><?php echo $pagination ?></div>
-			<?php endif ?> 
+			 
 		      </div>
 		      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 		        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

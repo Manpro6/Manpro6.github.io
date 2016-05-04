@@ -212,7 +212,7 @@
         <li><a href="<?php echo base_url('lab/?lab=Lab H'); ?>">Lab H</a></li>
         <li><a href="<?php echo base_url('lab/?lab=Lab I'); ?>">Lab I</a></li>
       </ul>
-      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add" style="float: right;"> <strong>+</strong>  Tambah Jadwal</button>
+      <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#myModal' id="add" style="float: right; margin-right: 25px;"> <span class="glyphicon glyphicon-plus"></span>  Tambah Jadwal</button>
     </div>
     <br>
     <div class="table-responsive text-center">          
@@ -245,8 +245,9 @@
                       <td class='tanggal_mulai'>".$jadwal_lab['tanggal_mulai']."</td>
                       <td class='tanggal_selesai'>".$jadwal_lab['tanggal_selesai']."</td>
                       <td>
-                        <button type='button' class='btn btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."'>Ubah</button>
-                        <button type='button' class='btn btn-danger'><a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."'>Hapus</button>
+                        <button type='button' class='btn btn-sm btn-info editButton' data-toggle='modal' data-target='#editModal' data-id='"; echo $jadwal_lab['id_jadwal_lab']."' ><span class='glyphicon glyphicon-edit'></span>&nbsp;Ubah</button>
+                        <a href='"; echo base_url().'index.php/lab/delete/'.$jadwal_lab['id_jadwal_lab']."' class='btn btn-sm btn-danger' onclick='return confirm(&#39;Anda yakin ingin menghapus jadwal lab ini?&#39;)'>
+                        <span class='glyphicon glyphicon-trash'></span>&nbsp;Hapus</a>
                       </td>
                     </tr>
                     </tbody>";
@@ -359,8 +360,8 @@
             </div> 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-            <button type="submit" class="btn btn-primary">Tambah Jadwal</button>
+            <button type="button" class="btn btn-sm btn-default" onclick=location.reload()>Batal</button>
+            <button type="submit" class="btn btn-sm btn-primary">Tambah Jadwal</button>
           </div>
         </form>
         </div>
@@ -459,15 +460,15 @@
             </div> 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <button type="button" class="btn btn-sm btn-default" onclick=location.reload()>Batal</button>
+            <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>
           </div>
         </form>
         </div>
       </div>
     </div>
 
-    <?php } else { ?>
+    <?php } ?>
     <p class="berdasarkan">Tampilkan berdasarkan jadwal program studi : </p>
     <div class="dropdown optiongroup">
       <select class="form-control form-control-a " id="pilihProdi" name="pilihProdi">
@@ -498,6 +499,7 @@
       </select>
     </div>
     <div style="clear: both;"></div>
+    <p class="berdasarkan">Tanggal : </p>
     <div class="tanggal" name="pilihTanggal">
       <input type="text" class="form-control" id="singledatepicker">
     </div>
@@ -1656,7 +1658,7 @@
           <h4>      Selasa-Jumat | Sesi I: 07.30, Sesi II: 10.30, Sesi III: 13.30, Sesi IV: 16.30</h3>  
           <br>
         </div>
-        <?php } ?>
+       
     </div>
   </div>
 </body>

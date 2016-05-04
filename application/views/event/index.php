@@ -28,31 +28,35 @@
       <h2>Penjadwalan Kursus & Sertifikasi PPLK</h2>
       <hr>
       <?php
-        if($sesi == 1)
+      $session_id = $this->session->userdata('is_logged_in');
+      if($session_id == TRUE)
+      {      
+        if($this->session->flashdata('index') == 1)
         {
           echo "<div class='alert alert-warning alert-dismissible' role='alert'>
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                 <strong>Perhatian!</strong> Inputan tanggal mulai dan tanggal selesai Anda tidak tepat.</div>";
-        } 
-        elseif($sesi == 2)
+        }
+        else if($this->session->flashdata('index') == 2)
         {
           echo "<div class='alert alert-success alert-dismissible' role='alert'>
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                 <strong>Sukses!</strong> Jadwal berhasil ditambahkan.</div>";
-        } 
-        elseif($sesi == 3)
+        }
+        else if($this->session->flashdata('index') == 3)
         {
           echo "<div class='alert alert-success alert-dismissible' role='alert'>
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                 <strong>Sukses!</strong> Jadwal berhasil diubah.</div>";
-        } 
-        elseif($sesi == 4)
+        }
+        else if($this->session->flashdata('index') == 4)
         {
           echo "<div class='alert alert-success alert-dismissible' role='alert'>
                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                 <strong>Sukses!</strong> Jadwal berhasil dihapus.</div>";
-        } 
-      ?>
+        }
+      }     
+  ?>
       <div class="col-md-7">
         <div id="calendar"></div>
       </div>
@@ -68,7 +72,7 @@
       <?php echo form_open('event/insert') ?>  
       <form>   
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick=location.href="event"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=location.reload()><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><b>Tambah Jadwal</b></h4>
         </div>
         <div class="modal-body">   
@@ -107,7 +111,7 @@
           </div>      
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick=location.href="event">Batal</button>
+          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
           <button type="submit" class="btn btn-primary">Tambah Jadwal</button>
         </div>
       </form>
@@ -122,7 +126,7 @@
       <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" onclick=location.href="event">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=location.reload()><span aria-hidden="true">&times;</span></button>
             <h2 class="modal-title" id="title" class="title"></h2>         
         </div>
         <div class="modal-body">
@@ -134,6 +138,7 @@
             <p id="pelaksanaan">Pengajar</p>
             <p class="sama">:</p>
             <p id="pengajar" class="ajar"></p>
+            <br><br>
             <p id="pelaksanaan">Deskripsi</p>
             <p class="sama">:</p>
             <br><br>
@@ -142,7 +147,7 @@
         </div>
         <div class="modal-footer">
           <button type='button' class='btn btn-primary btn' data-toggle='modal' data-target='#ModalEdit' id='edit'>Ubah/Hapus Jadwal</button>
-          <button type="button" class="btn btn-default" onclick=location.href="event">Tutup</button>
+          <button type="button" class="btn btn-default" onclick=location.reload()>Tutup</button>
         </div>
       </div>
     </div>
@@ -197,7 +202,7 @@
           </div>
       </div>    
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" onclick=location.href="event">Batal</button>
+          <button type="button" class="btn btn-default" onclick=location.reload()>Batal</button>
           <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         </div>
       </form>

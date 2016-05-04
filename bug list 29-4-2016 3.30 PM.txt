@@ -1,0 +1,21 @@
+ADMIN PANEL
+
+1. button simpan dan batal dalam form tambah berita perlu diganti posisinya menjadi di kanan bawah (sebelumnya di kiri bawah)
+
+2. dalam isi berita, jika diisi dengan string yang panjang dan tanpa spasi, tampilan dalam tabel daftar berita masih ada bug (menabrak/menjadi tanpa enter)
+
+3. pada saat di dalam form tambah jadwal dalam pengalenderan, hasil inputan dari input end date masih ada bug, value dari warna menunjukan end date menjadi h-1 (misal end date = tgl 27, pewarnaan pada kalender menunjukan berakirnya sesi di tanggal 26)
+
+4. pengambilan value lab dalam edit jadwal lab masih ada bug (value selalu mengambil di lab A)    
+5. pengeditan jadwal dalam tabel masih ada bug (pemindahan sesi di hari yang sama masih gagal)
+
+6. saat selesai penambahan atau pengeditan jadwal lab, halama selalu me load ke lab A  
+
+7. pengeditan berita tidak bisa diedit jika gambar tidak diganti terlebih dahulu (perhatikan juga tombol dave dan cancel di form edit beritanya)
+
+GUEST PAGE
+
+1. batasi string saat penampilan berita di pplk (misal 120 string only, lalu diberikan link 'baca selengkapnya')
+
+CATATAN :
+ Bug nomor 3 di Admin Panel setelah dicoba di tempat xandra sudah benar. Boleh dicoba di laptop lainnya, jika masih ada bug dan bugnya sama, bisa diberitahukan.

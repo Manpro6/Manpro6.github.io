@@ -13,7 +13,7 @@ class event_model extends CI_Model
       $end = $this->input->post('end');
       if($start >= $end)
       {
-        redirect('event?msg=1');
+        $this->session->set_flashdata('index', 1); 
       }
       else
       {
@@ -25,8 +25,9 @@ class event_model extends CI_Model
         'start' => $start,               
         'end' => $end);
         $this->db->insert('events', $insert_event);
-        redirect('event?msg=2');
+        $this->session->set_flashdata('index', 2); 
       }
+      redirect('event');
     }
 
     public function updateEvent()
@@ -38,7 +39,7 @@ class event_model extends CI_Model
         $end = $this->input->post('end');
         if($start >= $end)
         {
-          redirect('event?msg=1');
+          $this->session->set_flashdata('index', 1); 
         }
         else
         {
@@ -52,15 +53,16 @@ class event_model extends CI_Model
 
           $this->db->where('id', $this->input->post('id'));
           $this->db->update('events', $update_event);
-          redirect('event?msg=3');
+          $this->session->set_flashdata('index', 3); 
         }
       }
       else
       {
         $this->db->where('id', $this->input->post('id'));
         $this->db->delete('events');
-        redirect('event?msg=4');
+        $this->session->set_flashdata('index', 4); 
       }
+      redirect('event');
     }
 
     public function baca($id)
