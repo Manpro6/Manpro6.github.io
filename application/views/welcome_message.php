@@ -13,6 +13,13 @@ $events = $req->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:url"           content="<?php echo current_url(); ?>" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="PPLK - Beranda ?>" />
+    <meta property="og:description"   content="PPLK - Beranda" />
+    <meta property="og:image"         content="<?php echo base_url('images/logo_pplk.png'); ?>" />
+    <meta property="og:image:width" content="640" /> 
+    <meta property="og:image:height" content="442" />
     <title>PPLK - Beranda</title>
     <link href="<?php echo base_url('css/jquery-ui.min.css')?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('css/fullcalendar.css')?>" rel='stylesheet' />
@@ -37,12 +44,33 @@ $events = $req->fetchAll();
       });
     });
     </script>
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1059221997470942',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id; js.async=true;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1059221997470942";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="fb-root"></div>
 <body link="blue">
 	<div class="container">
 		<br>
-		<img src="<?php echo base_url('images/ukdw_logo.png')?>" height=75 style="float:left;">	
+    <img src="<?php echo base_url('images/logo_pplk.png'); ?> " width="300px" style="padding-left: 20px;">
+    <div class="fb-share-button" data-href="<?php echo current_url(); ?> " data-layout="button_count" data-mobile-iframe="true" style="float: right; margin-top: 20px;"></div>
+		<!-- <img src="<?php echo base_url('images/ukdw_logo.png')?>" height=75 style="float:left;">	
 		<p style="font-size:24px;">&nbsp; PUSAT PELATIHAN DAN LAYANAN KOMPUTER</p>
-		<p style="font-size:24px;">&nbsp; (PPLK)</p>
+		<p style="font-size:24px;">&nbsp; (PPLK)</p> -->
 		<hr>
 		<div class="col-md-8">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -98,7 +126,7 @@ $events = $req->fetchAll();
           }
           ?>
       <tr>
-        <td><img class="berita" src="<?php echo base_url($aaa['gambar'])?>"></td>
+        <td><img style="max-width: 100px; padding-right: 20px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
         <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo strtoupper($aaa['judul']) ?></strong>
         <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
       </tr>

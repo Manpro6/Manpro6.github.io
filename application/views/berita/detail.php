@@ -1,3 +1,33 @@
+<head>
+  <title>PPLK - <?php echo strtoupper($berita['judul']) ?></title>
+  <meta property="og:url"           content="<?php echo current_url(); ?>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="PPLK - <?php echo strtoupper($berita['judul']) ?>" />
+  <meta property="og:description"   content="Berita PPLK" />
+  <meta property="og:image"         content="<?php echo base_url($berita['gambar']) ?>" />
+  <meta property="og:image:width" content="640" /> 
+  <meta property="og:image:height" content="442" />
+</head>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1059221997470942',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id; js.async=true;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1059221997470942";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="fb-root"></div>
 <br><br>
 <div class="container">
 <div class="col-md-10">
@@ -11,7 +41,7 @@
          </td>
          </tr>
          <tr>            
-            <td colspan="2" align="center"><img style="width:450px; height:225px; margin:10px;" src="<?php echo base_url($berita['gambar'])?>"></td>
+            <td colspan="2" align="center"><img style="max-height: 250px; margin:10px;" src="<?php echo base_url($berita['gambar'])?>"></td>
          <td></td>
          </tr>
          <tr style="height:50px;">
@@ -24,8 +54,11 @@
           <td></td>
          </tr>
          <tr>
-          <td></td>
-          <td colspan="3"><div class="col-sm-6">
+          <td><div class="fb-share-button" data-href="<?php echo current_url(); ?> " data-layout="button_count" data-mobile-iframe="true"></div>
+          </td>
+          <div id="fb-root"></div>
+          <td colspan="3">
+          <div class="col-sm-6">
             <br>
             <a href="<?php echo site_url('') ?>" class="btn btn-danger">Kembali</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
           </div>

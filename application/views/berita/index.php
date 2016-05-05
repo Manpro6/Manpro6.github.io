@@ -1,4 +1,5 @@
 <head><title>Admin Panel - Edit Berita</title></head>
+
 <div class="container">
   <h2>Daftar Berita PPLK</h2><hr>
   <div style="float: right; margin-right: 30px;">
