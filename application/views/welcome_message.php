@@ -108,27 +108,15 @@ $events = $req->fetchAll();
                 <?php $isi = $aaa['isi']?>
                    
                 <?php 
-                $length = 200;
-                $input = substr($isi, 0,200);
-    
-
-          if( strlen($input) <= $length )
-          { $input=$input;}
-         
-          else
-          {
-          $parts = explode(" ", $input);
-
-           while( strlen( implode(" ", $parts) ) > $length )
-          array_pop($parts);
-
-           $input=implode(" ", $parts);
-          }
+                $short = substr($isi, 0, 250);
+                $short = explode(' ', $short);
+                array_pop($short);
+                $short = implode(' ', $short);
           ?>
       <tr>
         <td><img style="max-width: 100px; padding-right: 20px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
         <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo strtoupper($aaa['judul']) ?></strong>
-        <br><?php echo $input ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
+        <br><?php echo $short  ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
       </tr>
       <?php endforeach; ?>
       <?php else: ?>

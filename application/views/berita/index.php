@@ -1,5 +1,10 @@
 <head><title>Admin Panel - Edit Berita</title></head>
-
+<style> 
+p.test {
+    width: 40em; 
+    word-wrap: break-word;
+}
+</style>
 <div class="container">
   <h2>Daftar Berita PPLK</h2><hr>
   <div style="float: right; margin-right: 30px;">
@@ -16,26 +21,15 @@
               <?php foreach ($berita as $mydata):?>
                 <?php $isi = $mydata['isi']?>
                 <?php 
-                $length = 250;
-                $input = substr($isi, 0,250);
-    
-
-          if( strlen($input) <= $length )
-          { $input=$input;}
-         
-          else
-          {
-          $parts = explode(" ", $input);
-
-           while( strlen( implode(" ", $parts) ) > $length )
-          array_pop($parts);
-
-           $input=implode(" ", $parts);
-          }
+                $short = substr($isi, 0, 250);
+                $short = explode(' ', $short);
+                array_pop($short);
+                $short = implode(' ', $short);
           ?>            
             <tr><td><strong><?php echo $mydata['judul'] ?></strong></td></tr>
-          <th><img style="width:300px; height:150px;" src="<?php echo base_url($mydata['gambar'])?>"></th>
-            <th style="text-align:justify;"><br><?php echo $input ?>...</th>
+          <th><img style="max-width:300px;" src="<?php echo base_url($mydata['gambar'])?>"></th>
+            <th style="text-align:justify;"><br><p class="test">
+            <?php echo $short ?>...</p></th>
             </td>
             <th style="text-align:justify;"><br><br><br>
              <a href="<?php echo site_url('berita/ubah').'/'.$mydata['id_berita'] ?>">
