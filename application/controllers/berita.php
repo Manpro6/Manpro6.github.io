@@ -49,14 +49,11 @@ class berita extends CI_Controller
 	{
         if(isset($_GET['msg']))
         {
-            if(($_GET['msg']) == 1)
-            {
-                echo "<script>alert('Pilih Gambar Perubahannya');window.location.href='".$id_berita."';</script>";
-            }
-            elseif(($_GET['msg']) == 2)
+            if(($_GET['msg']) == 2)
             {
                 echo "<script>alert('Tidak menerima format file selain .jpg, .jpeg, .gif dan .png');window.location.href='".$id_berita."';</script>";
             }
+           
         }
         $this->load->view('template/header');
 		$this->load->model('berita_model');
@@ -81,7 +78,12 @@ class berita extends CI_Controller
         }
         else
         {
-             redirect('berita/ubah/'.$id.'?msg=1');       
+             $this->load->model('berita_model');
+                    $this->berita_model->update($id, $url);
+                    $this->load->model('berita_model');
+                    $data = $this->berita_model->update();
+                    redirect('berita?msg=1');
+              
         }
     }
 
