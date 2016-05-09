@@ -43,7 +43,7 @@
 						<tr style="height:40px;">
 							<td id="box">Kode Captcha*</td>
 							<td id="sama">:</td>
-							<td style="margin-top:10px;"><?=$captcha_image?>&nbsp;<a href="#" onclick="parent.window.location.reload(true)"><em id="konten">[perbarui gambar]</em></a></td>
+							<td style="float: left;"><?=$captcha_image?>&nbsp;<a href="#" onclick="parent.window.location.reload(true)"><em id="konten">[perbarui gambar]</em></a></td>
 						</tr>
 						<tr style="height:40px;">
 							<td id="box"></td>

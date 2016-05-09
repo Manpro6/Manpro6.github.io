@@ -8,11 +8,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <?php $session_id = $this->session->userdata('is_logged_in');
       if($session_id == TRUE) { ?>
     <title>Admin Panel - Jadwal Lab</title>
@@ -103,19 +98,24 @@
         var status = $(this).closest('tr').children('td.status').text();
         var tanggal_mulai = $(this).closest('tr').children('td.tanggal_mulai').text();
         var tanggal_selesai = $(this).closest('tr').children('td.tanggal_selesai').text();
+        var lab = $("#nama-lab").text();
 
         //assign to ID
         $('#id_edit').attr("value", id);
         //hari
         $( "select[name='hari_edit']").val(hari);
+        //lab
+        $( "select[name='lab_edit']").val(lab);
         //sesi
         $( "select[name='sesi_edit']").val(sesi);
         //prodi
         $( "select[name='prodi_edit']").val(prodi);
         //status
         $( "select[name='status_edit']").val(status);
+        
         //matkul
         $( "input[name='matkul_edit']").val(matkul);
+
 
         $( "input[name='daterange_edit']").daterangepicker(
         {
@@ -132,7 +132,7 @@
 <body>
   <div class="container">
     
-    <h2>Jadwal Lab PPLK</h2>
+    <h2 style="margin-left: 20px">Jadwal Lab PPLK</h2>
     <hr>
     <?php
       $session_id = $this->session->userdata('is_logged_in');
@@ -192,14 +192,14 @@
 
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">     
-      <?php 
+      <span id="nama-lab"><?php 
         if ( isset( $_GET['lab'] ) && !empty( $_GET['lab'] ) ){
           echo $_GET['lab'];
         }
         else {
           echo "Lab A";
         }
-       ?>
+       ?></span>
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="<?php echo base_url('lab/?lab=Lab A'); ?>">Lab A</a></li>
@@ -469,40 +469,45 @@
     </div>
 
     <?php } ?>
-    <p class="berdasarkan">Tampilkan berdasarkan jadwal program studi : </p>
-    <div class="dropdown optiongroup">
-      <select class="form-control form-control-a " id="pilihProdi" name="pilihProdi">
-        <option>Semua Program Studi</option>
-        <optgroup label="Fakultas Teknologi Informasi">
-          <option>Sistem Informasi</option>
-          <option>Teknik Informatika</option>
-        </optgroup>
-        <optgroup label="Fakultas Bisnis">
-          <option>Manajemen</option>
-          <option>Akuntansi</option>
-          <option>Magister Manajemen</option>
-        </optgroup>
-        <optgroup label="Pendidikan Bahasa Inggris">
-          <option>Bahasa Inggris</option>
-        </optgroup>
-        <optgroup label="Fakultas Bioteknologi">
-          <option>Bioteknologi</option>
-        </optgroup>
-        <optgroup label="Fakultas Arsitektur dan Desain">
-          <option>Arsitektur</option>
-          <option>Desain produk</option>
-          <option>Magister Arsitektur</option>
-        </optgroup>
-        <optgroup label="Fakultas Kedokteran">
-          <option>Kedokteran</option>
-        </optgroup>
-      </select>
+    <div class="col-md-8">
+      <p class="berdasarkan">Tampilkan berdasarkan jadwal program studi : </p>
+      <div class="dropdown optiongroup">
+        <select class="form-control form-control-a " id="pilihProdi" name="pilihProdi">
+          <option>Semua Program Studi</option>
+          <optgroup label="Fakultas Teknologi Informasi">
+            <option>Sistem Informasi</option>
+            <option>Teknik Informatika</option>
+          </optgroup>
+          <optgroup label="Fakultas Bisnis">
+            <option>Manajemen</option>
+            <option>Akuntansi</option>
+            <option>Magister Manajemen</option>
+          </optgroup>
+          <optgroup label="Pendidikan Bahasa Inggris">
+            <option>Bahasa Inggris</option>
+          </optgroup>
+          <optgroup label="Fakultas Bioteknologi">
+            <option>Bioteknologi</option>
+          </optgroup>
+          <optgroup label="Fakultas Arsitektur dan Desain">
+            <option>Arsitektur</option>
+            <option>Desain produk</option>
+            <option>Magister Arsitektur</option>
+          </optgroup>
+          <optgroup label="Fakultas Kedokteran">
+            <option>Kedokteran</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div style="clear: both;"></div>
+      <p class="berdasarkan">Tanggal : </p>
+      <div class="tanggal" name="pilihTanggal">
+        <input type="text" class="form-control" id="singledatepicker">
+      </div>
     </div>
     <div style="clear: both;"></div>
-    <p class="berdasarkan">Tanggal : </p>
-    <div class="tanggal" name="pilihTanggal">
-      <input type="text" class="form-control" id="singledatepicker">
-    </div>
     <div style="clear: both;"></div>
     <br>
     <div class="table-responsive">
