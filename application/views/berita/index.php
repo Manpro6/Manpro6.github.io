@@ -11,6 +11,7 @@ p.test {
     <a href="<?php echo site_url('berita/add')?>" class="btn btn-xs btn-primary">
       <button type='button' class='btn btn-primary' style="border: none;"><span class="glyphicon glyphicon-plus"></span> Tambah Berita</button>
     </a>
+    <br><br>
   </div>
   <br><br>       
   <div>          
@@ -26,7 +27,7 @@ p.test {
                 array_pop($short);
                 $short = implode(' ', $short);
           ?>            
-            <tr><td><strong><?php echo $mydata['judul'] ?></strong></td></tr>
+            <tr><td colspan="5"><strong><?php echo $mydata['judul'] ?></strong></td></tr>
           <th><img style="max-width:300px;" src="<?php echo base_url($mydata['gambar'])?>"></th>
             <th style="text-align:justify;"><br><p class="test">
             <?php echo $short ?>...</p></th>

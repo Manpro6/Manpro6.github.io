@@ -461,7 +461,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-default" onclick=location.reload()>Batal</button>
-            <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>
+            <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>  
           </div>
         </form>
         </div>

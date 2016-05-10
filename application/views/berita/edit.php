@@ -1,3 +1,8 @@
+<head>
+<title>Edit Berita</title>
+  <script src="http://localhost/manpro6_fixed/js/ckeditor.js"></script>
+</head>
+
 <br><br><br><br>
 <div class="container">
 <div class="col-md-10">
@@ -36,20 +41,24 @@
          </tr>
           <tr>
 
-              <td style="width:10%;"><label for="isi">Isi Berita</label></td>
-              <td colspan="2">
-          <div class="col-sm-6"> <textarea rows="30" cols="15" name="isi" class="form-control" placeholder="Isi Berita" id="isi" required><?php echo $berita['isi'] ?></textarea>  
-          </div></td>
-  <td></td>
-         </tr>
-         <tr>
-          <td></td>
-          <td colspan="3" align="center"><div class="col-sm-6">
-            <button type="submit" class="btn btn-success">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="<?php echo site_url('berita') ?>" class="btn btn-danger">Batal</a>
-          </div>
-          </td>
-         </tr>
+              <td ><label for="isi">Isi Berita</label></td>
+              <td style="padding-left: 22px;">
+              <textarea name="isi" id="editor1" rows="10" cols="80">
+                  <?php echo $berita['isi'] ?>
+              </textarea>
+              <script>
+                  // Replace the <textarea id="editor1"> with a CKEditor
+                  // instance, using default configuration.
+                  CKEDITOR.replace( 'editor1' );
+              </script>
+          <!-- <div class="col-sm-6"> <textarea rows="30" cols="15" name="isi" class="form-control" placeholder="Isi Berita" id="isi" required><?php echo $berita['isi'] ?></textarea>  
+          </div> --></td>
+         <tr style="text-align: right;">
+           <td colspan="2">
+            <button type="submit" class="btn btn-success">Simpan</button>
+            <a href="<?php echo site_url('berita') ?>" class="btn btn-danger">Batal</a> 
+           </td>
+         </tr>            
        </table>
       </div>          
     </form>

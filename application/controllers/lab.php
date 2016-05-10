@@ -92,7 +92,7 @@ class lab extends CI_Controller
 	{
 		$this->load->model('jadwal_lab_model');
 		$res = $this->jadwal_lab_model->updateJadwal();
-		redirect('lab');
+		redirect('lab/?lab=' . $_POST['lab_edit']);
 	}
 
 	public function showID($id)

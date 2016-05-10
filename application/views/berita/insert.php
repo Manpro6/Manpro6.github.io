@@ -1,3 +1,8 @@
+<head>
+  <title>Tambah Berita</title>
+  <script src="http://localhost/manpro6_fixed/js/ckeditor.js"></script>
+</head>
+
 <br><br><br>
 <div class="container">
 <div class="panel panel-default">
@@ -31,12 +36,20 @@
           <tr>
           <td style="width:10%;"><label for="isi">Isi Berita</label></td>
           <td colspan="2">
-          <div class="col-sm-6"> <textarea rows="30" cols="15" name="isi" class="form-control" placeholder="Isi Berita" id="isi" value="" required></textarea>  
+          <div class="col-sm-12"> <!-- <textarea rows="30" cols="15" name="isi" class="form-control" placeholder="Isi Berita" id="isi" value="" required></textarea>   -->
+          <textarea name="isi" id="editor1" rows="10" cols="80">
+              Tulis berita di sini.
+          </textarea>
+          <script>
+              // Replace the <textarea id="editor1"> with a CKEditor
+              // instance, using default configuration.
+              CKEDITOR.replace( 'editor1' );
+          </script>
           </div></td>
           <td></td>
          </tr>
 
-         <tr>
+         <tr style="text-align: right;">
           <td colspan="2">
             <input type="submit" class="btn btn-success" value="Simpan">
             <a href="<?php echo site_url('berita') ?>" class="btn btn-danger">Batal</a>
