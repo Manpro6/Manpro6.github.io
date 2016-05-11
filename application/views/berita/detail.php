@@ -7,6 +7,14 @@
   <meta property="og:image"         content="<?php echo base_url($berita['gambar']) ?>" />
   <meta property="og:image:width" content="640" /> 
   <meta property="og:image:height" content="442" />
+  <style type="text/css">
+      .tabel-berita a {
+        color: #0099E5;
+      }
+      .tabel-berita a:hover {
+        text-decoration: underline;
+      }
+    </style>
 </head>
 
 <script>
@@ -52,7 +60,7 @@
           </td>
          </tr>
           <tr>
-              <td style="width:100%;" colspan="2" align="justify"><?php echo $berita['isi'] ?></td>
+              <td style="width:100%;" colspan="2" align="justify" class="tabel-berita"><?php echo $berita['isi'] ?></td>
               <td colspan="6">
           <td></td>
          </tr>

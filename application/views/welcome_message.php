@@ -25,6 +25,14 @@ $events = $req->fetchAll();
     <link href="<?php echo base_url('css/fullcalendar.css')?>" rel='stylesheet' />
     <link href="<?php echo base_url('css/fullcalendar.print.css')?>" rel='stylesheet' media='print' />
     <link href="<?php echo base_url('css/carol.css')?>" rel='stylesheet' />
+    <style type="text/css">
+      .tabel-berita a {
+        color: #0099E5;
+      }
+      .tabel-berita a:hover {
+        text-decoration: underline;
+      }
+    </style>
 </head>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -72,18 +80,20 @@ $events = $req->fetchAll();
 		<p style="font-size:24px;">&nbsp; PUSAT PELATIHAN DAN LAYANAN KOMPUTER</p>
 		<p style="font-size:24px;">&nbsp; (PPLK)</p> -->
 		<hr>
-		<div class="col-md-8">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		      <ol class="carousel-indicators">
+  </div>  
+  <div class="container">
+    <div class="col-md-8">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <?php for ($i=1; $i < $count; $i++) { 
               echo "<li data-target='#myCarousel' data-slide-to='$i'></li>";
             } ?>
-		      </ol>
-		     <div class="carousel-inner" role="listbox">
-		    <?php if($gambar) : ?>
-				<?php foreach ($gambar as $mydata):?>
-		        	<?php
+          </ol>
+         <div class="carousel-inner" role="listbox">
+        <?php if($gambar) : ?>
+        <?php foreach ($gambar as $mydata):?>
+              <?php
                 if($mydata['id_gambar'] == 1)
                 {
                   ?>
@@ -95,52 +105,54 @@ $events = $req->fetchAll();
                   ?>
                   <div class="item"><img src="<?php echo base_url($mydata['nama_gambar'])?>"></div>
                   <?php
-                }		    
-					?>   
-				<?php endforeach; ?>
+                }       
+          ?>   
+        <?php endforeach; ?>
    <br><br>
-   <strong><font style="font-size:24px;">Berita PPLK</font></strong>
-   <div id="line"></div>
-   <br>
-   <table>
-        <?php if($berita) : ?>
-              <?php foreach ($berita as $aaa):?>
-                <?php $isi = $aaa['isi']?>
-                   
-                <?php 
-                $short = substr($isi, 0, 250);
-                $short = explode(' ', $short);
-                array_pop($short);
-                $short = implode(' ', $short);
-          ?>
-      <tr>
-        <td><img style="max-width: 100px; padding-right: 20px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
-        <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo strtoupper($aaa['judul']) ?></strong>
-        <br><?php echo $short  ?><a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000">&nbsp; Lihat selengkapnya</a></td>
-      </tr>
-      <?php endforeach; ?>
-      <?php else: ?>
-          <tr><td class='text-center'>
-          <em>Tidak ada berita untuk ditampilkan</em></td>
+   
+      <?php endif ?>
+          
+          </div>
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+      </div>
+      <strong><font style="font-size:24px;">Berita PPLK</font></strong>
+       <div id="line"></div>
+       <br>
+       <table class="tabel-berita">
+            <?php if($berita) : ?>
+                  <?php foreach ($berita as $aaa):?>
+                    <?php $isi = $aaa['isi']?>
+                       
+                    <?php 
+                    $short = substr($isi, 0, 250);
+                    $short = explode(' ', $short);
+                    array_pop($short);
+                    $short = implode(' ', $short);
+              ?>
+          <tr>
+            <td><img style="max-width: 100px; padding-right: 20px;" src="<?php echo base_url($aaa['gambar'])?>"></td>
+            <td style="text-align:justify;"><strong style="font-size:12pt;"><?php echo strtoupper($aaa['judul']) ?></strong>
+            <br><?php echo $short ?> &nbsp;&nbsp;<a href="<?php echo site_url('berita/lihat').'/'.$aaa['id_berita'] ?>" style="color: #CC0000"> Lihat Selengkapnya</a></td>
           </tr>
-      <?php endif ?>
-      <?php endif ?>
-    </table>
-    <div id="pagination"><?php echo $pagination ?></div>
-			 
-		      </div>
-		      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-		        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		        <span class="sr-only">Previous</span>
-		      </a>
-		      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-		        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		        <span class="sr-only">Next</span>
-		      </a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div id="calendar" class="col-centered">
+          <?php endforeach; ?>
+          <?php else: ?>
+              <tr><td class='text-center'>
+              <em>Tidak ada berita untuk ditampilkan</em></td>
+              </tr>
+          <?php endif ?>
+        </table>
+        <div id="pagination"><?php echo $pagination ?></div>
+    </div>
+
+    <div class="col-md-4">
+      <div id="calendar" class="col-centered">
       <p class="lead" style="color:red;"><em><b>*Untuk melihat detail informasi, klik pada data di kalender</b></em></p>
       <h4><b>Detail Event</b></h4>
       <hr>
@@ -155,8 +167,9 @@ $events = $req->fetchAll();
       <p id="sampai" class="sama"></p>
       <p id="end" class="tanggal"></p>
       <p id="krg2" class="titik"></p>
-		</div>		
-	</div>
+    </div>    
+  </div>
+  </div>
 </body>
   <script src="<?php echo base_url('js/moment.min.js')?>"></script>
   <script src="<?php echo base_url('js/bootstrap.min.js')?>"></script>

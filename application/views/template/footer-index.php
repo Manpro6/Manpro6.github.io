@@ -4,7 +4,8 @@
       }
       else {
    ?>
-	<footer class="navbar-wrapper2" style="background-color:#0066ff;margin-top:80%;">
+   <div style="clear: both;"></div>
+	<footer class="navbar-wrapper2" style="background-color:#0066ff; margin-top: 30px;">
 		<div class="container">
 			<div class="col-md-7">	
 				<br>
